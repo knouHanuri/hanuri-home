@@ -1,0 +1,10 @@
+--- # change port
+server:
+  port: 8088
+
+--- # thymeleaf
+spring:
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+    suffix: .html
