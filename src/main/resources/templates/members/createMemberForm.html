@@ -5,6 +5,9 @@
     <title>createMemberForm</title>
 </head>
 <body>
+<!-- Page Header-->
+<div th:include="~{/layout/header}"></div>
+<!-- Main Content-->
 <div class="container">
     <form action="/members/new" method="post">
         <div class="form-group">
@@ -39,5 +42,7 @@
         <button type="submit">등록</button>
     </form>
 </div>
+<!-- Footer-->
+<div th:include="~{/layout/footer}"></div>
 </body>
 </html>
