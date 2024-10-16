@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class WebsiteApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void findByIdTest() {
+
 	}
 
 }

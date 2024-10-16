@@ -8,3 +8,12 @@ spring:
     cache: false
     prefix: file:src/main/resources/templates/
     suffix: .html
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${SPRING_DATASOURCE_URL}
+    username: root
+    password: ${SPRING_DATASOURCE_PASSWORD}
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: hanuri.website

@@ -1,4 +1,4 @@
-package hanuri.website.domain;
+package hanuri.website.dto;
 
 public class Member {
     private Long seq;

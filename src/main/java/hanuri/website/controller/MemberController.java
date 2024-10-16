@@ -1,6 +1,6 @@
 package hanuri.website.controller;
 
-import hanuri.website.domain.Member;
+import hanuri.website.dto.Member;
 import hanuri.website.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

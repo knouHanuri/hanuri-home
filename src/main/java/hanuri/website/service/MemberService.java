@@ -1,46 +1,43 @@
 package hanuri.website.service;
 
-import hanuri.website.domain.Member;
-import hanuri.website.repository.MemberRepository;
+import hanuri.website.dao.MemberMapper;
+import hanuri.website.dto.Member;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
+@Service
 public class MemberService {
 
-    private final MemberRepository memberRepository;
+    private final MemberMapper memberMapper;
 
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
+    @Autowired
+    public MemberService(MemberMapper memberMapper) {
+        this.memberMapper = memberMapper;
     }
 
     /*
-    * 회원가입
+    * 저장
     * */
-    public Long join(Member member)
-    {
-        validateDupMember(member);
-        memberRepository.save(member);
-        return member.getSeq();
+    public void join(Member member){
+        //중복 회원 확인
+        validateDuplicateMember(member);
+        memberMapper.save(member);
+        //return member.getSeq();
     }
 
-    private void validateDupMember(Member member){
-        memberRepository.findById(member.getId())
-                .ifPresent(m-> {
-                    throw new IllegalStateException("이미 등록된 ID 입니다.");
+    private void validateDuplicateMember(Member member){
+        memberMapper.findById(member.getId())
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });
     }
 
     /*
-    * 전체 회원 조회
-    * */
-    public List<Member> findMembers(){
-        return memberRepository.findAll();
-    }
-    /*
-    * 회원 조회
-    * */
-    public Optional<Member> findOne(Long memberSeq){
-        return memberRepository.findBySeq(memberSeq);
+     * 전체 조회
+     * */
+    public List<Member> findMembers() {
+        return memberMapper.findAll();
     }
 }
