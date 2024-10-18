@@ -3,12 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="hanuri.website.dao.MemberMapper">
-    <resultMap type="hanuri.website.dto.Member" id="Member">
+    <resultMap type="hanuri.website.dto.Subject" id="Subject">
         <result property="seq" column="seq"/>
-        <result property="id" column="member_id"/>
+        <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="gender" column="gender"/>
-        <result property="phoneNumber" column="phone_Number"/>
+        <result property="phoneNumber" column="phone_number"/>
         <result property="grade" column="grade"/>
     </resultMap>
     <!--데이터 전체 조회-->

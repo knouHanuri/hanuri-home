@@ -1,10 +1,19 @@
-create table member(
-	seq INT not null auto_increment,
-	id varchar(20) not null,
-	name varchar(50) not null,
-	gender char(1),
-	phone_number varchar(11),
-	grade int,
-	constraint member_pk primary key(seq)
+## STUDY_HISTORY
+
+CREATE TABLE IF NOT EXISTS STUDY_HISTORY(
+
+                                            study_id int not null auto_increment ,
+
+                                            week int not null ,
+
+                                            study_date date not null ,
+
+                                            title VARCHAR(100) not null ,
+
+                                            presenter VARCHAR(50) ,
+
+                                            notes VARCHAR(1000),
+
+                                            PRIMARY KEY (study_id, week)
 
 );

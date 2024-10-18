@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>createMemberForm</title>
+</head>
+<body>
+<!-- Page Header-->
+<div th:include="~{/layout/header}"></div>
+<!-- Main Content-->
+<div class="container">
+    <form action="/members/new" method="post">
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td><label for="id">ID</label></td>
+                    <td><input type="text" id="id" name="id" placeholder="ID를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td><label for="name">이름</label></td>
+                    <td><input type="text" id="name" name="name" placeholder="이름을 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">성별</label></td>
+                    <td>
+                        <select id="gender" name="gender">
+                            <option value="F">여</option>
+                            <option value="M">남</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="phoneNumber">전화번호</label></td>
+                    <td><input type="text" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td><label for="grade">학년</label></td>
+                    <td><input type="text" id="grade" name="grade" placeholder="학년을 입력하세요"></td>
+                </tr>
+            </table>
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div>
+<!-- Footer-->
+<div th:include="~{/layout/footer}"></div>
+</body>
+</html>

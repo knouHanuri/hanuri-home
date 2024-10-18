@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>memberList</title>
+</head>
+<body>
+<!-- Page Header-->
+<div th:include="~{/layout/header}"></div>
+<!-- Main Content-->
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>이름</th>
+        <th>성별</th>
+        <th>전화번호</th>
+        <th>학년</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="member : ${members}">
+        <td th:text="${member.seq}"></td>
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.gender}"></td>
+        <td th:text="${member.phoneNumber}"></td>
+        <td th:text="${member.grade}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- Footer-->
+<div th:include="~{/layout/footer}"></div>
+</body>
+</html>
