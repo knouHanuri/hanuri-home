@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>스터디 목록</title>
+</head>
+<body>
+<!-- Page Header-->
+<div th:include="~{/layout/header}"></div>
+<!-- Main Content-->
+<div class="container">
+  <div>
+    <button onclick="location.href='/study/form'">스터디 생성</button>
+    <table>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>상태</th>
+          <th>시작일</th>
+          <th>종료일</th>
+          <th>버튼</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr th:each="study : ${study}">
+        <td th:text="${study.studyId}"></td>
+        <td th:text="${study.title}"></td>
+        <td th:text="${study.status}"></td>
+        <td th:text="${study.startDate}"></td>
+        <td th:text="${study.endDate}"></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- Footer-->
+<div th:include="~{/layout/footer}"></div>
+</body>
+</html>
