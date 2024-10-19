@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회비납부내역</title>
+    <div th:include="~{/layout/header}"></div>
+</head>
+<body>
+<table>
+    <thread>
+        <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>회원명</th>
+            <th>입금날짜</th>
+            <th>입금액</th>
+            <th>만료일</th>
+            <!--<td><label for="member_id">ID</label></td-->
+            <!--<td>{{member_id}}</td>
+            <td>{{</td>-->
+        </tr>
+    </thread>
+    <tbody>
+    <tr th:each="membership : ${membership}">
+        <td th:text="${membership.membershipId}"></td>
+        <td th:text="${membership.memberId}"></td>
+        <td th:text="${membership.paymentDate}"></td>
+        <td th:text="${membership.amount}"></td>
+        <td th:text="${membership.expirationDate}"></td>
+    </tr>
+    </tbody>
+</table>
+<div th:include="~{/layout/footer}"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회비납부등록</title>
+    <div th:include="~{/layout/header}"></div>
+</head>
+<body>
+<h1> 회비납부내역 등록</h1>
+
+<span style="border: black 1px solid; margin: 0 3px; background: blueviolet" th:each="member : ${members}">
+        <span class="namespace" th:text="${member.name}" th:value="member.id"></span>
+    </span>
+
+<form action="/membership/new" method="POST">
+    <label for="name">납부자: </label><br>
+    <input type="text" id="name" name="name" placeholder="납부자"><br>
+    <label for="price">금액:</label><br>
+    <input type="text" id="price" name="price" placeholder="금액"><br>
+    <label for="date">날짜:</label><br>
+    <input type="text" id="date" name="date" placeholder="날짜"><br><br>
+    <input type="submit" value="등록하기">
+</form>
+</body>
+
+<script>
+    function fillForm(name){
+        document.getElementById("name").value = name;
+    }
+    document.getElementsByClassName("namespace")[1].addEventListener("click",(e) => {
+        document.getElementById("name").value= document.getElementsByClassName("namespace")[0].value;
+    } )
+</script>
+<div th:include="~{/layout/footer}"></div>
+</html>
