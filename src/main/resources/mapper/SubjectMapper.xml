@@ -2,36 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="hanuri.website.dao.MemberMapper">
-    <resultMap type="hanuri.website.dto.Subject" id="Subject">
-        <result property="seq" column="seq"/>
-        <result property="id" column="id"/>
-        <result property="name" column="name"/>
-        <result property="gender" column="gender"/>
-        <result property="phoneNumber" column="phone_number"/>
+<mapper namespace="hanuri.website.dao.SubjectMapper">
+
+    <!-- resultMap 설정 -->
+    <resultMap type="hanuri.website.dto.Subject" id="SubjectMap">
+        <result property="subjectCode" column="subject_code"/>
+        <result property="subjectName" column="subject_name"/>
         <result property="grade" column="grade"/>
+        <result property="semester" column="semester"/>
+        <result property="professor" column="professor"/>
+        <result property="studyOpened" column="study_opened"/>
     </resultMap>
-    <!--데이터 전체 조회-->
-    <select id="findAll" resultType="hanuri.website.dto.Member" resultMap="Member">
-        select * from member
+
+    <!-- 데이터 전체 조회 -->
+    <select id="findAll" resultType="hanuri.website.dto.Subject" resultMap="SubjectMap">
+        SELECT * FROM subject
     </select>
-    <!--데이터 조회(name)-->
-    <select id="findById" parameterType="string" resultType="hanuri.website.dto.Member" resultMap="Member" >
-        select * from member where id = #{id} limit 1
+
+    <!-- 특정 과목 조회 (subject_code 기준) -->
+    <select id="findByCode" parameterType="long" resultType="hanuri.website.dto.Subject" resultMap="SubjectMap">
+        SELECT * FROM subject WHERE subject_code = #{subjectCode} LIMIT 1
     </select>
-    <!--데이터 조회(name)-->
-    <select id="findBySeq" parameterType="int" resultType="hanuri.website.dto.Member" resultMap="Member" >
-        select * from member where seq = #{seq}
-    </select>
-    <!--데이터 입력-->
-    <insert id="save" parameterType="hanuri.website.dto.Member" useGeneratedKeys="true" keyProperty="seq">
-        insert into member(id,name,gender,phone_number,grade) values(#{id},#{name},#{gender},#{phoneNumber},#{grade})
+
+    <!-- 과목 입력 -->
+    <insert id="save" parameterType="hanuri.website.dto.Subject" useGeneratedKeys="true" keyProperty="subjectCode">
+        INSERT INTO subject(subject_name, grade, semester, professor, study_opened)
+        VALUES(#{subjectName}, #{grade}, #{semester}, #{professor}, #{studyOpened})
     </insert>
-    <!--데이터 수정-->
-    <!--데이터 삭제-->
 
+    <!-- 과목 수정 -->
+    <update id="update" parameterType="hanuri.website.dto.Subject">
+        UPDATE subject
+        SET subject_name = #{subjectName},
+            grade = #{grade},
+            semester = #{semester},
+            professor = #{professor},
+            study_opened = #{studyOpened}
+        WHERE subject_code = #{subjectCode}
+    </update>
 
-
-
+    <!-- 과목 삭제 (subject_code 기준) -->
+    <delete id="delete" parameterType="long">
+        DELETE FROM subject WHERE subject_code = #{subjectCode}
+    </delete>
 
 </mapper>
