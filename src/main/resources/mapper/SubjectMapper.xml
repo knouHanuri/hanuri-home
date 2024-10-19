@@ -20,7 +20,7 @@
     </select>
 
     <!-- 특정 과목 조회 (subject_code 기준) -->
-    <select id="findByCode" parameterType="long" resultType="hanuri.website.dto.Subject" resultMap="SubjectMap">
+    <select id="findByCode" parameterType="int" resultType="hanuri.website.dto.Subject" resultMap="SubjectMap">
         SELECT * FROM subject WHERE subject_code = #{subjectCode} LIMIT 1
     </select>
 

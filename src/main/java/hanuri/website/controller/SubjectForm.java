@@ -1,42 +1,19 @@
 package hanuri.website.controller;
 
 public class SubjectForm {
-    private String id;
-    private String name;
-    private String gender;
-    private String phoneNumber;
-    private String grade;
+    private String subjectName;  // 과목명
+    private String grade;        // 학년
+    private String semester;     // 학기
+    private String professor;    // 교수명
+    private String studyOpened;  // 강의 개설 여부
 
-    public String getId() {
-        return id;
+    // Getter 및 Setter 메서드
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public String getGrade() {
@@ -45,5 +22,29 @@ public class SubjectForm {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
+    public String getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
+
+    public String getStudyOpened() {
+        return studyOpened;
+    }
+
+    public void setStudyOpened(String studyOpened) {
+        this.studyOpened = studyOpened;
     }
 }
