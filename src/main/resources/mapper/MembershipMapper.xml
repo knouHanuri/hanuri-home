@@ -11,12 +11,13 @@
 <!--        <result property="expirationDate" column="expiration_date"/>-->
 <!--    </resultMap>-->
 
+<!--데이터 조회-->
     <select id="findAll" resultType="hanuri.website.dto.Membership">
         select *from membershipfeepayment
     </select>
-
-    <insert id="save" parameterType="hanuri.website.dto.Membership" useGeneratedKeys="true" keyProperty="">
-        insert into membershipfeepayment(membershipId,memberId,paymentDate,amount,expirationDate) values(#{Membership_id},#{member_id},#{payment_date},#{amount},#{expiration_date})
+<!--데이터 입력/-->
+    <insert id="save" parameterType="hanuri.website.dto.Membership">
+        insert into membershipfeepayment(member_id,payment_date,amount,expiration_date) values(#{memberId},#{paymentDate},#{amount},#{expirationDate});
     </insert>
     <select id="findById"></select>
 </mapper>

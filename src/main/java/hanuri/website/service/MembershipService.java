@@ -18,7 +18,7 @@ public class MembershipService {
 
 
      public void join(Membership membership){
-        validateDuplicateMembership(membership);
+//        validateDuplicateMembership(membership);
          membershipMapper.save(membership);
 
      }

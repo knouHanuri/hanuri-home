@@ -21,13 +21,21 @@ public class MembershipController {
     }
 
     @GetMapping("/membership/new")
-    public String createForm(){return "membership/Create";}
+    public String createForm(){return "Membership/MembershipCreate";}
 
     @PostMapping("/membership/new")
     public String createForm(MembershipCreate create)
     {
-        MembershipCreate membership = new Membership();
-        membership.setMembershipId();
+        Membership membership = new Membership(
+                0,
+                create.getMemberId(),
+                create.getPaymentDate(),
+                create.getAmount(),
+                create.getExpirationDate()
+    );
+        membershipService.join(membership);
+        return "redirect:/membership/success";
+
     }
 
     @GetMapping("/membership/list")
@@ -37,4 +45,7 @@ public class MembershipController {
         return "Membership/MembershipList";
     }
   //  @GetMapping("/membership/delete")
+    @GetMapping("membership/success")
+    public String success(){ return "Membership/MembershipFeePaymentSuccess";
+    }
 }
