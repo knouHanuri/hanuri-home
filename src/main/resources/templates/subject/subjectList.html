@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>memberList</title>
+  <title>subjectList</title>
 </head>
 <body>
 <!-- Page Header-->
@@ -14,21 +14,21 @@
       <thead>
       <tr>
         <th>#</th>
-        <th>ID</th>
-        <th>이름</th>
-        <th>성별</th>
-        <th>전화번호</th>
+        <th>과목명</th>
         <th>학년</th>
+        <th>학기</th>
+        <th>교수명</th>
+        <th>강의 개설 여부</th>
       </tr>
       </thead>
       <tbody>
-      <tr th:each="member : ${members}">
-        <td th:text="${member.seq}"></td>
-        <td th:text="${member.id}"></td>
-        <td th:text="${member.name}"></td>
-        <td th:text="${member.gender}"></td>
-        <td th:text="${member.phoneNumber}"></td>
-        <td th:text="${member.grade}"></td>
+      <tr th:each="subject : ${subjects}">
+        <td th:text="${subject.subjectCode}"></td>
+        <td th:text="${subject.subjectName}"></td>
+        <td th:text="${subject.grade}"></td>
+        <td th:text="${subject.semester}"></td>
+        <td th:text="${subject.professor}"></td>
+        <td th:text="${subject.studyOpened} ? '개설됨' : '미개설'"></td>
       </tr>
       </tbody>
     </table>

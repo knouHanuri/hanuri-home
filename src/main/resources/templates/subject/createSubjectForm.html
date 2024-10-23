@@ -2,44 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>createMemberForm</title>
+    <title>createSubjectForm</title>
 </head>
 <body>
 <!-- Page Header-->
 <div th:include="~{/layout/header}"></div>
 <!-- Main Content-->
 <div class="container">
-    <form action="/members/new" method="post">
+    <form action="/subjects/new" method="post">
         <div class="form-group">
             <table>
                 <tr>
-                    <td><label for="id">ID</label></td>
-                    <td><input type="text" id="id" name="id" placeholder="ID를 입력하세요"></td>
-                </tr>
-                <tr>
-                    <td><label for="name">이름</label></td>
-                    <td><input type="text" id="name" name="name" placeholder="이름을 입력하세요"></td>
-                </tr>
-                <tr>
-                    <td><label for="gender">성별</label></td>
-                    <td>
-                        <select id="gender" name="gender">
-                            <option value="F">여</option>
-                            <option value="M">남</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="phoneNumber">전화번호</label></td>
-                    <td><input type="text" id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력하세요"></td>
+                    <td><label for="subjectName">과목명</label></td>
+                    <td><input type="text" id="subjectName" name="subjectName" placeholder="과목명을 입력하세요"></td>
                 </tr>
                 <tr>
                     <td><label for="grade">학년</label></td>
                     <td><input type="text" id="grade" name="grade" placeholder="학년을 입력하세요"></td>
                 </tr>
+                <tr>
+                    <td><label for="semester">학기</label></td>
+                    <td><input type="text" id="semester" name="semester" placeholder="학기를 입력하세요 (예: 1, 2)"></td>
+                </tr>
+                <tr>
+                    <td><label for="professor">교수명</label></td>
+                    <td><input type="text" id="professor" name="professor" placeholder="교수명을 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td><label for="studyOpened">강의 개설 여부</label></td>
+                    <td>
+                        <select id="studyOpened" name="studyOpened">
+                            <option value="true">개설됨</option>
+                            <option value="false">미개설</option>
+                        </select>
+                    </td>
+                </tr>
             </table>
         </div>
-        <button type="submit">등록</button>
+        <button type="submit">과목 등록</button>
     </form>
 </div>
 <!-- Footer-->
