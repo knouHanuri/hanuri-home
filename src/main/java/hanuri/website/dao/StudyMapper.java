@@ -11,5 +11,5 @@ public interface StudyMapper {
     void save(Study study);
 //    Optional<Member> findBySeq(Long seq);
 //    Optional<Member> findById(String id);
-    List<Study> findAll();
+    List<Study> studyListAll();
 }

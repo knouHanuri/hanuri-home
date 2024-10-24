@@ -4,7 +4,7 @@
 
 <mapper namespace="hanuri.website.dao.StudyMapper">
     <!--데이터 전체 조회-->
-    <select id="findAll" resultType="hanuri.website.dto.Study">
+    <select id="studyListAll" resultType="hanuri.website.dto.Study">
         select * from study
     </select>
 <!--    &lt;!&ndash;데이터 조회(name)&ndash;&gt;-->

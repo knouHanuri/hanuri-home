@@ -15,5 +15,5 @@ public class Study {
     private String schedule;
     private Date startDate;
     private Date endDate;
-    private String establishedBy;
+    private Long establishedBy;
 }

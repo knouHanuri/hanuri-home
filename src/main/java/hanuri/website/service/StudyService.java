@@ -33,10 +33,10 @@ public class StudyService {
 //                });
 //    }
 //
-//    /*
-//     * 전체 조회
-//     * */
-//    public List<Member> findMembers() {
-//        return memberMapper.findAll();
-//    }
+    /*
+     * 전체 조회
+     * */
+    public List<Study> studyListAll() {
+        return studyMapper.studyListAll();
+    }
 }
