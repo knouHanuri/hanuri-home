@@ -11,9 +11,21 @@
 <!--        <result property="expirationDate" column="expiration_date"/>-->
 <!--    </resultMap>-->
 
-<!--데이터 조회-->
+<!--회비납부내역 조회-->
     <select id="findAll" resultType="hanuri.website.dto.Membership">
-        select *from membershipfeepayment
+        select
+                mfp.membership_id as membershipId,
+                mfp.member_id as memberId,
+                mem.username as userName,
+                mem.name as memberName,
+                mfp.payment_date as paymentDate,
+                mfp.amount as amount,
+                mfp.expiration_date as expirationDate
+        from membershipfeepayment mfp
+        join member mem on mfp.member_id = mem.member_id
+
+
+
     </select>
 <!--데이터 입력/-->
     <insert id="save" parameterType="hanuri.website.dto.Membership">

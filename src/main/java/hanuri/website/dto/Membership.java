@@ -6,6 +6,7 @@ import java.util.Date;
 public class Membership {
     private int membershipId;
     private int memberId;
+    private String userName;
     private String name;
     private Date paymentDate;
     private int amount;
@@ -13,9 +14,11 @@ public class Membership {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public Membership(int membershipId,int memberId, Date paymentDate, int amount, Date expirationDate){
+    public Membership(int membershipId,int memberId,String userName ,String memberName, Date paymentDate, int amount, Date expirationDate){
         this.membershipId=membershipId;
         this.memberId=memberId;
+        this.userName=userName;
+        this.name = memberName;
         this.paymentDate=paymentDate;
         this.amount=amount;
         this.expirationDate=expirationDate;
@@ -35,6 +38,22 @@ public class Membership {
 
     public void setMemberId(int memberId) {
         this.memberId = memberId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPaymentDate() {
@@ -60,4 +79,5 @@ public class Membership {
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
+
 }

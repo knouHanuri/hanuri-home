@@ -29,6 +29,7 @@ public class MembershipController {
         Membership membership = new Membership(
                 0,
                 create.getMemberId(),
+                null,null,
                 create.getPaymentDate(),
                 create.getAmount(),
                 create.getExpirationDate()
