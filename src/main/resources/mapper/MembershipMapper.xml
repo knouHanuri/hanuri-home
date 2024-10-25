@@ -28,12 +28,12 @@
     <insert id="save" parameterType="hanuri.website.dto.Membership">
         insert into membershipfeepayment(member_id,payment_date,amount,expiration_date) values(#{memberId},#{paymentDate},#{amount},#{expirationDate});
     </insert>
-    <select id="save" resultType="hanuri.website.dto.Membership">
-        select
-            mem.name as memberName
-        from membershipfeepayment mfp
-        join member mem on mfp.member_id = mem.member_id
-    </select>
+<!--    <select id="save" resultType="hanuri.website.dto.Membership">-->
+<!--        select-->
+<!--            mem.name as memberName-->
+<!--        from membershipfeepayment mfp-->
+<!--        join member mem on mfp.member_id = mem.member_id-->
+<!--    </select>-->
 <!--    <select id="findById"></select>-->
 <!--    회비납부내역 수정-->
 <!--    <select id=-->
