@@ -13,22 +13,26 @@
     <table>
       <thead>
       <tr>
-        <th>#</th>
-        <th>ID</th>
+        <th>아이디</th>
+        <th>이메일</th>
         <th>이름</th>
-        <th>성별</th>
         <th>전화번호</th>
-        <th>학년</th>
+        <th>성별</th>
+        <th>생년월일</th>
+        <th>학번</th>
+        <th>재학여부</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="member : ${members}">
-        <td th:text="${member.seq}"></td>
-        <td th:text="${member.id}"></td>
+        <td><a th:href="@{/members/detail/{id}(id=${member.memberId})}"><span th:text="${member.username}"></span></a></td>
+        <td th:text="${member.email}"></td>
         <td th:text="${member.name}"></td>
-        <td th:text="${member.gender}"></td>
         <td th:text="${member.phoneNumber}"></td>
-        <td th:text="${member.grade}"></td>
+        <td th:text="${member.gender}"></td>
+        <td th:text="${member.birthdate}"></td>
+        <td th:text="${member.studentId}"></td>
+        <td th:text="${member.enrollmentStatus}"></td>
       </tr>
       </tbody>
     </table>

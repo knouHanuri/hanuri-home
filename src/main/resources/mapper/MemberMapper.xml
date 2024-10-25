@@ -4,26 +4,32 @@
 
 <mapper namespace="hanuri.website.dao.MemberMapper">
     <!--데이터 전체 조회-->
-    <select id="findAll" resultType="hanuri.website.dto.Member">
+    <select id="findAll" resultType="hanuri.website.domain.dto.Member">
         select * from member
     </select>
-    <!--데이터 조회(name)-->
-    <select id="findById" parameterType="string" resultType="hanuri.website.dto.Member">
-        select * from member where id = #{id} limit 1
+    <!--데이터 조회(Id)-->
+    <select id="findByUserName" parameterType="string" resultType="hanuri.website.domain.dto.Member">
+        select * from member where username = #{username} limit 1
     </select>
-    <!--데이터 조회(name)-->
-    <select id="findBySeq" parameterType="int" resultType="hanuri.website.dto.Member">
-        select * from member where seq = #{seq}
+    <!--데이터 조회(Id)-->
+    <select id="findById" parameterType="int" resultType="hanuri.website.domain.dto.Member">
+        select * from member where member_id = #{memberId}
     </select>
     <!--데이터 입력-->
-    <insert id="save" parameterType="hanuri.website.dto.Member" useGeneratedKeys="true" keyProperty="seq">
-        insert into member(id,name,gender,phone_number,grade) values(#{id},#{name},#{gender},#{phoneNumber},#{grade})
+    <insert id="save" parameterType="hanuri.website.domain.dto.Member" useGeneratedKeys="true" keyProperty="memberId">
+        insert into member(username,email,name,phone_number,password,gender,birthdate,student_id,enrollment_status)
+        values(#{username},#{email},#{name},#{phoneNumber},#{password},#{gender},#{birthdate},#{studentId},#{enrollmentStatus})
     </insert>
     <!--데이터 수정-->
-    <!--데이터 삭제-->
-
-
-
-
+    <update id="modify" parameterType="hanuri.website.domain.dto.Member">
+        update member
+        set name = #{name},
+            phone_number = #{phoneNumber},
+            gender = #{gender},
+            birthdate = #{birthdate},
+            student_id = #{studentId},
+            enrollment_status = #{enrollmentStatus}
+        where member_id = #{memberId}
+    </update>
 
 </mapper>
