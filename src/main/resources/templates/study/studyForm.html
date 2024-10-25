@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>스터디 생성</title>
+    </head>
+    <body>
+        <!-- Page Header-->
+        <div th:include="~{/layout/header}"></div>
+        <!-- Main Content-->
+        <div class="container">
+            <form id="studyForm">
+                <div class="form-group">
+                    <table>
+                        <tr>
+                            <td><label for="">과목코드</label></td>
+                            <td>
+                                <select>
+                                    <option value="">선택</option>
+                                    <option th:each="val : ${subjectList}" th:value="${val?.subjectCode}"
+                                            th:utext="${val?.subjectName}">
+                                    </option>
+                                </select>
+
+        <!--                        <input type="text" id="subjectCode" name="subjectCode" placeholder="과목코드명을 입력하세요"/>-->
+                                <button onclick="alert('준비중입니다.');return false;">과목 등록</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="title">* 스터디명</label></td>
+                            <td><input type="text" id="title" name="title" placeholder="스터디명을 입력하세요" /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="status">* 상태</label></td>
+                            <td>
+                                <select id="status" name="status">
+                                    <option value="">선택</option>
+                                    <option value="active">active</option>
+                                    <option value="completed">completed</option>
+                                    <option value="pending">pending</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="schedule">* 요일 및 시간</label></td>
+                            <td><input type="text" id="schedule" name="schedule" placeholder="ex) 매주 수, 오후 7시"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="startDate">* 시작일</label></td>
+                            <td><input type="date" id="startDate" name="startDate"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="endDate">* 종료일</label></td>
+                            <td><input type="date" id="endDate" name="endDate"></td>
+                        </tr>
+                    </table>
+                </div>
+                <button type="submit">등록</button>
+            </form>
+        </div>
+        <!-- Footer-->
+        <div th:include="~{/layout/footer}"></div>
+        <script type="application/javascript" src="/js/study.js"></script>
+    </body>
+</html>
