@@ -36,8 +36,8 @@ public class MembershipController {
     );
         membershipService.join(membership);
         return "redirect:/membership/success";
-
     }
+
 
     @GetMapping("/membership/list")
     public String list(Model model) {
@@ -45,7 +45,16 @@ public class MembershipController {
         model.addAttribute("membership", membership);
         return "Membership/MembershipList";
     }
-  //  @GetMapping("/membership/delete")
+
+
+//    @GetMapping("/membership/modify")
+//    public String modify(){return "Membership/MembershipModify";}
+//
+//    @PostMapping("/membership/modify")
+//    public String modify(membership)
+
+
+
     @GetMapping("membership/success")
     public String success(){ return "Membership/MembershipFeePaymentSuccess";
     }

@@ -10,21 +10,19 @@ public class MembershipCreate {
 
 //    @NotNull(message="회원 id는 필수입니다.")
     private int memberId;
-
 //    @NotNull(message = "납부 날짜는 필수입니다.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date paymentDate;
 //    @NotNull(message = "만료 날짜는 필수입니다.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expirationDate;
-
     private int amount;
 
-    public void MembershipCreate(Date expirationDate, int memberId, Date paymentDate, int amount) {
-//        this.expirationDate = expirationDate;
-//        this.memberId = memberId;
-//        this.paymentDate = paymentDate;
-//        this.amount = amount;
+    public  MembershipCreate(Date expirationDate, int memberId, Date paymentDate, int amount) {
+        this.expirationDate = expirationDate;
+        this.memberId = memberId;
+        this.paymentDate = paymentDate;
+        this.amount = amount;
     }
 
     public int getMemberId() {
