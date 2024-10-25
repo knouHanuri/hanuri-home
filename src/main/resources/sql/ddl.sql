@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS MEMBER (
     birthdate DATE,
     student_id varchar(20),
     image_id int,
-    enrollment_status ENUM ('enrolled','supended','graudated'),
+    enrollment_status ENUM ('enrolled','suspended','graduated'),
     membership_level ENUM ('admin','normal','guest'),
     is_active BOOL
 );
