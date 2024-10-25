@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>회비납부내역 수정</title>
+</head>
+<body>
+<!-- Page Header-->
+<div th:include="~{/layout/header}"></div>
+<!-- Main Content-->
+<div class="container">
+  <form action="/membership/modify" method="post">
+    <div class="form-group">
+      <table>
+        <tr>
+          <td><label for="memberId">멤버ID</label></td>
+          <td><input type="number" id="memberId" name="memberId" placeholder="멤버ID를 입력하세요"></td>
+        </tr>
+        <tr>
+          <td><label for="paymentDate">납부일</label></td>
+          <td><input type="date" id="paymentDate" name="paymentDate" placeholder="날짜를 입력하세요"></td>
+        </tr>
+        <tr>
+          <td><label for="amount">금액</label></td>
+          <td><input type="number" id="amount" name="amount" placeholder="값을 입력하세요" required></td>
+        </tr>
+        <tr>
+          <td><label for="expirationDate">만료일</label></td>
+          <td><input type="date" id="expirationDate" name="expirationDate" placeholder="날짜를 입력하세요"></td>
+        </tr>
+
+      </table>
+    </div>
+    <button type="submit">수정</button>
+  </form>
+</div>
+<!-- Footer-->
+<div th:include="~{/layout/footer}"></div>
+</body>
+</html>
