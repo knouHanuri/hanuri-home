@@ -1,7 +1,6 @@
 package hanuri.website.service;
 
 import hanuri.website.dao.MembershipMapper;
-import hanuri.website.dto.Member;
 import hanuri.website.dto.Membership;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
