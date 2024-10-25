@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### LSH gitignore ##
+/doc/**.md
+.DS_Store

@@ -9,5 +9,6 @@
     </settings>
     <mappers>
         <mapper resource="mapper/MemberMapper.xml"/>
+        <mapper resource="mapper/StudyHistoryMapper.xml"/>
     </mappers>
 </configuration>
