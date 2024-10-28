@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회비납부내역</title>
+    <div th:include="~{/layout/header}"></div>
+    <style>
+        table{width:100%;}
+        /*tbody{text-decoration: underline;*/
+        /*text-underline-offset: 10px;}*/
+        tr {border-bottom: 1px solid;}
+        td {border-right: 1px solid;}
+    </style>
+</head>
+<body>
+<table>
+    <thread>
+        <tr>
+            <th>#</th>
+<!--            <th>멤버ID</th>-->
+            <th>회원ID</th>
+            <th>회원명</th>
+            <th>입금날짜</th>
+            <th>입금액</th>
+            <th>만료일</th>
+            <th><a href="/membership/new"><button type="submit" style="margin-left: 20px">회비납부입력
+            </button></a></th>
+            <!--<td><label for="member_id">ID</label></td-->
+            <!--<td>{{member_id}}</td>
+            <td>{{</td>-->
+        </tr>
+    </thread>
+    <hr>
+    <tbody>
+    <tr th:each="membership : ${membership}">
+        <td th:text="${membership.membershipId}"></td>
+<!--        <td th:text="${membership.memberId}"></td>-->
+        <td th:text="${membership.userName}"></td>
+        <td th:text="${membership.name}"></td>
+        <td th:text="${membership.paymentDate}"></td>
+        <td th:text="${membership.amount}"></td>
+        <td th:text="${membership.expirationDate}"></td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+<div th:include="~{/layout/footer}"></div>
+</body>
+</html>

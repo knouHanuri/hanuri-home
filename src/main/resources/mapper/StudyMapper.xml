@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hanuri.website.dao.StudyMapper">
+    <!--데이터 전체 조회-->
+    <select id="studyListAll" resultType="hanuri.website.dto.Study">
+        select * from study
+    </select>
+<!--    &lt;!&ndash;데이터 조회(name)&ndash;&gt;-->
+<!--    <select id="findById" parameterType="string" resultType="hanuri.website.dto.Study" resultMap="Study" >-->
+<!--        select * from member where id = #{id} limit 1-->
+<!--    </select>-->
+<!--    &lt;!&ndash;데이터 조회(name)&ndash;&gt;-->
+<!--    <select id="findBySeq" parameterType="int" resultType="hanuri.website.dto.Study" resultMap="Study" >-->
+<!--        select * from member where seq = #{seq}-->
+<!--    </select>-->
+    <!--데이터 입력-->
+    <insert id="save" parameterType="hanuri.website.dto.Study">
+        insert into study(subject_code, title, status, schedule, start_date, end_date, established_by)
+        values(#{subjectCode}, #{title}, #{status}, #{schedule}, #{startDate}, #{endDate}, #{establishedBy})
+    </insert>
+    <!--데이터 수정-->
+    <!--데이터 삭제-->
+</mapper>
