@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>회비납부내역</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <div th:include="~{/layout/header}"></div>
     <style>
         table{width:100%;}
@@ -23,8 +27,9 @@
             <th>입금날짜</th>
             <th>입금액</th>
             <th>만료일</th>
-            <th><a href="/membership/new"><button type="submit" style="margin-left: 20px">회비납부입력
+            <th style="width: 50px"><a href="/membership/new"><button type="submit" >회비납부입력
             </button></a></th>
+
             <!--<td><label for="member_id">ID</label></td-->
             <!--<td>{{member_id}}</td>
             <td>{{</td>-->
@@ -37,15 +42,22 @@
 <!--        <td th:text="${membership.memberId}"></td>-->
         <td th:text="${membership.userName}"></td>
         <td th:text="${membership.name}"></td>
-        <td th:text="${membership.paymentDate}"></td>
+        <td th:text="${#dates.format(membership.paymentDate,'yyyy-MM-dd')}"></td>
         <td th:text="${membership.amount}"></td>
-        <td th:text="${membership.expirationDate}"></td>
-
+        <td th:text="${#dates.format(membership.expirationDate,'yyyy-MM-dd')}"></td>
+        <td style="width:160px"><a href="/membership/modify"><button type="submit">수정
+        </button></a>
+            <a href="/membership/delete"><button type="submit">삭제
+            </button></a>
+        </td>
     </tr>
 
     </tbody>
 </table>
 
 <div th:include="~{/layout/footer}"></div>
+<script>
+    function
+</script>
 </body>
 </html>

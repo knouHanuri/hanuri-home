@@ -5,20 +5,31 @@
     <title>회비등록</title>
 </head>
 <body>
-<!-- Page Header-->
 <div th:include="~{/layout/header}"></div>
-<!-- Main Content-->
+<h3>등록할 회원 선택</h3>
+<span th:each="member : ${members}">
+    <button type="button"
+            th:data-member-id="${member.memberId}"
+            onclick="fillMemberId(this)">
+        <span th:text="${member.username}"></span>
+        <span th:text="${member.name}"></span>
+    </button>
+</span>
+
 <div class="container">
     <form action="/membership/new" method="post">
         <div class="form-group">
             <table>
                 <tr>
-                    <td><label for="memberId">멤버ID</label></td>
-                    <td><input type="number" id="memberId" name="memberId" placeholder="멤버ID를 입력하세요"></td>
+                    <td><label for="memberName">회원 이름</label></td>
+                    <td><input type="text" id="memberName" name="memberName" placeholder="회원 이름" readonly></td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" id="memberId" name="memberId"  required></td>
                 </tr>
                 <tr>
                     <td><label for="paymentDate">납부일</label></td>
-                    <td><input type="date" id="paymentDate" name="paymentDate" placeholder="날짜를 입력하세요"></td>
+                    <td><input type="date" id="paymentDate" name="paymentDate" placeholder="날짜를 입력하세요" required></td>
                 </tr>
                 <tr>
                     <td><label for="amount">금액</label></td>
@@ -26,15 +37,24 @@
                 </tr>
                 <tr>
                     <td><label for="expirationDate">만료일</label></td>
-                    <td><input type="date" id="expirationDate" name="expirationDate" placeholder="날짜를 입력하세요"></td>
+                    <td><input type="date" id="expirationDate" name="expirationDate" placeholder="날짜를 입력하세요" required></td>
                 </tr>
-
             </table>
         </div>
         <button type="submit">등록</button>
     </form>
 </div>
-<!-- Footer-->
+
 <div th:include="~{/layout/footer}"></div>
+
+<script>
+    function fillMemberId(button) {
+        const memberName = button.querySelectorAll("span")[1].textContent;
+        const memberId = button.getAttribute("data-member-id");
+        document.getElementById("memberId").value = memberId;
+        document.getElementById("memberName").value = memberName;
+    }
+</script>
+
 </body>
 </html>

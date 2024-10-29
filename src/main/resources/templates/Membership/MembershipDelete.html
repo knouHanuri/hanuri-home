@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>회비납부내역 삭제</title>
+</head>
+<body>
+<!-- Page Header-->
+<div th:include="~{/layout/header}"></div>
+<!-- Main Content-->
+<div class="container">
+  <form action="/membership/delete" method="post">
+    <div class="form-group">
+      <table>
+          <td><label for="membershipId">납부번호</label></td>
+          <td><input type="number" id="membershipId" name="membershipId" placeholder="번호를 입력하세요"></td>
+      </table>
+    </div>
+    <button type="submit">삭제</button>
+  </form>
+</div>
+<!-- Footer-->
+<div th:include="~{/layout/footer}"></div>
+</body>
+</html>
