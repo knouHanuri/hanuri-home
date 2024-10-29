@@ -56,8 +56,10 @@
                         </tr>
                     </table>
                 </div>
-                <button id="submitBtn" type="submit" th:text="${study.studyId != null ? '수정' : '등록'}"></button>
             </form>
+            <button id="submitBtn" type="button" th:text="${study.studyId != null ? '수정' : '등록'}"></button>
+            <button th:if="${study.studyId != null}" th:onclick="'del(' + ${study.studyId} + ')'">삭제</button>
+            <button onclick="window.history.back()">닫기</button>
         </div>
         <!-- Footer-->
         <div th:include="~{/layout/footer}"></div>

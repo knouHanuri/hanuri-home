@@ -17,8 +17,8 @@ function del(studyId) {
         })
         .finally(() => {
             alert(msg);
-            // 무조건 페이지 리로드
-            location.reload();
+            if(location.href.indexOf('study/form') > -1) location.href = "/study/list"; //보기페이지에서 삭제
+            else location.reload(); //스터디조회에서 삭제 
         });
     }
 }
@@ -40,10 +40,13 @@ inputs['endDate'].addEventListener('change', function () {
     inputs['startDate'].max = inputs['endDate'].value; // 종료 날짜를 시작 날짜의 최대값으로 설정
 });
 
-document.getElementById('studyForm').addEventListener('submit', function (event) {
-    // 기본 제출 방지
-    event.preventDefault();
+// 버튼 클릭 이벤트 핸들러
+document.getElementById("submitBtn").addEventListener("click", function() {
+    // 폼 제출
+    formSubmit();
+});
 
+function formSubmit(){
     let nullCnt = 0;
 
     for (let input of Object.entries(inputs)) {
@@ -57,9 +60,9 @@ document.getElementById('studyForm').addEventListener('submit', function (event)
 
     if (nullCnt === 0) {
         if (confirm(`스터디를 ${document.getElementById('submitBtn').textContent}하시겠습니까?`)) {
-            this.method = 'post';
-            this.action = '/study/formSave';
-            this.submit();
+            document.getElementById('studyForm').method = 'post';
+            document.getElementById('studyForm').action = '/study/formSave';
+            document.getElementById('studyForm').submit();
         }
     }
-});
+}
