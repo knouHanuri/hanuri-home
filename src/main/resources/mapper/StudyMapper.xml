@@ -22,4 +22,7 @@
     </insert>
     <!--데이터 수정-->
     <!--데이터 삭제-->
+    <delete id="delete" parameterType="long">
+        delete from study WHERE study_id = #{studyId}
+    </delete>
 </mapper>

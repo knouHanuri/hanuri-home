@@ -16,9 +16,7 @@ public class StudyService {
         this.studyMapper = studyMapper;
     }
 
-    /*
-    * 저장
-    * */
+    /* 저장 */
     public void save(Study study){
         //중복 회원 확인
         //validateDuplicateMember(member);
@@ -33,10 +31,10 @@ public class StudyService {
 //                });
 //    }
 //
-    /*
-     * 전체 조회
-     * */
+    /* 전체 조회 */
     public List<Study> studyListAll() {
         return studyMapper.studyListAll();
     }
+    /* 삭제 */
+    public int delete(long studyId) { return studyMapper.delete(studyId); }
 }

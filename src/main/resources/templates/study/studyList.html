@@ -23,16 +23,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="studyList : ${studyList}">
-                  <td th:text="${studyList.studyId}"></td>
+                <tr th:each="studyList, iterStat : ${studyList}">
+                  <td th:text="${iterStat.index + 1}"></td>
                   <td th:text="${studyList.title}"></td>
                   <td th:text="${studyList.status}"></td>
                   <td th:text="${studyList.startDate}"></td>
                   <td th:text="${studyList.endDate}"></td>
                   <td>
                     <button>보기</button>
-                    <button onclick="go('')">수정</button>
-                    <button>삭제</button>
+                    <button>수정</button>
+                    <button th:onclick="'del(' + ${studyList.studyId} + ')'">삭제</button>
                   </td>
                 </tr>
               </tbody>
@@ -50,5 +50,6 @@
             }
           }
         </script>
+        <script type="application/javascript" src="/js/study.js"></script>
     </body>
 </html>
