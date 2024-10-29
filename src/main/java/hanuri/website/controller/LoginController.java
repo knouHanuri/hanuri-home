@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -34,9 +33,17 @@ public class LoginController {
         Member member = loginService.login(loginRequest);
         httpServletRequest.getSession().invalidate();
         HttpSession session = httpServletRequest.getSession(true);
-        session.setAttribute("username", member.getUsername());
-        session.setAttribute("name", member.getName());
+        session.setAttribute("member", member);
         session.setMaxInactiveInterval(1800);   //30분동안 유지
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest httpServletRequest, Model model) {
+        HttpSession session = httpServletRequest.getSession(false);
+        if(session != null) {
+            session.invalidate();
+        }
         return "redirect:/";
     }
 
