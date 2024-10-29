@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudyService {
@@ -24,6 +25,11 @@ public class StudyService {
         //return member.getSeq();
     }
 
+    /* 수정 */
+    public void update(Study study){
+        studyMapper.update(study);
+    }
+
 //    private void validateDuplicateMember(Study member){
 //        studyMapper.findById(member.getId())
 //                .ifPresent(m -> {
@@ -35,6 +41,8 @@ public class StudyService {
     public List<Study> studyListAll() {
         return studyMapper.studyListAll();
     }
+    /* studyId로 조회 */
+    public Optional<Study> findById(long studyId) { return studyMapper.findById(studyId); }
     /* 삭제 */
     public int delete(long studyId) { return studyMapper.delete(studyId); }
 }

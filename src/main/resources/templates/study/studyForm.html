@@ -9,7 +9,8 @@
         <div th:include="~{/layout/header}"></div>
         <!-- Main Content-->
         <div class="container">
-            <form id="studyForm">
+            <form id="studyForm" th:object="${study}">
+                <input type="hidden" id="studyId" th:field="*{studyId}"/> <!-- 수정할 경우 ID를 숨긴 필드로 보냄 -->
                 <div class="form-group">
                     <table>
                         <tr>
@@ -28,12 +29,12 @@
                         </tr>
                         <tr>
                             <td><label for="title">* 스터디명</label></td>
-                            <td><input type="text" id="title" name="title" placeholder="스터디명을 입력하세요" /></td>
+                            <td><input type="text" id="title" name="title" th:field="*{title}" placeholder="스터디명을 입력하세요" /></td>
                         </tr>
                         <tr>
                             <td><label for="status">* 상태</label></td>
                             <td>
-                                <select id="status" name="status">
+                                <select id="status" name="status" th:field="*{status}">
                                     <option value="">선택</option>
                                     <option value="active">active</option>
                                     <option value="completed">completed</option>
@@ -43,19 +44,19 @@
                         </tr>
                         <tr>
                             <td><label for="schedule">* 요일 및 시간</label></td>
-                            <td><input type="text" id="schedule" name="schedule" placeholder="ex) 매주 수, 오후 7시"></td>
+                            <td><input type="text" id="schedule" name="schedule" th:field="*{schedule}" placeholder="ex) 매주 수, 오후 7시"></td>
                         </tr>
                         <tr>
                             <td><label for="startDate">* 시작일</label></td>
-                            <td><input type="date" id="startDate" name="startDate"></td>
+                            <td><input type="date" id="startDate" name="startDate" th:field="*{startDate}"></td>
                         </tr>
                         <tr>
                             <td><label for="endDate">* 종료일</label></td>
-                            <td><input type="date" id="endDate" name="endDate"></td>
+                            <td><input type="date" id="endDate" name="endDate" th:field="*{endDate}"></td>
                         </tr>
                     </table>
                 </div>
-                <button type="submit">등록</button>
+                <button id="submitBtn" type="submit" th:text="${study.studyId != null ? '수정' : '등록'}"></button>
             </form>
         </div>
         <!-- Footer-->

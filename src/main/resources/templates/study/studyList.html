@@ -30,8 +30,8 @@
                   <td th:text="${studyList.startDate}"></td>
                   <td th:text="${studyList.endDate}"></td>
                   <td>
-                    <button>보기</button>
-                    <button>수정</button>
+                    <button onclick="alert('준비중')">보기</button>
+                    <button th:onclick="'edit(' + ${studyList.studyId} + ')'">수정</button>
                     <button th:onclick="'del(' + ${studyList.studyId} + ')'">삭제</button>
                   </td>
                 </tr>

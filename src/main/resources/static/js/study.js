@@ -1,4 +1,8 @@
 /* 스터디 조회 */
+function edit(studyId){
+    window.location.href = `/study/form?studyId=${studyId}`;
+}
+
 function del(studyId) {
     if (confirm('스터디를 삭제하시겠습니까?')) {
         let msg = "다시 시도해주세요.";
@@ -52,7 +56,7 @@ document.getElementById('studyForm').addEventListener('submit', function (event)
     }
 
     if (nullCnt === 0) {
-        if (confirm('스터디를 등록하시겠습니까?')) {
+        if (confirm(`스터디를 ${document.getElementById('submitBtn').textContent}하시겠습니까?`)) {
             this.method = 'post';
             this.action = '/study/formSave';
             this.submit();

@@ -7,6 +7,10 @@
     <select id="studyListAll" resultType="hanuri.website.dto.Study">
         select * from study
     </select>
+    <!--데이터 조회(Id)-->
+    <select id="findById" parameterType="long" resultType="hanuri.website.dto.Study">
+        select * from study where study_id = #{studyId}
+    </select>
 <!--    &lt;!&ndash;데이터 조회(name)&ndash;&gt;-->
 <!--    <select id="findById" parameterType="string" resultType="hanuri.website.dto.Study" resultMap="Study" >-->
 <!--        select * from member where id = #{id} limit 1-->
@@ -21,6 +25,17 @@
         values(#{subjectCode}, #{title}, #{status}, #{schedule}, #{startDate}, #{endDate}, #{establishedBy})
     </insert>
     <!--데이터 수정-->
+    <update id="update" parameterType="hanuri.website.dto.Study">
+        UPDATE study
+        SET subject_code = #{subjectCode},
+            title = #{title},
+            status = #{status},
+            schedule = #{schedule},
+            start_date = #{startDate},
+            end_date = #{endDate},
+            established_by = #{establishedBy}
+        WHERE study_id = #{studyId}
+    </update>
     <!--데이터 삭제-->
     <delete id="delete" parameterType="long">
         delete from study WHERE study_id = #{studyId}
