@@ -1,5 +1,6 @@
 package hanuri.website.dto;
 
+import hanuri.website.domain.EStudyStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ public class Study {
     private Long studyId;
     private Long subjectCode;
     private String title;
-    private String status;
+    private EStudyStatus status;
     private String schedule;
     private Date startDate;
     private Date endDate;

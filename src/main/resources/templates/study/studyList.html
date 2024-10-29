@@ -26,7 +26,7 @@
                 <tr th:each="studyList, iterStat : ${studyList}">
                   <td th:text="${iterStat.index + 1}"></td>
                   <td th:text="${studyList.title}"></td>
-                  <td th:text="${studyList.status}"></td>
+                  <td th:text="${studyList.status.displayName}"></td>
                   <td th:text="${studyList.startDate}"></td>
                   <td th:text="${studyList.endDate}"></td>
                   <td>

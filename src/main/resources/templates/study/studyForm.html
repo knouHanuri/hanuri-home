@@ -36,9 +36,8 @@
                             <td>
                                 <select id="status" name="status" th:field="*{status}">
                                     <option value="">선택</option>
-                                    <option value="active">active</option>
-                                    <option value="completed">completed</option>
-                                    <option value="pending">pending</option>
+                                    <option th:each="status : ${status}" th:value="${status}" th:text="${status.displayName}">
+                                    </option>
                                 </select>
                             </td>
                         </tr>

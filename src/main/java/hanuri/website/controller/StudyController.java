@@ -1,6 +1,6 @@
 package hanuri.website.controller;
 
-import hanuri.website.dao.StudyMapper;
+import hanuri.website.domain.EStudyStatus;
 import hanuri.website.dto.Study;
 import hanuri.website.service.StudyService;
 import jakarta.validation.Valid;
@@ -26,6 +26,7 @@ public class  StudyController {
     @GetMapping("/study/list")
     public String studyList(Model model){
         List<Study> studyList = studyService.studyListAll();
+        model.addAttribute("status", EStudyStatus.values());
         model.addAttribute("studyList",studyList);
         return "study/studyList";
     }
@@ -34,6 +35,7 @@ public class  StudyController {
     public String studyForm(@RequestParam(required = false) Long studyId, Model model){
         Optional<Study> optionalStudy = Optional.empty();
         if(studyId != null) optionalStudy = studyService.findById(studyId);
+        model.addAttribute("status", EStudyStatus.values());
         model.addAttribute("study", optionalStudy.orElseGet(Study::new));
         return "study/studyForm";
     }
