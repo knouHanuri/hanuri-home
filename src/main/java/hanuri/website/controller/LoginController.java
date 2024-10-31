@@ -1,5 +1,6 @@
 package hanuri.website.controller;
 
+import hanuri.website.dao.MemberMapper;
 import hanuri.website.domain.dto.Login.LoginRequest;
 import hanuri.website.domain.dto.Member;
 import hanuri.website.service.LoginService;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
 
     private final LoginService loginService;
+    private final MemberMapper memberMapper;
 
     @Autowired
-    public LoginController(LoginService loginService) {
+    public LoginController(LoginService loginService, MemberMapper memberMapper) {
         this.loginService = loginService;
+        this.memberMapper = memberMapper;
     }
 
     @GetMapping("/login")
@@ -31,10 +34,12 @@ public class LoginController {
     @PostMapping("/login")
     public String login(LoginRequest loginRequest, HttpServletRequest httpServletRequest, Model model) {
         Member member = loginService.login(loginRequest);
-        httpServletRequest.getSession().invalidate();
-        HttpSession session = httpServletRequest.getSession(true);
-        session.setAttribute("member", member);
-        session.setMaxInactiveInterval(1800);   //30분동안 유지
+        if(member != null){
+            httpServletRequest.getSession().invalidate();
+            HttpSession session = httpServletRequest.getSession(true);
+            session.setAttribute("user", member);
+            session.setMaxInactiveInterval(1800);   //30분동안 유지
+        }
         return "redirect:/";
     }
 
