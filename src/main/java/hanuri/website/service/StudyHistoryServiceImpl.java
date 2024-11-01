@@ -2,7 +2,7 @@ package hanuri.website.service;
 
 import hanuri.website.dao.StudyHistoryMapper;
 import hanuri.website.model.StudyHistory;
-import hanuri.website.dto.history.StudyHistoryRegisterRequestDTO;
+import hanuri.website.dto.history.RegisterStudyHistoryRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +21,7 @@ public class StudyHistoryServiceImpl implements StudyHistoryService{
      */
     @Override
     @Transactional
-    public int register(StudyHistoryRegisterRequestDTO requestDTO) {
+    public int register(RegisterStudyHistoryRequest requestDTO) {
         // 회차를 카운트하고 +1 해준다.
         int newRoundNo = (countRoundByStudyId(requestDTO.getStudyId()) + 1);
 

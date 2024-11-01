@@ -1,6 +1,6 @@
 package hanuri.website.controller;
 
-import hanuri.website.dto.history.StudyHistoryRegisterRequestDTO;
+import hanuri.website.dto.history.RegisterStudyHistoryRequest;
 import hanuri.website.service.StudyHistoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class StudyHistoryController {
     }
 
     @PostMapping
-    public String register(@Valid StudyHistoryRegisterRequestDTO requestDTO) {
+    public String register(@Valid RegisterStudyHistoryRequest requestDTO) {
         studyHistoryService.register(requestDTO);
         return "redirect:/";
     }
