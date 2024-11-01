@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/study/history")
+@RequestMapping("/study-history")
 public class StudyHistoryController {
     private StudyHistoryService studyHistoryService;
 
