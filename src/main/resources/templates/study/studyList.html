@@ -1,55 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-      <meta charset="UTF-8">
-      <title>스터디 목록</title>
-    </head>
-    <body>
-        <!-- Page Header-->
-        <div th:include="~{/layout/header}"></div>
-        <!-- Main Content-->
-        <div class="container">
-          <div>
-            <button onclick="location.href='/study/form'">스터디 생성</button>
-            <table>
-              <thead>
-                <tr>
-                  <th>번호</th>
-                  <th>제목</th>
-                  <th>상태</th>
-                  <th>시작일</th>
-                  <th>종료일</th>
-                  <th>버튼</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="studyList, iterStat : ${studyList}">
-                  <td th:text="${iterStat.index + 1}"></td>
-                  <td th:text="${studyList.title}"></td>
-                  <td th:text="${studyList.status.displayName}"></td>
-                  <td th:text="${studyList.startDate}"></td>
-                  <td th:text="${studyList.endDate}"></td>
-                  <td>
-                    <button onclick="alert('준비중')">보기</button>
-                    <button th:onclick="'edit(' + ${studyList.studyId} + ')'">수정</button>
-                    <button th:onclick="'del(' + ${studyList.studyId} + ')'">삭제</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+<head>
+    <meta charset="UTF-8">
+    <title>스터디 목록</title>
+</head>
+<body>
+<!-- Page Header-->
+<div th:include="~{/layout/header}"></div>
+<!-- Main Content-->
+<div class="container">
+    <div class="row">
+        <div class="container mt-2 col-md-12">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3>스터디 조회</h3>
+                <button class="btn btn-primary btn-sm" onclick="location.href='/study/form'">스터디 생성</button>
+            </div>
+            <div class="row">
+                <div class="col-md-4" th:each="studyList, iterStat : ${studyList}">
+                    <div class="card mb-4">
+                        <!--나중에 height css로 빼야 할듯-->
+                        <img src="https://via.placeholder.com/150" class="card-img-top"
+                             style="height:300px;cursor:pointer;" alt="Study Image" onclick="alert('준비중')">
+                        <!--나중에 cursor:pointer; css 파일에 추가해야 될 듯. 보기 페이지 없어서 준비중 띄움-->
+                        <div class="card-body" style="cursor:pointer;" onclick="alert('준비중')">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title" th:text="${studyList.title}"></h5>
+                                <span class="card-title" th:text="${studyList.status.displayName}"></span>
+                            </div>
+                            <div class="text-end">
+                                <span class="card-text" th:text="${studyList.schedule}"></span>
+                            </div>
+                            <div class="text-end">
+                                <span class="card-text" th:text="${studyList.startDate}"></span> ~
+                                <span class="card-text" th:text="${studyList.endDate}"></span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                            <span class="card-text">작성자</span>
+                            <div class="text-end">
+                                <button class="btn btn-warning btn-sm" th:onclick="'edit(' + ${studyList.studyId} + ')'">수정</button>
+                                <button class="btn btn-danger btn-sm" th:onclick="'del(' + ${studyList.studyId} + ')'">삭제</button>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Footer-->
-        <div th:include="~{/layout/footer}"></div>
-        <script th:inline="javascript">
-          window.onload = function(){
-            const message = /*[[${message}]]*/ ''; // Thymeleaf를 사용하여 message 가져오기
-            console.log(message);
-            if (message) {
-              alert(message); // 메시지가 존재하면 alert 띄우기
-            }
-          }
-        </script>
-        <script type="application/javascript" src="/js/study.js"></script>
-    </body>
+    </div>
+</div>
+<!-- Footer-->
+<div th:include="~{/layout/footer}"></div>
+<script th:inline="javascript">
+    window.onload = function () {
+        const message = /*[[${message}]]*/ ''; // Thymeleaf를 사용하여 message 가져오기
+        console.log(message);
+        if (message) {
+            alert(message); // 메시지가 존재하면 alert 띄우기
+        }
+    }
+</script>
+<script type="application/javascript" src="/js/study.js"></script>
+</body>
 </html>
