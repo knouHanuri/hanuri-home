@@ -1,10 +1,13 @@
 package hanuri.website.service;
 
 import hanuri.website.dao.StudyHistoryMapper;
+import hanuri.website.dto.history.FindAllByStudyIdResponse;
 import hanuri.website.model.StudyHistory;
 import hanuri.website.dto.history.RegisterStudyHistoryRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class StudyHistoryServiceImpl implements StudyHistoryService{
@@ -48,4 +51,9 @@ public class StudyHistoryServiceImpl implements StudyHistoryService{
         return studyHistoryMapper.countRoundByStudyId(studyId);
     }
 
+    @Override
+    public List<FindAllByStudyIdResponse> findAllByStudyId(int studyId) {
+        List<FindAllByStudyIdResponse> responseDTO = studyHistoryMapper.findAllByStudyId(studyId);
+        return responseDTO;
+    }
 }

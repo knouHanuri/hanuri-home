@@ -1,7 +1,10 @@
 package hanuri.website.dao;
 
+import hanuri.website.dto.history.FindAllByStudyIdResponse;
 import hanuri.website.model.StudyHistory;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface StudyHistoryMapper {
@@ -13,4 +16,6 @@ public interface StudyHistoryMapper {
 
     // 해당 스터디가 진행된 횟수를 확인하는 쿼리
     int countRoundByStudyId(int studyId);
+
+    List<FindAllByStudyIdResponse> findAllByStudyId(int studyId);
 }

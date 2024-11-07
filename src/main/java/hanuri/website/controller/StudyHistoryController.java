@@ -1,13 +1,15 @@
 package hanuri.website.controller;
 
 import hanuri.website.dto.history.RegisterStudyHistoryRequest;
+import hanuri.website.dto.history.FindAllByStudyIdResponse;
 import hanuri.website.service.StudyHistoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/study-history")
@@ -31,14 +33,10 @@ public class StudyHistoryController {
     }
 
     @GetMapping("/{studyId}")
-    public String findAllByStudyId(Model model, int studyId) {
-//        try {
-//
-//            return null;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        return null;
+    public String findAllStudyHistoryByStudyId(Model model, @PathVariable int studyId) {
+        List<FindAllByStudyIdResponse> responseDTO = studyHistoryService.findAllByStudyId(studyId);
+        model.addAttribute("responseDTO", responseDTO);
+        return "redirect:/";
     }
 
     @PutMapping

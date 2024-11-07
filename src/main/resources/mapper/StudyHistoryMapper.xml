@@ -24,4 +24,19 @@
         WHERE
             STUDY_ID = #{studyId}
     </select>
+    <select id="findAllByStudyId" parameterType="int" resultType="hanuri.website.dto.history.FindAllByStudyIdResponse">
+        SELECT
+            S.title AS study_title,
+            SH.round AS round,
+            SH.study_date AS study_date,
+            SH.title AS study_history_title
+        FROM
+            STUDY AS S
+        JOIN
+            STUDY_HISTORY AS SH
+        ON
+            S.study_id = SH.study_id
+        WHERE
+            SH.study_id = #{studyId}
+    </select>
 </mapper>
