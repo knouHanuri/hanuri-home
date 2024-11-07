@@ -27,6 +27,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '3.0.0'
 
 //<<<<<<< HEAD
 //	//compileOnly 'org.projectlombok:lombok:1.18.16'

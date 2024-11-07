@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/bootstrap/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/layout.css">
 </head>
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -27,6 +29,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">소개</a></li>
+                <li class="nav-item">
+                    <a th:if="${session.user == null}" class="nav-link px-lg-3 py-3 py-lg-4" href="/login">로그인</a>
+                    <a th:if="${session.user != null}" class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">로그아웃</a>
+                </li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/members/new">회원가입</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/members">회원조회</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/membership/list">회비납부내역</a></li>
@@ -44,6 +50,12 @@
                 <div class="site-heading">
                     <h1>한우리</h1>
                     <span class="subheading">한우리를 소개하는 글귀</span>
+                    <div th:if="${session.user != null}">
+                        <p th:text="${session.user.getName()} + '님! 반갑습니다'"></p>
+                    </div>
+                    <div th:if="${session.user == null}">
+                        <p>로그인 안됨</p>
+                    </div>
                 </div>
             </div>
         </div>

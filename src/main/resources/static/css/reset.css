@@ -1,0 +1,70 @@
+:root{
+    /* major(theme) */
+    --major-main: #E2AE22;
+    /* text(common) */
+    --text-title: #212121;
+    --text-subTitle: #686868;
+    --text-white: #fff;
+    /* background(common) */
+    --bg-main: #fff;
+    --bg-EEEFF1: #EEEFF1;
+    --bg-none:transparent;
+    /* border */
+    --border-main: 1px solid #ddd  ;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html, body {
+    color: var(--text-subTitle);
+    background: var(--bg-main);
+    font-size: 15px;
+    font-weight:400;
+    font-family: 'pretendard', 'sans-serif';
+}
+button,a,input{
+    text-decoration: none;
+    color: var(--text-title);
+    box-sizing: border-box;
+    background: none;
+    border: none;
+    outline: none;
+}
+em,strong,p,h1,h2,h3,h4,h5,h6,a{
+    margin: 0;
+    padding: 0;
+    font-style:normal
+}
+button{
+    cursor: pointer;
+}
+ol, ul,li {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox  */
+input[type='number'] {
+    -moz-appearance: textfield;
+    appearance:textfield
+}
