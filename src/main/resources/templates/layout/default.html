@@ -16,6 +16,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/bootstrap/css/styles.css" rel="stylesheet" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!--  css  -->
     <link rel="stylesheet" th:href="@{/css/reset.css}">
     <link rel="stylesheet" th:href="@{/css/layout.css}">
 </head>
@@ -24,7 +29,9 @@
     <!-- header -->
     <header th:replace="~{fragments/header :: header}"></header>
     <!-- main content -->
-    <main layout:fragment="content"></main>
+    <main>
+        <section class="inner" layout:fragment="content"></section>
+    </main>
     <!-- footer -->
     <footer th:replace="~{fragments/footer :: footer}"></footer>
 </div>

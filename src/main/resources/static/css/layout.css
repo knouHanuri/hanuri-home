@@ -55,8 +55,220 @@
 }
 
 /* 푸터 */
-footer{
+.footer{
     width: 100%;
     border-top: var(--border-main);
-    height: 4rem;
+    padding-block: 2rem;
+}
+.footer-left{
+    font-size: 0;
+}
+.footer-left > span{
+    font-size: 0.93rem;
+    display: inline-block;
+    margin-right: 0.66rem;
+
+}
+.footer-left > span.line{
+    border-right: var(--border-main);
+    height: 0.53rem;
+}
+.footer-left em{
+    display: block;
+    font-size: 0.93rem;
+    line-height: 1;
+    margin-top: 0.53rem;
+}
+.sns-wrap{
+    display: flex;
+    gap: 0.53rem;
+}
+.sns-wrap li{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 30px;
+    display: block;
+    font-size: 0;
+}
+.sns-wrap li img{
+    width: 100%;
+}
+.section-wrap{
+    margin-block: 40px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+/* 메인 */
+
+.article01{
+    position: relative;
+}
+.swiper.mySwiper{
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    position:static
+}
+.mySwiper .swiper-slide{
+    width: 540px !important;
+    height: 100% !important;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.mySwiper .swiper-slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.swiper-button{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    font-size: 0;
+    width: 40px;
+}
+.article01 .swiper-button.swiper-button-prev{
+    left: -20px;
+}
+.article01 .swiper-button.swiper-button-next{
+    right: -20px;
+}
+.swiper-button:after{
+    content:''
+}
+
+.article-title{
+    font-size: 1.46rem;
+    color: var(--text-title);
+    font-weight: 700;
+    margin-bottom: 1.66rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.article-title a{
+    font-size: 0.93rem;
+    color: var(--text-subTitle);
+    font-weight: 500;
+}
+
+.article02 ul{
+    display: flex;
+    gap:1.67%;
+}
+.article02 ul li{
+    border:var(--border-main);
+    padding:  1.66rem;
+    border-radius: 0.66rem;
+    width: calc(100% / 3 );
+}
+.article02 ul .recruitment{
+    border-left: var(--border-0EB880);
+}
+.article02 ul em{
+    width: 3.33rem;
+    height: 1.6rem;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.6rem;
+    border-radius: 5rem;
+}
+.article02 ul .recruitment em{
+    background: var(--bg-D1FAE5);
+    color: var(--text-0EB880);
+}
+.article02 ul .going{
+    border-left: var(--border-3E84F6);
+}
+.article02 ul .going em{
+    color: var( --text-3E84F6);
+    background: var(--bg-DBEAFE);
+}
+.article02 ul .deadline{
+    border-left: var(--border-6A717F);
+}
+
+.article02 ul .deadline em{
+    color: var(--text-6A717F);
+    background: var(--bg-F3F4F6);
+}
+.article02 ul li strong{
+    display: flex;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+    justify-content: space-between;
+}
+.article02 ul li p{
+    line-height: 1.6rem;
+    height: 3.2rem;
+    color: var(--text-subTitle);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.article02 ul li span{
+    display: flex;
+    align-items: center;
+    gap: 0.66rem;
+    margin-top: 0.66rem;
+    font-size: 0.93rem;
+    color: var(--text-subTitle);
+    font-weight: 400;
+}
+
+.article03 > ul{
+    display: flex;
+    gap: 1.75%;
+}
+.article03 > ul li{
+    border:var(--border-main);
+    padding:  1.66rem;
+    border-radius: 0.66rem;
+    width: calc(100% / 3 );
+}
+.article03 > ul li a {
+    display: block;
+}
+.article03 > ul li a > em{
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.article03 > ul li a > p{
+    line-height: 1.6rem;
+    color: var(--text-subTitle);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 72px;
+}
+.article03 > ul li .bottom-warp{
+    margin-top:2rem;
+    display: flex;
+    gap: 0.66rem;
+    align-items: center;
+    font-size: 0.93rem;
+    line-height: 1;
+    color: var(--text-subTitle);
+}
+.article03 > ul li .bottom-warp em{
+    margin-left:auto;
 }

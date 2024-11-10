@@ -5,13 +5,21 @@
     --text-title: #212121;
     --text-subTitle: #686868;
     --text-white: #fff;
+    --text-0EB880:#0EB880;
+    --text-3E84F6:#3E84F6;
+    --text-6A717F:#6A717F;
     /* background(common) */
     --bg-main: #fff;
     --bg-EEEFF1: #EEEFF1;
     --bg-none:transparent;
+    --bg-D1FAE5:#D1FAE5;
+    --bg-DBEAFE:#DBEAFE;
+    --bg-F3F4F6:#F3F4F6;
     /* border */
     --border-main: 1px solid #ddd  ;
-
+    --border-0EB880: 3px solid #0EB880;
+    --border-3E84F6: 3px solid #3E84F6;
+    --border-6A717F: 3px solid #6A717F;
     --max-width:80rem;
 }
 
