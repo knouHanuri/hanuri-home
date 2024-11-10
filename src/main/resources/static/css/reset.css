@@ -11,6 +11,8 @@
     --bg-none:transparent;
     /* border */
     --border-main: 1px solid #ddd  ;
+
+    --max-width:80rem;
 }
 
 * {
@@ -22,7 +24,7 @@ html, body {
     color: var(--text-subTitle);
     background: var(--bg-main);
     font-size: 15px;
-    font-weight:400;
+    font-weight:500;
     font-family: 'pretendard', 'sans-serif';
 }
 button,a,input{
@@ -68,3 +70,4 @@ input[type='number'] {
     -moz-appearance: textfield;
     appearance:textfield
 }
+

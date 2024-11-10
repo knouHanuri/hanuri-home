@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("content", "pages/index :: content");
-        return "layout/default";
+    public String home() {
+        return "pages/index";
+
     }
 
     @GetMapping("/about")

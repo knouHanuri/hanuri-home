@@ -1,0 +1,62 @@
+/* 공통 */
+.inner{
+    width: min(var(--max-width), 100% - 2rem);
+    margin: 0 auto;
+}
+.header-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+/* 헤더 */
+.header{
+    width: 100%;
+    border-bottom: var(--border-main);
+    height: 4rem;
+}
+.header-left{
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+.logo{
+    font-size: 0;
+}
+.gnb{
+    display: flex;
+    gap: 2.66rem;
+}
+.gnb a {
+    font-size: 1rem;
+}
+.gnb a:hover {
+    color: var(--major-main);
+}
+.header-right{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.header-right button{
+    font-size: 0;
+}
+.header-right a{
+    width: 4rem;
+    border-radius: 0.53rem;
+    background: var(--bg-EEEFF1);
+    height: 2.66rem;
+    text-align: center;
+    line-height: 2.66rem;
+}
+.header-right a:hover{
+    color: var(--text-white);
+    background: var(--major-main);;
+}
+
+/* 푸터 */
+footer{
+    width: 100%;
+    border-top: var(--border-main);
+    height: 4rem;
+}
