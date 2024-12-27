@@ -1,0 +1,24 @@
+<header th:fragment="header">
+    <ul class="gnb">
+        <li><a href="#"><img src="/image/logo.jpg" alt="한우리 로고 사진"></a></li>
+        <li><a href="/about">소개</a></li>
+        <li><a href="#">스터디</a></li>
+        <li><a href="#">커뮤니티</a></li>
+        <li><span class="material-symbols-outlined">search</span></li>
+        <li><a href="/login">
+            <button>로그인</button>
+        </a></li>
+        <!--
+        <li>
+            <a th:if="${session.user == null}" href="/login">로그인</a>
+            <a th:if="${session.user != null}" href="/logout">로그아웃</a>
+        </li>
+        <li><a href="/members/new">회원가입</a></li>
+        <li><a href="/members">회원조회</a></li>
+        <li><a href="/membership/list">회비납부내역</a></li>
+        <li><a href="/study/list">스터디조회</a></li>
+        <li><a href="/study/history">스터디 내역 등록</a></li>
+        -->
+    </ul>
+</header>
+
