@@ -1,8 +1,7 @@
 const profileImage = document.getElementById('profileImage');
 const profileMenu = document.getElementById('profile-menu');
 
-
-if(profileImage !== null){
+if (profileImage !== null) {
     profileImage.addEventListener('click', () => {
         profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
     });
@@ -17,12 +16,15 @@ if(profileImage !== null){
 const hamMenuImage = document.getElementById('hamManuImage');
 const hamMenu = document.getElementById('ham-menu');
 
-hamMenuImage.addEventListener('click', () => {
-    hamMenu.style.display = hamMenu.style.display === 'none' ? 'block' : 'none';
-});
+if (hamMenuImage != null) {
+    hamMenuImage.addEventListener('click', () => {
+        hamMenu.style.display = hamMenu.style.display === 'none' ? 'block' : 'none';
+    });
 
-document.addEventListener('click', (event) => {
-    if (!event.target.closest('.ham-menu-control')) {
-        hamMenu.style.display = 'none';
-    }
-});
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.ham-menu-control')) {
+            hamMenu.style.display = 'none';
+        }
+    });
+
+}
