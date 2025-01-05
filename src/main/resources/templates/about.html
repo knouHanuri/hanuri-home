@@ -1,12 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main">
+<head>
+    <title>소개</title>
+</head>
 <body>
-<!-- Page Header-->
-<div th:include="~{/layout/header}"></div>
-<!-- Main Content-->
-<div class="container px-4 px-lg-5">
+<section layout:fragment="content">
     <h2>오시는길</h2>
     <img src="bootstrap/assets/img/map.jpg" width="500px" height="500px">
-</div>
-<!-- Footer-->
-<div th:include="~{/layout/footer}"></div>
+</section>
 </body>
 </html>
