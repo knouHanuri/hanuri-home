@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/main">
+<head>
+    <title>새 글</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container">
+        <form action="/board/new" th:object="${board}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <table>
+                    <tr>
+                        <td><label for="title">제목</label></td>
+                        <td><input type="text" id="title" th:field="*{title}" placeholder="제목을 입력하세요"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="memberId">작성자</label></td>
+                        <td><input type="text" id="memberId" th:field="*{memberId}" placeholder="작성자를 입력하세요"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="content">내용</label></td>
+                        <td><textarea id="content" cols="30" rows="10" th:field="*{content}" placeholder="내용을 입력하세요"></textarea></td>
+                    </tr>
+                </table>
+            </div>
+            <button type="submit">작성</button>
+        </form>
+    </div>
+</section>
+</body>
+</html>
