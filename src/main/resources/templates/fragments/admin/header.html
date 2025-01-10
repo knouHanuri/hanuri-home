@@ -1,0 +1,41 @@
+<header th:fragment="adminHeader">
+    <div class="logo"><a href="#"><img class="logo-image" src="/image/logo.jpg" alt="한우리 로고 사진"></a></div>
+    <li class="menu"><a href="/members">회원관리</a></li>
+    <li class="menu"><a href="#">스터디관리</a></li>
+    <div class="gnb">
+        <span class="material-symbols-outlined">search</span>
+        <div class="profile">
+            <a th:if="${session.user == null}" href="/login">
+                <button>로그인</button>
+            </a>
+            <div th:if="${session.user != null}">
+                <div class="profile-control">
+                    <a>
+                        <img src="/image/profile.png" alt="프로필" class="profile-image" id="profileImage">
+                    </a>
+                </div>
+                <div class="profile-menu" id="profile-menu">
+                    <div class="profile-menu-item">마이페이지</div>
+                    <a href="/">
+                        <div class="profile-menu-item">홈</div>
+                    </a>
+                    <a href="/logout">
+                        <div class="profile-menu-item">로그아웃</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ham-menu">
+            <div class="ham-menu-control">
+                <a><img src="/image/ham_menu.png" alt="햄메뉴" class="ham-menu-image" id="hamManuImage"></a>
+            </div>
+            <div class="ham-menu-list" id="ham-menu">
+                <a href="/members"><div class="ham-menu-item">회원관리</div></a>
+                <a href="#"><div class="ham-menu-item">스터디관리</div></a>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="/js/login.js"></script>
+</header>
+
+
