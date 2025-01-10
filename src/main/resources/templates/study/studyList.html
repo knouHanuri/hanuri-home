@@ -1,55 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-      <meta charset="UTF-8">
-      <title>스터디 목록</title>
-    </head>
-    <body>
-        <!-- Page Header-->
-        <div th:include="~{/layout/header}"></div>
-        <!-- Main Content-->
-        <div class="container">
-          <div>
-            <button onclick="location.href='/study/form'">스터디 생성</button>
-            <table>
-              <thead>
-                <tr>
-                  <th>번호</th>
-                  <th>제목</th>
-                  <th>상태</th>
-                  <th>시작일</th>
-                  <th>종료일</th>
-                  <th>버튼</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr th:each="studyList, iterStat : ${studyList}">
-                  <td th:text="${iterStat.index + 1}"></td>
-                  <td th:text="${studyList.title}"></td>
-                  <td th:text="${studyList.status.displayName}"></td>
-                  <td th:text="${studyList.startDate}"></td>
-                  <td th:text="${studyList.endDate}"></td>
-                  <td>
-                    <button onclick="alert('준비중')">보기</button>
-                    <button th:onclick="'edit(' + ${studyList.studyId} + ')'">수정</button>
-                    <button th:onclick="'del(' + ${studyList.studyId} + ')'">삭제</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- Footer-->
-        <div th:include="~{/layout/footer}"></div>
-        <script th:inline="javascript">
-          window.onload = function(){
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main">
+<head>
+    <title>스터디 목록</title>
+</head>
+<body>
+<section layout:fragment="content">
+
+    <button onclick="location.href='/study/form'">스터디 생성</button>
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>상태</th>
+            <th>시작일</th>
+            <th>종료일</th>
+            <th>버튼</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="studyList, iterStat : ${studyList}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${studyList.title}"></td>
+            <td th:text="${studyList.status.displayName}"></td>
+            <td th:text="${studyList.startDate}"></td>
+            <td th:text="${studyList.endDate}"></td>
+            <td>
+                <button onclick="alert('준비중')">보기</button>
+                <button th:onclick="'edit(' + ${studyList.studyId} + ')'">수정</button>
+                <button th:onclick="'del(' + ${studyList.studyId} + ')'">삭제</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script th:inline="javascript">
+        window.onload = function(){
             const message = /*[[${message}]]*/ ''; // Thymeleaf를 사용하여 message 가져오기
             console.log(message);
             if (message) {
-              alert(message); // 메시지가 존재하면 alert 띄우기
+                alert(message); // 메시지가 존재하면 alert 띄우기
             }
-          }
-        </script>
-        <script type="application/javascript" src="/js/study.js"></script>
-    </body>
+        }
+    </script>
+    <script type="application/javascript" src="/js/study.js"></script>
+</section>
+</body>
 </html>
