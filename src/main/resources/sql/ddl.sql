@@ -90,10 +90,9 @@ CREATE TABLE IF NOT EXISTS IMAGE (
 
 -- EDIT BY LSH 24/10/22
 -- 게시판 카테고리 테이블 추가
-CREATE TABLE IF NOT EXISTS CATEGORY (
-    category_id INT PRIMARY KEY auto_increment,
-    category_type VARCHAR(100)
-    );
+-- EDIT BY JJY 25/01/15
+-- 게시판 카테고리 ENUM 으로 대체
+-- board image fk 삭제
 
 -- EDIT BY LSH 24/10/22
 -- 게시판 테이블 DDL
@@ -109,10 +108,6 @@ CREATE TABLE IF NOT EXISTS BOARD (
     is_public BOOL,
     image_id INT,
     CONSTRAINT fk_board_member_id FOREIGN KEY (member_id) REFERENCES MEMBER (member_id)
-    ON UPDATE CASCADE,
-    CONSTRAINT fk_board_category_id FOREIGN KEY (category_id) REFERENCES CATEGORY (category_id)
-    ON UPDATE CASCADE,
-    CONSTRAINT fk_board_image_id FOREIGN KEY (image_id) REFERENCES IMAGE (image_id)
     ON UPDATE CASCADE
     );
 

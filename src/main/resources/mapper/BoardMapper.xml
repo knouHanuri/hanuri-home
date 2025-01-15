@@ -5,12 +5,34 @@
 <mapper namespace="hanuri.website.dao.BoardMapper">
     <!--데이터 입력-->
     <insert id="save" parameterType="hanuri.website.domain.dto.Board.Board" useGeneratedKeys="true" keyProperty="boardId">
-        insert into board(title, member_id, content)
-        values (#{title}, #{memberId}, #{content})
+        insert into board(title, member_id,category_id,content,createdDate,image_id)
+        values (#{title}, #{memberId},#{categoryId}, #{content},curdate(),#{imageId})
     </insert>
     <!--데이터 전체 조회-->
-    <select id="findAll" resultType="hanuri.website.domain.dto.Board.Board">
+    <select id="findAll" resultType="hanuri.website.domain.dto.Board.BoardList">
+        select b.*,m.name as memberName
+        from board as b
+        join member as m on b.member_id = m.member_id
+    </select>
+    <!--데이터 조회(Id)-->
+    <select id="findById" parameterType="int" resultType="hanuri.website.domain.dto.Board.Board">
         select *
         from board
+        where board_id = #{boardId}
     </select>
+    <!--데이터 수정-->
+    <update id="modify" parameterType="hanuri.website.domain.dto.Board.Board">
+        update board
+        set title           = #{title},
+            content         = #{content},
+            category_id = #{categoryId},
+            updated_date    = curdate(),
+            <!--
+            is_complete = #{isComplete},
+            is_public= #{isPublic},
+            -->
+            image_id = #{imageId}
+        where board_id      = #{boardId}
+    </update>
+
 </mapper>
