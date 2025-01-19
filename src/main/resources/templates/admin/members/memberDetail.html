@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/admin">
 <head>
-    <title>회원가입</title>
+    <title>회원관리 - 수정</title>
 </head>
 <body>
 <section layout:fragment="content">
-    <!-- Main Content-->
     <div class="container">
-        <form action="/members/new" th:object="${member}" method="post">
+        <form action="/members/modify" th:object="${member}" method="post">
             <div class="form-group">
+                <input type="hidden" id="memberId" th:field="*{memberId}"/>
                 <table>
                     <tr>
                         <td><label for="username">아이디</label></td>
-                        <td><input type="text" id="username" th:field="*{username}" placeholder="아이디를 입력하세요"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="password">비밀번호</label></td>
-                        <td><input type="password" id="password" th:field="*{password}" placeholder="비밀번호를 입력하세요"></td>
+                        <td><input type="text" id="username" th:field="*{username}" disabled></td>
                     </tr>
                     <tr>
                         <td><label for="email">이메일</label></td>
-                        <td><input type="text" id="email" th:field="*{email}"placeholder="이메일을 입력하세요"></td>
+                        <td><input type="text" id="email" th:field="*{email}" disabled></td>
                     </tr>
                     <tr>
                         <td><label for="name">이름</label></td>
@@ -60,10 +56,10 @@
                     </tr>
                 </table>
             </div>
-            <button type="submit">등록</button>
+
+            <button type="submit">수정</button>
         </form>
     </div>
 </section>
 </body>
 </html>
-

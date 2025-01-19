@@ -13,5 +13,6 @@
         <mapper resource="mapper/MemberMapper.xml"/>
         <mapper resource="mapper/StudyMapper.xml"/>
         <mapper resource="mapper/StudyHistoryMapper.xml"/>
+        <mapper resource="mapper/BoardMapper.xml"/>
     </mappers>
 </configuration>

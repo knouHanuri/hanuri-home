@@ -43,7 +43,7 @@ public class MemberController {
     {
         List<Member> members = memberService.findMembers();
         model.addAttribute("members",members);
-        return "members/memberList";
+        return "admin/members/memberList";
     }
 
     @GetMapping("members/detail/{id}")
@@ -54,7 +54,7 @@ public class MemberController {
         model.addAttribute("gender", EGender.values());
         model.addAttribute("enrollmentStatus", EEnrollmentStatus.values());
 
-        return "members/memberDetail";
+        return "admin/members/memberDetail";
     }
 
     @PostMapping("members/modify")
