@@ -1,5 +1,6 @@
 package hanuri.website;
 
+import hanuri.website.service.CustomOAuth2UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +13,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private final CustomOAuth2UserService customOAuth2UserService;
+
+    public SecurityConfig(CustomOAuth2UserService customOAuth2UserService) {
+        this.customOAuth2UserService = customOAuth2UserService;
+    }
     // 시큐리티 필터 메서드
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -34,18 +41,18 @@ public class SecurityConfig {
 
         // 로그인 설정
         http
-                .formLogin((auth) -> auth.loginPage("/login")
+                .formLogin((auth) -> auth.loginPage("/oauth2/login")
                         //.loginProcessingUrl("/loginProc")
                         .permitAll()
                 );
         http
                 .oauth2Login(oauth2 -> oauth2
-                        .loginPage("/login") // 커스텀 로그인 페이지 설정
+                        .loginPage("/oauth2/login") // 커스텀 로그인 페이지 설정
                         .defaultSuccessUrl("/", true) // 로그인 성공 후 리다이렉트 URL
-                        //.userInfoEndpoint(userInfo -> userInfo
+                        .userInfoEndpoint(userInfo -> userInfo
                                 // OAuth2 인증 성공 후 처리할 UserService를 설정 (OidcUserService를 제거)
-                                //.userService(new OAuth2UserServiceImpl()) // OAuth2UserService를 사용
-                        //)
+                                .userService(customOAuth2UserService) // OAuth2UserService를 사용
+                        )
                         .successHandler((request, response, authentication) -> {
                             // OAuth2 인증 성공 후, OAuth2User 정보를 세션에 저장
                             OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();

@@ -4,6 +4,7 @@ import hanuri.website.domain.EEnrollmentStatus;
 import hanuri.website.domain.EGender;
 import hanuri.website.domain.dto.Member;
 import hanuri.website.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
@@ -71,9 +72,10 @@ public class MemberController {
 
     @GetMapping("members/profile")
     @ResponseBody
-    public Map<String, String> getOidcProfile(@AuthenticationPrincipal OAuth2User oAuth2User) {
-        String name = oAuth2User.getAttribute("name");  // Google OAuth2에서 사용자 이름
-        String email = oAuth2User.getAttribute("email"); // 이메일
+    public Map<String, String> getOidcProfile(HttpSession session) {
+        Member member = (Member) session.getAttribute("user");
+        String name = member.getName();
+        String email = member.getEmail();; // 이메일
 
         Map<String, String> response = new HashMap<>();
         response.put("name", name);

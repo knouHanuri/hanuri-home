@@ -94,31 +94,6 @@
             </div>
         </div>
     </div>
-    <div>
-        <button id="oauth2GoogleTest">구글인증정보 가져오기 테스트</button>
-        <span id="userInfo">
-        </span>
-    </div>
-    <script>
-        document.getElementById("oauth2GoogleTest").addEventListener("click", function (event) {
-            // fetch API로 GET 요청
-            fetch("/members/profile")  // 서버에서 제공하는 프로필 정보 경로
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();  // 텍스트 형식으로 응답 받기
-                })
-                .then(data => {
-                    // 성공적으로 데이터를 받으면, 사용자 정보를 div에 출력
-                    document.getElementById('userInfo').innerHTML = data;
-                })
-                .catch(error => {
-                    // 오류가 발생하면 에러 메시지 출력
-                    document.getElementById('userInfo').innerHTML = 'Error: ' + error;
-                });
-        });
-    </script>
 </section>
 </body>
 </html>
