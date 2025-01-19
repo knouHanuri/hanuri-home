@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main">
+<head>
+  <title>활동내용</title>
+  <style>
+    /* 기본 스타일 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.8;
+      color: #1f2937;
+      background-color: #f9fafb;
+    }
+
+    /* 헤더 스타일 */
+    nav {
+      background: linear-gradient(135deg, #ffe3b3, #ffb144);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      clip-path: ellipse(120% 100% at 50% 0);
+      width: 100%;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    nav h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    nav p {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* 메인 콘텐츠 */
+    .main {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .main-content {
+      max-width: 850px;
+      margin: 60px auto;
+      background: white;
+      padding: 50px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      max-width: 80%;
+    }
+
+    .main-content h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: #374151;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-content p {
+      font-size: 1.25rem;
+      color: #6b7280;
+      margin-bottom: 25px;
+    }
+
+    .main-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .main-content ul li {
+      font-size: 1.25rem;
+      color: #374151;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .main-content ul li span {
+      font-weight: 600;
+      margin-right: 12px;
+      color: #ffb144;
+    }
+
+    /* 미디어 쿼리 */
+    @media (max-width: 625px) {
+      nav h1 {
+        font-size: 2rem;
+      }
+
+      nav p {
+        font-size: 15px;
+      }
+
+      .main{
+        width:90%;
+      }
+      .main-content {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .main-content h2 {
+        font-size: 25px;
+      }
+
+      .main-content p{
+        font-size: 12px;
+      }
+      .main-content ul li {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+<section layout:fragment="content">
+
+  <nav>
+    <h1>스터디 활동 내용</h1>
+    <p>우리 스터디의 활동 목적과 다양한 활동 내용을 확인해보세요!</p>
+  </nav>
+
+  <!-- 본문 -->
+  <div class="main">
+    <div class="main-content">
+      <h2>활동 목적</h2>
+      <p>우리 한우리 스터디는 남녀노소, 개발자, 넓은 인맥, 삶의 무료함 등에서 벗어나고 싶으신 모든 분들을 환영합니다!<br>
+        컴퓨터에 관한 그 무엇도 몰라도 스터디에서 공부를 하며 천천히 배워 나갈 수 있으며, 졸업이 필요하신 분들도 중도에
+        포기하시는 일 없도록 서로서로 격려하며 화이팅하는 분위기로 끝까지 해내실 수 있으십니다.<br>
+        개발자로서의 커리어 향상이 필요하신 분들도 주기적인 프로젝트 참여로 커리어 향상을 하실 수 있습니다.</p>
+
+      <h2>주요 활동</h2>
+      <ul>
+        <li><span>1.</span> 각 과목 별 발표 및 토론</li>
+        <li><span>2.</span> 스터디 자료 공유 및 시험 대비 집중 공부</li>
+        <li><span>3.</span> 정재화 교수님 오프라인 특강!</li>
+        <li><span>4.</span> 팀 프로젝트 진행</li>
+        <li><span>5.</span> 주기적인 현직 학원 강사 특강</li>
+        <li><span>6.</span> 정기 모임 및 친목 활동</li>
+      </ul>
+
+      <h2>이런 학우 분들이 오시면 좋습니다!</h2>
+      <ul>
+        <li><span>✔</span> 좋은 성적으로 졸업하기를 원하시는 분!</li>
+        <li><span>✔</span> 개발자를 꿈꾸지만 어떻게 준비할지 모르시는 분!</li>
+        <li><span>✔</span> 의지가 부족해서 같이 공부할 사람이 필요하신 분!</li>
+        <li><span>✔</span> 일단 입학했지만 어떻게 공부할지 막막하신 분!</li>
+        <li><span>✔</span> 새로운 사람을 만나 인맥을 넓히고 싶으신 분!</li>
+        <li><span>✔</span> 일 끝나고 저녁에 심심하신 분!</li>
+        <li><span>✔</span> 커리어 발전이 필요하신 분!</li>
+        <li>그 외에도 한우리는 여러분의 가입을 언제나 환영합니다!</li>
+      </ul>
+      <p>자세한 내용이나 문의 사항은 <a href="/contact" style="color: #ffb144;">문의 페이지</a>를 통해 확인해주세요.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>

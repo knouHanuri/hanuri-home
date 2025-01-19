@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/main">
+<head>
+    <title>소개</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  th:href="@{/css/about.css}">
+</head>
+<body>
+<section layout:fragment="content">
+
+    <!-- 인트로 -->
+    <div class="intro-section">
+        <h1>한우리</h1>
+        <p>한국방송통신대학교 공식 스터디에 오신것을 환영합니다!</p>
+        <a href="#cards" id="scroll-button">더 알아보기</a>
+    </div>
+
+    <!-- 메인 컨텐츠  -->
+    <div class="main-section">
+        <div class="study-intro" id="study-intro">
+            <h1>스터디 소개</h1>
+        </div>
+        <div class="study">
+            <div class="main-left">
+                <img class="lg" src="/image/logo.jpg" alt="">
+            </div>
+            <div class="main-right">
+                <p>
+                    학우 여러분 들어 오시기만 하면 좋은 성적과 졸업은 따놓은 당상입니다!
+                    <br>저희가 무조건 졸업 시켜드릴 테니까 열심히만 나오세요~
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 카드 섹션 -->
+    <div id="cards" class="card-container">
+        <!-- 카드 1: 활동 내용 -->
+        <div class="card">
+            <h3>활동 내용</h3>
+            <p>우리 스터디의 주요 활동 내용 및 장점!</p>
+            <a href="activities">자세히 보기</a>
+        </div>
+
+        <!-- 카드 2: 모임 시간 및 장소 -->
+        <div class="card">
+            <h3>오시는 길</h3>
+            <p>자세한 OT일정과 오시는 길을 확인 하실 수 있습니다. </p>
+            <a href="/findus">자세히 보기</a>
+        </div>
+
+        <!-- 카드 3: 문의 사항 -->
+        <div class="card">
+            <h3>연락</h3>
+            <p>스터디 가입, 문의사항</p>
+            <a href="/contact">자세히 보기</a>
+        </div>
+        <script>
+            document.getElementById("scroll-button").addEventListener("click", function (event) {
+                event.preventDefault(); // 기본 동작 방지
+                const targetElement = document.getElementById("study-intro");
+                const offset = 0; // 스터디 소개가 창의 최상단에 닿도록
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth", // 부드러운 스크롤
+                });
+            });
+        </script>
+</section>
+</body>
+</html>

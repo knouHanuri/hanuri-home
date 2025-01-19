@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/main">
+<head>
+    <title>HOME</title>
+    <link rel="stylesheet"  th:href="@{/css/index.css}">
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container">
+        <div class="inner-container">
+            <div class="card-header">
+                <h2>한우리 스터디</h2>
+                <a href="/study/list">모두보기 &gt;</a>
+            </div>
+            <div class="studies">
+                <!-- Study 1 -->
+                <div class="study" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+                    <div class="study-header">
+                        <span>Algorithm</span>
+                        <span class="progress">진행률: 70%</span>
+                    </div>
+                    <div class="study-content">
+                        <h3>알고리즘 마스터 하기</h3>
+                        <p>코딩 테스트 대비 알고리즘 심화 학습</p>
+                    </div>
+                    <div class="study-footer">
+                        <span>2024-11-01 ~ 2024-12-31</span>
+                        <span>목요일 저녁 7PM</span>
+                    </div>
+                </div>
+                <!-- Study 2 -->
+                <div class="study" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                    <div class="study-header">
+                        <span>Frontend</span>
+                        <span class="progress">진행률: 70%</span>
+                    </div>
+                    <div class="study-content">
+                        <h3>React + TypeScript</h3>
+                        <p>코딩 테스트 대비 알고리즘 심화 학습</p>
+                    </div>
+                    <div class="study-footer">
+                        <span>2024-11-01 ~ 2024-12-31</span>
+                        <span>목요일 저녁 7PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="inner-container">
+            <div class="card-header">
+                <h2>한우리에서 알려드립니다 💖</h2>
+                <a href="/board/list">모두보기 &gt;</a>
+            </div>
+            <div class="boards">
+                <div class="board">
+                    <h3>제목은 이렇습니다...</h3>
+                    <p>ESG 컨설턴트로 커리어를 시작해 보려고 합니다. 국내 ESG 컨설팅 분야의 전망에 대하여 어떻게 생각하시는지 여쭙고 싶습니다. 외국에 비해 파이가 많이 작고 아직까지도 국내
+                        기업들...</p>
+                    <div class="board-footer">
+                        <div class="user-info">
+                            <span class="user-icon"></span>
+                            <span>000 동문</span>
+                        </div>
+                        <span>2024.10.31</span>
+                    </div>
+                </div>
+                <div class="board">
+                    <h3>제목은 이렇습니다...</h3>
+                    <p>ESG 컨설턴트로 커리어를 시작해 보려고 합니다. 국내 ESG 컨설팅 분야의 전망에 대하여 어떻게 생각하시는지 여쭙고 싶습니다. 외국에 비해 파이가 많이 작고 아직까지도 국내
+                        기업들...</p>
+                    <div class="board-footer">
+                        <div class="user-info">
+                            <span class="user-icon"></span>
+                            <span>000 동문</span>
+                        </div>
+                        <span>2024.10.31</span>
+                    </div>
+                </div>
+                <div class="board">
+                    <h3>제목은 이렇습니다...</h3>
+                    <p>ESG 컨설턴트로 커리어를 시작해 보려고 합니다. 국내 ESG 컨설팅 분야의 전망에 대하여 어떻게 생각하시는지 여쭙고 싶습니다. 외국에 비해 파이가 많이 작고 아직까지도 국내
+                        기업들...</p>
+                    <div class="board-footer">
+                        <div class="user-info">
+                            <span class="user-icon"></span>
+                            <span>000 동문</span>
+                        </div>
+                        <span>2024.10.31</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+</body>
+</html>

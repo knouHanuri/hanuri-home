@@ -1,0 +1,218 @@
+html{
+    scroll-behavior: smooth;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #1f2937;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* 소개 섹션 */
+.intro-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 105vh;
+    text-align: center;
+    background: linear-gradient(135deg, #ffe3b3, #ffb144);
+    color: white;
+    padding: 40px 20px;
+    clip-path: ellipse(120% 90% at 50% 0);
+    width: 100%;
+}
+
+.intro-section h1 {
+    font-family: "Jua", serif;
+    font-size: 100px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 30px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.intro-section p {
+    font-size: 25px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin-bottom: 30px;
+}
+
+.intro-section a {
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #ffa938, #ff9f76);
+    border-radius: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.intro-section a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 메인 */
+.main-section {
+    margin: 0 auto;
+    width: 60%;
+    padding-top:100px ;
+}
+.study-intro > h1 {
+    font-size: 50px;
+    padding-bottom: 50px;
+}
+.study{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.main-left{
+    width: 40%;
+}
+.lg {
+    width: 100%;
+    height: auto;
+    margin-right: 30px;
+
+}
+
+.main-right {
+    height: 100%;
+    width: 55%;
+    font-size: 20px;
+    font-weight: 390;
+}
+
+
+/* 카드 섹션 */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+    background-color: white;
+    text-align: center;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    max-width: 320px;
+    flex: 1;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #374151;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.card a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fbb133;
+    transition: color 0.3s ease;
+}
+
+.card a:hover {
+    color: #bf9b2f;
+}
+
+
+@media (max-width: 625px) {
+    .intro-section h1 {
+        font-size: 50px;
+    }
+
+    .intro-section p {
+        font-size: 18px;
+        max-width: 100%;
+    }
+
+    .intro-section a {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+
+    .main-section {
+        width: 90%;
+        padding-top: 50px;
+    }
+
+    .study {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-left {
+        width: 70%;
+
+    }
+
+    .main-right {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .study-intro > h1 {
+        font-size: 40px;
+        padding-bottom: 20px;
+    }
+
+    .card-container {
+        gap: 20px;
+        padding: 40px 10px;
+    }
+
+    .card {
+        padding: 20px;
+        min-width: 200px;
+    }
+
+    .card h3 {
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+    }
+
+    .card a {
+        font-size: 0.8rem;
+    }
+}

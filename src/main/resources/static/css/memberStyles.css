@@ -1,0 +1,103 @@
+/* 기본 스타일 초기화 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* 컨테이너 스타일 */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* 테이블 스타일 */
+form table {
+    width: 100%;
+    border-spacing: 0 10px;
+}
+
+/* 레이블 스타일 */
+form label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* 입력 필드 스타일 */
+form input[type="text"],
+form input[type="password"],
+form input[type="date"],
+form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* 입력 필드에 포커스 시 */
+form input:focus,
+form select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* 버튼 스타일 */
+form button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* 테이블 셀 정렬 */
+form td {
+    padding: 5px;
+}
+
+form td:first-child {
+    text-align: right;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+form td:last-child {
+    text-align: left;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    form table {
+        display: block;
+    }
+
+    form td {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 5px 0;
+    }
+
+    form td:first-child {
+        padding-bottom: 5px;
+    }
+}

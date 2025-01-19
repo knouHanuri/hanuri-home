@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>createMemberForm</title>
+</head>
+<body>
+<!-- Page Header-->
+<div th:include="~{/layout/header}"></div>
+<!-- Main Content-->
+<div class="container">
+    <form action="/study/history" method="post">
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td><label for="studyId">study id</label></td>
+                    <td><input type="number" id="studyId" name="studyId" value=1 placeholder="study id가 value로 지정되어있음."></td>
+                </tr>
+<!--                <tr>-->
+<!--                    <td><label for="round">회차</label></td>-->
+<!--                    <td><input type="number" id="round" name="round" placeholder="회차정보"></td>-->
+<!--                </tr>-->
+                <tr>
+                    <td><label for="studyDate">스터디 날짜</label></td>
+                    <td>
+                        <input type="date" id="studyDate" name="studyDate" placeholder="스터디 날짜를 정하세요"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title">제목</label></td>
+                    <td><input type="text" id="title" name="title" placeholder="제목을 적어주세요"></td>
+                </tr>
+                <tr>
+                    <td><label for="presenter">발표자</label></td>
+                    <td><input type="text" id="presenter" name="presenter" placeholder="발표자를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td><label for="notes">비고</label></td>
+                    <td><input type="text" id="notes" name="notes" placeholder="비고"></td>
+                </tr>
+            </table>
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div>
+<!-- Footer-->
+<div th:include="~{/layout/footer}"></div>
+</body>
+</html>
