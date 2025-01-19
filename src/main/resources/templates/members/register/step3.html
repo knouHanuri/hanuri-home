@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입 - 3단계</title>
+  <link rel="stylesheet" th:href="@{/css/memberStyles.css}">
+</head>
+<body>
+<section>
+  <h1>회원가입 - 3단계</h1>
+  <form action="/members/register/complete" method="post">
+    <!-- 이전 단계 데이터 히든 필드로 전송 -->
+    <input type="hidden" name="username" th:value="${formData.username}">
+    <input type="hidden" name="password" th:value="${formData.password}">
+    <input type="hidden" name="name" th:value="${formData.name}">
+    <input type="hidden" name="email" th:value="${formData.email}">
+    <input type="hidden" name="phoneNumber" th:value="${formData.phoneNumber}">
+
+    <label for="gender">성별</label>
+    <select id="gender" name="gender">
+      <option value="">성별을 선택하세요</option>
+      <option value="male">남성</option>
+      <option value="female">여성</option>
+    </select>
+
+    <label for="birthdate">생년월일</label>
+    <input type="date" id="birthdate" name="birthdate">
+
+    <label for="studentId">학번</label>
+    <input type="text" id="studentId" name="studentId" placeholder="학번을 입력하세요">
+
+    <label for="enrollmentStatus">재학 여부</label>
+    <select id="enrollmentStatus" name="enrollmentStatus">
+      <option value="">재학 여부를 선택하세요</option>
+      <option value="enrolled">재학 중</option>
+      <option value="notEnrolled">휴학 중</option>
+    </select>
+
+    <button type="submit">회원가입 완료</button>
+  </form>
+</section>
+</body>
+</html>
