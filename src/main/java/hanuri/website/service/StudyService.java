@@ -41,6 +41,8 @@ public class StudyService {
     public List<Study> studyListAll() {
         return studyMapper.studyListAll();
     }
+    /* 일정 수 조회 */
+    public List<Study> studyListLimited(int limit) { return studyMapper.studyListLimited(limit); }
     /* studyId로 조회 */
     public Optional<Study> findById(long studyId) { return studyMapper.findById(studyId); }
     /* 삭제 */

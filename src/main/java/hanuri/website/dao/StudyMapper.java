@@ -13,5 +13,6 @@ public interface StudyMapper {
 //    Optional<Member> findBySeq(Long seq);
     Optional<Study> findById(long studyId);
     List<Study> studyListAll();
+    List<Study> studyListLimited(int limit);
     int delete(long studyId);
 }

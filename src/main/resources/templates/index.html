@@ -15,33 +15,33 @@
             </div>
             <div class="studies">
                 <!-- Study 1 -->
-                <div class="study" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
-                    <div class="study-header">
-                        <span>Algorithm</span>
-                        <span class="progress">진행률: 70%</span>
-                    </div>
-                    <div class="study-content">
-                        <h3>알고리즘 마스터 하기</h3>
-                        <p>코딩 테스트 대비 알고리즘 심화 학습</p>
-                    </div>
-                    <div class="study-footer">
-                        <span>2024-11-01 ~ 2024-12-31</span>
-                        <span>목요일 저녁 7PM</span>
-                    </div>
-                </div>
+<!--                <div class="study" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">-->
+<!--                    <div class="study-header">-->
+<!--                        <span>Algorithm</span>-->
+<!--                        <span class="progress">진행률: 70%</span>-->
+<!--                    </div>-->
+<!--                    <div class="study-content">-->
+<!--                        <h3>알고리즘 마스터 하기</h3>-->
+<!--                        <p>코딩 테스트 대비 알고리즘 심화 학습</p>-->
+<!--                    </div>-->
+<!--                    <div class="study-footer">-->
+<!--                        <span>2024-11-01 ~ 2024-12-31</span>-->
+<!--                        <span>목요일 저녁 7PM</span>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <!-- Study 2 -->
-                <div class="study" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                <div th:each="study, iterStat : ${studyList}" class="study"
+                     th:attr="onclick=|alert('스터디번호 : ${study.studyId}')|"
+                     th:style="${iterStat.index % 2 == 0 ? 'background: linear-gradient(135deg, #fbc2eb, #a6c1ee);' : 'background: linear-gradient(135deg, #a8edea, #fed6e3);'}">
                     <div class="study-header">
-                        <span>Frontend</span>
-                        <span class="progress">진행률: 70%</span>
+                        <span th:text="${study.title}">Frontend</span>
+                        <span th:text="${study.status.displayName}" class="progress"></span>
                     </div>
                     <div class="study-content">
-                        <h3>React + TypeScript</h3>
-                        <p>코딩 테스트 대비 알고리즘 심화 학습</p>
+                        <p th:text="${study.title}"></p>
                     </div>
                     <div class="study-footer">
-                        <span>2024-11-01 ~ 2024-12-31</span>
-                        <span>목요일 저녁 7PM</span>
+                        <span th:utext="${study.startDate} + ' ~<br/>' + ${study.endDate}"></span>
                     </div>
                 </div>
             </div>

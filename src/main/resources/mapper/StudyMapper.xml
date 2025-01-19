@@ -7,6 +7,10 @@
     <select id="studyListAll" resultType="hanuri.website.dto.Study">
         select * from study order by study_id desc
     </select>
+    <!--데이터 일정 수 조회-->
+    <select id="studyListLimited" parameterType="int" resultType="hanuri.website.dto.Study">
+        select * from study order by study_id desc LIMIT #{limit}
+    </select>
     <!--데이터 조회(Id)-->
     <select id="findById" parameterType="long" resultType="hanuri.website.dto.Study">
         select * from study where study_id = #{studyId}
