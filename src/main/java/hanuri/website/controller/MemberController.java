@@ -5,11 +5,16 @@ import hanuri.website.domain.EGender;
 import hanuri.website.domain.dto.Member;
 import hanuri.website.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -62,5 +67,17 @@ public class MemberController {
     {
         memberService.modify(member);
         return "redirect:/";
+    }
+
+    @GetMapping("members/profile")
+    @ResponseBody
+    public Map<String, String> getOidcProfile(@AuthenticationPrincipal OAuth2User oAuth2User) {
+        String name = oAuth2User.getAttribute("name");  // Google OAuth2에서 사용자 이름
+        String email = oAuth2User.getAttribute("email"); // 이메일
+
+        Map<String, String> response = new HashMap<>();
+        response.put("name", name);
+        response.put("email", email);
+        return response;  // JSON 응답
     }
 }
