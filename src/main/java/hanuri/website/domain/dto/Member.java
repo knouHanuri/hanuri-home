@@ -22,4 +22,6 @@ public class Member {
     private EEnrollmentStatus enrollmentStatus;
     private EMembershipLevel membershipLevel;
     private Boolean isActive;
+    private String Provider;
+    private String ProviderId;
 }
