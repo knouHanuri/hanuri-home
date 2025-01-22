@@ -5,7 +5,7 @@
 <mapper namespace="hanuri.website.dao.BoardMapper">
     <!--데이터 입력-->
     <insert id="save" parameterType="hanuri.website.domain.dto.Board.Board" useGeneratedKeys="true" keyProperty="boardId">
-        insert into board(title, member_id,category_id,content,createdDate,image_id)
+        insert into board(title, member_id,category_id,content,created_date,image_id)
         values (#{title}, #{memberId},#{categoryId}, #{content},curdate(),#{imageId})
     </insert>
     <!--데이터 전체 조회-->
