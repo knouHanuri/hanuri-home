@@ -1,47 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        /* 스타일 초기화 */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /* 모달창 배경 */
+        .modal {
+            display: none; /* 기본적으로 숨김 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        /* 모달 내용 */
+        .modal-content {
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 70%;
+            height: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* 닫기 버튼 */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+
     <meta charset="UTF-8">
     <title>Polyline 경로 표시</title>
 </head>
 <body>
-<div id="map" style="width:500px;height:700px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e329318ea424d674ffdf93ab824bc5ba"></script>
-<script>
-    // 지도 생성
-    var container = document.getElementById('map');
-    var options = {
-        center: new kakao.maps.LatLng(37.50126818833467, 126.90630367494592), // 지도 중심 좌표
-        level: 4
-    };
-    var map = new kakao.maps.Map(container, options);
+<!-- 모달을 열기 위한 버튼 -->
+<button id="openModal">Open Modal</button>
 
-    // 경로를 구성하는 좌표 배열
-    var linePath = [
-        new kakao.maps.LatLng(37.50013, 126.908969), // 시작점
-        new kakao.maps.LatLng(37.50017754524346, 126.90576786096506), // 중간점
-        new kakao.maps.LatLng(37.502960208387805, 126.90397465056222)  // 끝점
-    ];
+<!-- 모달 -->
+<div id="modal" class="modal">
+    <!-- 메인 내용  -->
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <p>내용!</p>
+    </div>
+</div>
 
-    // Polyline 객체 생성
-    var polyline = new kakao.maps.Polyline({
-        path: linePath, // 선을 구성하는 좌표 배열
-        strokeWeight: 5, // 선의 두께
-        strokeColor: '#FF0000', // 선의 색깔
-        strokeOpacity: 0.8, // 선의 투명도 (0~1)
-        strokeStyle: 'solid' // 선의 스타일
-    });
-
-    // 지도에 Polyline 표시
-    polyline.setMap(map);
-    // 마커 생성
-    var markerPosition = new kakao.maps.LatLng(37.5030499932501, 126.904140670924); // 마커 위치
-    var marker = new kakao.maps.Marker({
-        position: markerPosition // 마커의 위치
-    });
-
-    // 마커 지도에 추가
-    marker.setMap(map);
-</script>
+<!--<script src="script.js"></script>-->
 </body>
+
+<script>
+    // 요소 가져오기
+    const openModalBtn = document.getElementById('openModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const modal = document.getElementById('modal');
+
+    // 모달 열기
+    openModalBtn.addEventListener('click', () => {
+        modal.style.display = 'flex'; // flex로 설정하여 가운데 정렬
+    });
+
+    // 모달 닫기
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+</script>
 </html>
