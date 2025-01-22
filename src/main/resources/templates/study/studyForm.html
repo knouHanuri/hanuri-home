@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/main">
+<head>
+    <title>스터디 생성</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container">
+        <form id="studyForm" th:object="${study}">
+            <input type="hidden" id="studyId" th:field="*{studyId}"/> <!-- 수정할 경우 ID를 숨긴 필드로 보냄 -->
+            <div class="form-group">
+                <table>
+                    <tr>
+                        <td><label for="">과목코드</label></td>
+                        <td>
+                            <select>
+                                <option value="">선택</option>
+                                <option th:each="val : ${subjectList}" th:value="${val?.subjectCode}"
+                                        th:utext="${val?.subjectName}">
+                                </option>
+                            </select>
+
+                            <!--                        <input type="text" id="subjectCode" name="subjectCode" placeholder="과목코드명을 입력하세요"/>-->
+                            <button onclick="alert('준비중입니다.');return false;">과목 등록</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="title">* 스터디명</label></td>
+                        <td><input type="text" id="title" name="title" th:field="*{title}" placeholder="스터디명을 입력하세요"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="status">* 상태</label></td>
+                        <td>
+                            <select id="status" name="status" th:field="*{status}">
+                                <option value="">선택</option>
+                                <option th:each="status : ${status}" th:value="${status}"
+                                        th:text="${status.displayName}">
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="schedule">* 요일 및 시간</label></td>
+                        <td><input type="text" id="schedule" name="schedule" th:field="*{schedule}"
+                                   placeholder="ex) 매주 수, 오후 7시"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="startDate">* 시작일</label></td>
+                        <td><input type="date" id="startDate" name="startDate" th:field="*{startDate}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="endDate">* 종료일</label></td>
+                        <td><input type="date" id="endDate" name="endDate" th:field="*{endDate}"></td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        <button id="submitBtn" type="button" th:text="${study.studyId != null ? '수정' : '등록'}"></button>
+        <button th:if="${study.studyId != null}" th:onclick="'del(' + ${study.studyId} + ')'">삭제</button>
+        <button onclick="window.history.back()">닫기</button>
+    </div>
+    <script type="application/javascript" src="/js/study.js"></script>
+</section>
+</body>
+</html>

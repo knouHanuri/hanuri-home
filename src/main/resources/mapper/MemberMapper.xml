@@ -3,35 +3,48 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="hanuri.website.dao.MemberMapper">
-    <resultMap type="hanuri.website.dto.Member" id="Member">
-        <result property="seq" column="seq"/>
-        <result property="id" column="id"/>
-        <result property="name" column="name"/>
-        <result property="gender" column="gender"/>
-        <result property="phoneNumber" column="phone_number"/>
-        <result property="grade" column="grade"/>
-    </resultMap>
     <!--데이터 전체 조회-->
-    <select id="findAll" resultType="hanuri.website.dto.Member" resultMap="Member">
-        select * from member
+    <select id="findAll" resultType="hanuri.website.domain.dto.Member">
+        select *
+        from member
     </select>
-    <!--데이터 조회(name)-->
-    <select id="findById" parameterType="string" resultType="hanuri.website.dto.Member" resultMap="Member" >
-        select * from member where id = #{id} limit 1
+    <!--데이터 조회(Id)-->
+    <select id="findByUserName" parameterType="string" resultType="hanuri.website.domain.dto.Member">
+        select *
+        from member
+        where username = #{username} limit 1
     </select>
-    <!--데이터 조회(name)-->
-    <select id="findBySeq" parameterType="int" resultType="hanuri.website.dto.Member" resultMap="Member" >
-        select * from member where seq = #{seq}
+    <!--데이터 조회(Id)-->
+    <select id="findById" parameterType="int" resultType="hanuri.website.domain.dto.Member">
+        select *
+        from member
+        where member_id = #{memberId}
     </select>
     <!--데이터 입력-->
-    <insert id="save" parameterType="hanuri.website.dto.Member" useGeneratedKeys="true" keyProperty="seq">
-        insert into member(id,name,gender,phone_number,grade) values(#{id},#{name},#{gender},#{phoneNumber},#{grade})
+    <insert id="save" parameterType="hanuri.website.domain.dto.Member" useGeneratedKeys="true" keyProperty="memberId">
+        insert into member(username, email, name, phone_number, password, gender, birthdate, student_id,
+                           enrollment_status)
+        values (#{username}, #{email}, #{name}, #{phoneNumber}, #{password}, #{gender}, #{birthdate}, #{studentId},
+                #{enrollmentStatus})
     </insert>
     <!--데이터 수정-->
-    <!--데이터 삭제-->
-
-
-
+    <update id="modify" parameterType="hanuri.website.domain.dto.Member">
+        update member
+        set name              = #{name},
+            phone_number      = #{phoneNumber},
+            gender            = #{gender},
+            birthdate         = #{birthdate},
+            student_id        = #{studentId},
+            enrollment_status = #{enrollmentStatus}
+        where member_id = #{memberId}
+    </update>
+    <select id="login" parameterType="hanuri.website.domain.dto.Login.LoginRequest"
+            resultType="hanuri.website.domain.dto.Member">
+        select *
+        from member
+        where username = #{username}
+          and password = #{password}
+    </select>
 
 
 </mapper>

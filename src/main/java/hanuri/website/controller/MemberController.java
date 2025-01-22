@@ -1,14 +1,16 @@
 package hanuri.website.controller;
 
-import hanuri.website.dto.Member;
+import hanuri.website.domain.EEnrollmentStatus;
+import hanuri.website.domain.EGender;
+import hanuri.website.domain.dto.Member;
 import hanuri.website.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MemberController {
@@ -20,19 +22,18 @@ public class MemberController {
         this.memberService = memberService;
     }
     @GetMapping("/members/new")
-    public String createForm(){
+    public String createForm(Model model)
+    {
+        model.addAttribute("member", new Member());
+        model.addAttribute("gender", EGender.values());
+        model.addAttribute("enrollmentStatus", EEnrollmentStatus.values());
         return "members/createMemberForm";
     }
 
     @PostMapping("/members/new")
-    public String create(MemberForm form)
+    public String create(@ModelAttribute Member member)
     {
-        Member member = new Member();
-        member.setId(form.getId());
-        member.setName(form.getName());
-        member.setGender(form.getGender());
-        member.setPhoneNumber(form.getPhoneNumber());
-        member.setGrade(Integer.parseInt(form.getGrade()));
+        System.out.println(member.getPassword());
         memberService.join(member);
         return "redirect:/";
     }
@@ -42,6 +43,24 @@ public class MemberController {
     {
         List<Member> members = memberService.findMembers();
         model.addAttribute("members",members);
-        return "members/memberList";
+        return "admin/members/memberList";
+    }
+
+    @GetMapping("members/detail/{id}")
+    public String detail(@PathVariable int id, Model model)
+    {
+        Optional<Member> member = memberService.findOne(id);
+        model.addAttribute("member",member);
+        model.addAttribute("gender", EGender.values());
+        model.addAttribute("enrollmentStatus", EEnrollmentStatus.values());
+
+        return "admin/members/memberDetail";
+    }
+
+    @PostMapping("members/modify")
+    public String modify(@ModelAttribute Member member)
+    {
+        memberService.modify(member);
+        return "redirect:/";
     }
 }

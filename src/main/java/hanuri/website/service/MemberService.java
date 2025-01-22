@@ -1,11 +1,12 @@
 package hanuri.website.service;
 
 import hanuri.website.dao.MemberMapper;
-import hanuri.website.dto.Member;
+import hanuri.website.domain.dto.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberService {
@@ -28,7 +29,7 @@ public class MemberService {
     }
 
     private void validateDuplicateMember(Member member){
-        memberMapper.findById(member.getId())
+        memberMapper.findById(member.getMemberId())
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });
@@ -39,5 +40,19 @@ public class MemberService {
      * */
     public List<Member> findMembers() {
         return memberMapper.findAll();
+    }
+
+    /*
+    * ID로 조회
+    * */
+    public Optional<Member> findOne(int memberId){
+        return memberMapper.findById(memberId);
+    }
+
+    public void modify(Member member)
+    {
+        //
+        memberMapper.modify(member);
+
     }
 }

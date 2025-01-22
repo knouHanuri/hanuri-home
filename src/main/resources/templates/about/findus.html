@@ -1,0 +1,82 @@
+<!--<!DOCTYPE html>-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main">
+<head>
+    <meta charset="UTF-8">
+    <title>오시는 길</title>
+    <link rel="stylesheet"  th:href="@{/css/about.css}">
+</head>
+<section layout:fragment="content">
+    <!-- 헤더 -->
+    <article class="intro-section findus-section">
+        <h2>오시는길</h2>
+        <p>우리의 모임 일정과 장소를 확인하세요!</p>
+    </article>
+
+    <!-- 메인 콘텐츠 -->
+    <article class="findus-article">
+        <div id="map" style="width:100%;height:400px;"></div>
+        <div class="findus-content">
+            <div>
+                <h3>2025년도 1학기 한우리 스터디 OT 일정</h3>
+                <ul>
+                    <li><span>일자:</span> 2025년 2월 19일</li>
+                    <li><span>요일:</span> 토요일</li>
+                    <li><span>시간:</span> 오후 7시 30분 ~ </li>
+                    <li>시간은 유동적으로 바뀔 수 있습니다!</li>
+                </ul>
+            </div>
+            <div>
+                <h3>모임 장소</h3>
+                <ul>
+                    <li><span>장소명 :</span> 한우리 스터디 룸</li>
+                    <li><span>주소 :</span> 서울특별시 영등포구 도림로 282 3층(뉴타운갈비탕건물) </li>
+                    <li><span>지하철 :</span> 7호선 신풍역 4번 출구에서 도보 8분</li>
+                    <li><span>버스 :</span> 대영중학교.신길센트럴아이파크 6633, 영등포01, 영등포07</li>
+                </ul>
+                <p>자세한 내용이나 문의 사항은 <a href="/contact" style ="color: #ffb144">문의 페이지</a>를 통해 연락하실 수 있습니다.</p>
+            </div>
+
+        </div>
+
+
+    </article>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e329318ea424d674ffdf93ab824bc5ba"></script>
+    <script>
+        // 지도 생성
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(37.50126818833467, 126.90630367494592), // 지도 중심 좌표
+            level: 4
+        };
+        var map = new kakao.maps.Map(container, options);
+
+        // 경로를 구성하는 좌표 배열
+        var linePath = [
+            new kakao.maps.LatLng(37.50013, 126.908969), // 시작점
+            new kakao.maps.LatLng(37.50017754524346, 126.90576786096506), // 중간점
+            new kakao.maps.LatLng(37.502960208387805, 126.90397465056222)  // 끝점
+        ];
+
+        // Polyline 객체 생성
+        var polyline = new kakao.maps.Polyline({
+            path: linePath, // 선을 구성하는 좌표 배열
+            strokeWeight: 5, // 선의 두께
+            strokeColor: '#FF0000', // 선의 색깔
+            strokeOpacity: 0.8, // 선의 투명도 (0~1)
+            strokeStyle: 'solid' // 선의 스타일
+        });
+
+        // 지도에 Polyline 표시
+        polyline.setMap(map);
+        // 마커 생성
+        var markerPosition = new kakao.maps.LatLng(37.5030499932501, 126.904140670924); // 마커 위치
+        var marker = new kakao.maps.Marker({
+            position: markerPosition // 마커의 위치
+        });
+
+        // 마커 지도에 추가
+        marker.setMap(map);
+    </script>
+</section>
+</html>

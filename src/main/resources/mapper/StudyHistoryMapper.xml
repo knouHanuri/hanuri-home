@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hanuri.website.dao.StudyHistoryMapper">
+    <insert id="save" parameterType="hanuri.website.model.StudyHistory">
+        INSERT INTO
+                    STUDY_HISTORY (study_id, round, study_date, title, presenter, notes)
+        VALUES
+                    (#{studyId}, #{round}, #{studyDate}, #{title}, #{presenter}, #{notes})
+    </insert>
+    <select id="countRoundByStudyId" parameterType="int" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM
+            STUDY_HISTORY
+        WHERE
+            STUDY_ID = #{studyId}
+    </select>
+    <select id="findLastRoundByStudyId" parameterType="int" resultType="int">
+        SELECT
+            MAX(ROUND) AS ROUND
+        FROM
+            STUDY_HISTORY
+        WHERE
+            STUDY_ID = #{studyId}
+    </select>
+</mapper>

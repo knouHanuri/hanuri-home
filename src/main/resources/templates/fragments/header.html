@@ -1,0 +1,57 @@
+<header th:fragment="header">
+
+    <div class="logo"><a href="#"><img class="logo-image" src="/image/logo.jpg" alt="한우리 로고 사진"></a></div>
+    <div class="menu"><a href="/about">소개</a></div>
+    <div class="menu"><a href="/findus">오시는길</a></div>
+    <div class="menu"><a href="/study/list">스터디</a></div>
+    <div class="menu"><a href="/board/list">게시판</a></div>
+    <div class="gnb">
+        <span class="material-symbols-outlined">search</span>
+        <div class="profile">
+            <a th:if="${session.user == null}" href="/login">
+                <button class="login-btn">로그인</button>
+            </a>
+            <div th:if="${session.user != null}">
+                <div class="profile-control">
+                    <a>
+                        <img src="/image/profile.png" alt="프로필" class="profile-image" id="profileImage">
+                    </a>
+                </div>
+                <div class="profile-menu" id="profile-menu">
+                    <div class="profile-menu-item">마이페이지</div>
+                    <a href="/board/new"><div class="profile-menu-item">새 글</div></a>
+                    <a href="/admin"><div class="profile-menu-item">관리자</div></a>
+                    <a href="/logout"><div class="profile-menu-item">로그아웃</div></a>
+                </div>
+            </div>
+        </div>
+        <div class="ham-menu">
+            <div class="ham-menu-control">
+                <a><img src="/image/ham_menu.png" alt="햄메뉴" class="ham-menu-image" id="hamManuImage"></a>
+            </div>
+            <div class="ham-menu-list" id="ham-menu">
+                <a href="/about"><div class="ham-menu-item">소개</div></a>
+                <a href="/findus"><div class="ham-menu-item">오시는길</div></a>
+                <a href="/study/list"><div class="ham-menu-item">스터디</div></a>
+                <a href="/board/list"><div class="ham-menu-item">게시판</div></a>
+            </div>
+        </div>
+
+    </div>
+    <!--
+    <ul class="gnb">
+        <li>
+            <a th:if="${session.user == null}" href="/login">로그인</a>
+            <a th:if="${session.user != null}" href="/logout">로그아웃</a>
+        </li>
+        <li><a href="/members/new">회원가입</a></li>
+        <li><a href="/members">회원조회</a></li>
+        <li><a href="/membership/list">회비납부내역</a></li>
+        <li><a href="/study/list">스터디조회</a></li>
+        <li><a href="/study/history">스터디 내역 등록</a></li>
+    </ul>
+    -->
+    <script type="application/javascript" src="/js/login.js"></script>
+</header>
+
+

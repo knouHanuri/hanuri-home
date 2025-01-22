@@ -1,0 +1,133 @@
+.container {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+.inner-container {
+    width: 90%;
+    max-width: 1000px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.card-header h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.studies {
+    display: flex;
+    gap: 16px;
+}
+.study {
+    flex: 1 1 48%;
+    background-color: #e0f7fa;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.study-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.study-header span {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.study-header .progress {
+    font-size: 0.8em;
+    color: #4caf50;
+}
+.study-content h3 {
+    font-size: 1.2em;
+    margin: 0;
+    margin-bottom: 8px;
+}
+.study-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #757575;
+    margin-top: auto;
+}
+
+
+
+.boards {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.board {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.board h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.board p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.board-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+}
+.board-footer .user-info {
+    display: flex;
+    align-items: center;
+}
+.board-footer .user-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .studies {
+        flex-direction: column;
+    }
+    .study {
+        flex: 1 1 100%;
+    }
+    .boards {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .board {
+        flex: 1 1 100%;
+    }
+}
