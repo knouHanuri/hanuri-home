@@ -54,7 +54,9 @@ public class MemberController {
         model.addAttribute("gender", EGender.values());
         model.addAttribute("enrollmentStatus", EEnrollmentStatus.values());
 
-        return "admin/members/memberDetail";
+        // Edit By LSH 25/1/19 기존 return 경로
+        // return "admin/members/memberDetail";
+        return "members/memberDetail";
     }
 
     @PostMapping("members/modify")

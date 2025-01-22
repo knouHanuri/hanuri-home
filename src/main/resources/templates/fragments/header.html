@@ -17,7 +17,7 @@
                     </a>
                 </div>
                 <div class="profile-menu" id="profile-menu">
-                    <div class="profile-menu-item">마이페이지</div>
+                    <a th:href="@{/members/detail/{id}(id=${session.user.memberId})}"><div class="profile-menu-item">마이페이지</div></a>
                     <a href="/board/new"><div class="profile-menu-item">새 글</div></a>
                     <a href="/admin"><div class="profile-menu-item">관리자</div></a>
                     <a href="/logout"><div class="profile-menu-item">로그아웃</div></a>
@@ -35,7 +35,10 @@
             </div>
         </div>
 
-    </div>
+        <div th:if="${session.user != null}">
+            <span th:text="${session.user.memberId}">
+        </div>
+
     <!--
     <ul class="gnb">
         <li>

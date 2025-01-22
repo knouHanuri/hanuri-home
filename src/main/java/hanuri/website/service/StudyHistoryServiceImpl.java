@@ -2,6 +2,8 @@ package hanuri.website.service;
 
 import hanuri.website.dao.StudyHistoryMapper;
 import hanuri.website.dto.history.FindAllByStudyIdResponse;
+import hanuri.website.dto.history.UpdateStudyHistoryRequest;
+import hanuri.website.dto.history.UpdateStudyHistoryResponse;
 import hanuri.website.model.StudyHistory;
 import hanuri.website.dto.history.RegisterStudyHistoryRequest;
 import org.springframework.stereotype.Service;
@@ -55,5 +57,11 @@ public class StudyHistoryServiceImpl implements StudyHistoryService{
     public List<FindAllByStudyIdResponse> findAllByStudyId(int studyId) {
         List<FindAllByStudyIdResponse> responseDTO = studyHistoryMapper.findAllByStudyId(studyId);
         return responseDTO;
+    }
+
+    @Override
+    public UpdateStudyHistoryResponse update(UpdateStudyHistoryRequest requestDTO) {
+//        UpdateStudyHistoryResponse responseDTO = studyHistoryMapper.update(requestDTO);
+        return null;
     }
 }

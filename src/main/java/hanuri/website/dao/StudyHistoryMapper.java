@@ -18,4 +18,5 @@ public interface StudyHistoryMapper {
     int countRoundByStudyId(int studyId);
 
     List<FindAllByStudyIdResponse> findAllByStudyId(int studyId);
+
 }
