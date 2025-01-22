@@ -24,4 +24,5 @@ public class Member {
     private Boolean isActive;
     private String Provider;
     private String ProviderId;
+    private String Picture;
 }

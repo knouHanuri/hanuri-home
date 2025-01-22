@@ -1,23 +1,32 @@
 package hanuri.website;
 
+import hanuri.website.domain.dto.Member;
 import hanuri.website.service.CustomOAuth2UserService;
+import hanuri.website.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.Optional;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
+    private final MemberService memberService;
 
-    public SecurityConfig(CustomOAuth2UserService customOAuth2UserService) {
+    @Autowired
+    public SecurityConfig(CustomOAuth2UserService customOAuth2UserService, MemberService memberService) {
         this.customOAuth2UserService = customOAuth2UserService;
+        this.memberService = memberService;
     }
     // 시큐리티 필터 메서드
     @Bean
@@ -56,7 +65,15 @@ public class SecurityConfig {
                         .successHandler((request, response, authentication) -> {
                             // OAuth2 인증 성공 후, OAuth2User 정보를 세션에 저장
                             OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
-                            request.getSession().setAttribute("user", oAuth2User); // 세션에 저장
+
+                            // OAuth2 제공자 이름 (Google, Facebook 등)
+                            String provider = ((OAuth2AuthenticationToken) authentication).getAuthorizedClientRegistrationId();
+                            // 제공자가 발급한 사용자 ID
+                            String providerId = oAuth2User.getName();
+
+                            Optional<Member> member = memberService.findByProviderInfo(provider,providerId);
+                            // 세션에 저장
+                            member.ifPresent(value -> request.getSession().setAttribute("user", value));
                             response.sendRedirect("/"); // 로그인 성공 후 이동할 URL
                         })
                 );

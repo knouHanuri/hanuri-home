@@ -52,4 +52,8 @@ public class MemberService {
     public void modify(Member member) {
         memberMapper.modify(member);
     }
+
+    public Optional<Member> findByProviderInfo(String provider, String providerId) {
+        return memberMapper.findByProviderAndProviderId(provider,providerId);
+    }
 }

@@ -12,12 +12,12 @@ CREATE TABLE IF NOT EXISTS MEMBER (
     gender ENUM('male','female','other'),
     birthdate DATE,
     student_id varchar(20),
-    image_id int,
     enrollment_status ENUM ('enrolled','suspended','graduated'),
     membership_level ENUM ('admin','normal','guest'),
     is_active BOOL,
     provider varchar(20),
-    provider_id varchar(255)
+    provider_id varchar(255),
+    picture varchar(255)
     );
 
 CREATE TABLE IF NOT EXISTS SUBJECT (

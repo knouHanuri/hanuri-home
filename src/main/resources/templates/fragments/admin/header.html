@@ -12,7 +12,7 @@
             <div th:if="${session.user != null}">
                 <div class="profile-control">
                     <a>
-                        <img src="/image/profile.png" alt="프로필" class="profile-image" id="profileImage">
+                        <img th:src="${session.user.getPicture()}" alt="프로필" class="profile-image" id="profileImage">
                     </a>
                 </div>
                 <div class="profile-menu" id="profile-menu">

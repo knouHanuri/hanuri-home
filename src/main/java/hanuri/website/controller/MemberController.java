@@ -70,16 +70,4 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("members/profile")
-    @ResponseBody
-    public Map<String, String> getOidcProfile(HttpSession session) {
-        Member member = (Member) session.getAttribute("user");
-        String name = member.getName();
-        String email = member.getEmail();; // 이메일
-
-        Map<String, String> response = new HashMap<>();
-        response.put("name", name);
-        response.put("email", email);
-        return response;  // JSON 응답
-    }
 }

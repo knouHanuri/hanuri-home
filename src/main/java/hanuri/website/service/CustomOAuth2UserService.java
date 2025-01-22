@@ -2,6 +2,7 @@ package hanuri.website.service;
 
 import hanuri.website.dao.MemberMapper;
 import hanuri.website.domain.dto.Member;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     private final MemberMapper memberMapper;
 
+    @Autowired
     public CustomOAuth2UserService(MemberMapper memberMapper) {
         this.memberMapper = memberMapper;
     }
@@ -26,13 +28,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         // 제공자가 발급한 사용자 ID
         String providerId = oAuth2User.getName();
 
-        // 사용자 이메일
+        // 사용자 정보
         String username = oAuth2User.getAttribute("email");
         String name = oAuth2User.getAttribute("name");
-
+        String picture = oAuth2User.getAttribute("picture");
 
         // 데이터베이스에 사용자 저장 (존재 여부 확인 후 저장)
-       Member member = memberMapper.findByProviderAndProviderId(provider, providerId).orElseGet(Member::new);
+        Member member = memberMapper.findByProviderAndProviderId(provider, providerId).orElseGet(Member::new);
         if (member.getEmail() == null) {
             member = new Member();
             member.setProvider(provider);
@@ -40,7 +42,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             member.setUsername(username);
             member.setName(name);
             member.setEmail(username);
-            if(username != null){
+            member.setPicture(picture);
+            if (username != null) {
                 int atIndex = username.indexOf("@");
                 String defaultPassword = atIndex != -1 ? username.substring(0, atIndex) : username; // '@' 없으면 전체 반환
                 member.setPassword(defaultPassword);
