@@ -23,11 +23,11 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         }
         HttpSession session = request.getSession(false);
 
-        if(session == null || session.getAttribute("user") == null){
+/*        if(session == null || session.getAttribute("user") == null){
             System.out.println("session is null");
             response.sendRedirect("/login");
             return false;
-        }
+        }*/
         return true;
     }
 }

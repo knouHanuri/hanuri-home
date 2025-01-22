@@ -1,5 +1,92 @@
+<<<<<<< HEAD
 <!-- Main Content-->
 <div class="container px-4 px-lg-5" th:fragment="content">
     <h2>오시는길</h2>
     <img src="bootstrap/assets/img/map.jpg">
 </div>
+=======
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/main">
+<head>
+    <title>소개</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  th:href="@{/css/about.css}">
+</head>
+<body>
+<section layout:fragment="content">
+
+    <!-- 인트로 -->
+    <article class="intro-section">
+        <h2>한우리 소개</h2>
+        <p>한국방송통신대학교 공식 스터디에 오신것을 환영합니다!</p>
+    </article>
+
+    <!-- 메인 컨텐츠  -->
+    <article class="main-section">
+        <h3>Greeting</h3>
+        <div class="main-textbox">
+            <em><span th:text="${#dates.year(#dates.createNow())}"></span>년 1학기 한국방송통신대학교 컴퓨터과학과<br/> 서울 스터디 한우리에서 학우 여러분을 기다립니다.</em>
+            <p>안녕하세요.
+                신•편입생 여러분 한국방송통신대학교 컴퓨터과학과 입학을 축하드립니다. <br/>
+                한우리에서는 <span th:text="${#dates.year(#dates.createNow())}"></span>년 1학기 학습 스터디에 참여할 신•편입생 여러분을 기다립니다.<br/>
+                우리 한우리 스터디는 남녀노소, 개발자, 넓은 인맥, 삶의 무료함 등에서 벗어나고 싶으신 모든 분들을 환영합니다!<br/>
+                컴퓨터에 관한 그 무엇도 몰라도 스터디에서 공부를 하며 천천히 배워 나갈 수 있으며, 졸업이 필요하신 분들도 중도에 포기하시는 일 없도록 서로서로 격려하며 화이팅하는 분위기로 끝까지 해내실 수 있으십니다.<br/>
+                개발자로서의 커리어 향상이 필요하신 분들도 주기적인 프로젝트 참여로 커리어 향상을 하실 수 있습니다.</p>
+
+        </div>
+    </article>
+    <article class="main-section">
+        <h3>Activity</h3>
+        <div class="main-textbox">
+            <div class="main-imagebox"></div>
+            <em>우리는 이런 활동을 합니다!</em>
+            <ol>
+                <li>각 과목 별 발표 및 토론</li>
+                <li>스터디 자료 공유 및 시험 대비 집중 공부</li>
+                <li>정재화 교수님 오프라인 특강!</li>
+                <li>팀 프로젝트 진행</li>
+                <li>주기적인 현직 학원 강사 특강</li>
+                <li>정기 모임 및 친목 활동</li>
+            </ol>
+        </div>
+    </article>
+    <article class="main-section">
+        <h3>We Want</h3>
+        <div class="main-textbox">
+            <div class="main-imagebox main-imagebox2"></div>
+            <em>이런 학우 분들이 오시면 좋습니다!</em>
+            <ol>
+                <li>좋은 성적으로 졸업하기를 원하시는 분!</li>
+                <li>각 과목 별 발표 및 토론</li>
+                <li>개발자를 꿈꾸지만 어떻게 준비할지 모르시는 분!</li>
+                <li>의지가 부족해서 같이 공부할 사람이 필요하신 분!</li>
+                <li>일단 입학했지만 어떻게 공부할지 막막하신 분!</li>
+                <li>새로운 사람을 만나 인맥을 넓히고 싶으신 분!</li>
+                <li>일 끝나고 저녁에 심심하신 분!</li>
+                <li>커리어 발전이 필요하신 분!</li>
+                <li>그 외에도 한우리는 여러분의 가입을 언제나 환영합니다!</li>
+            </ol>
+        </div>
+    </article>
+
+<!--        &lt;!&ndash; 카드 2: 모임 시간 및 장소 &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--            <h3>오시는 길</h3>-->
+<!--            <p>자세한 OT일정과 오시는 길을 확인 하실 수 있습니다. </p>-->
+<!--            <a href="/findus">자세히 보기</a>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; 카드 3: 문의 사항 &ndash;&gt;-->
+<!--        <div class="card">-->
+<!--            <h3>연락</h3>-->
+<!--            <p>스터디 가입, 문의사항</p>-->
+<!--            <a href="/contact">자세히 보기</a>-->
+<!--        </div>-->
+</section>
+</body>
+</html>
+>>>>>>> 36908231e088e8e9f5c613bce0784920d5c9e33d
