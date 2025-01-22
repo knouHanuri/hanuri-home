@@ -47,4 +47,5 @@ public class StudyService {
     public Optional<Study> findById(long studyId) { return studyMapper.findById(studyId); }
     /* 삭제 */
     public int delete(long studyId) { return studyMapper.delete(studyId); }
+
 }

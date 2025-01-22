@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&display=swap" rel="stylesheet">
+  <style>
+
+
+    /* 전체 스타일을 detailmain 클래스를 기준으로 설정 */
+    .detailmain {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    }
+
+    /* 제목 스타일 */
+    .detail-title {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 40px;
+      font-weight: bold;
+      font-family: "Do Hyeon", serif;
+    }
+
+    /* 상세 항목 스타일 */
+    .detail-item {
+      font-size: 16px;
+      margin: 12px 0;
+      color: #555;
+    }
+
+    .detail-item strong {
+      color: #333;
+      font-weight: bold;
+    }
+
+    .detail-item span {
+      font-weight: bold;
+      color: #ffb144;
+    }
+
+    /* 세부 사항 레이아웃을 깔끔하게 정리 */
+    .detail-item-wrapper {
+      margin-bottom: 15px;
+    }
+
+    /* 오른쪽 아래에 위치한 상세보기 버튼 */
+    .view-details-button {
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(255, 227, 179, 0.7), rgba(255, 177, 68, 0.7));
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+      float: right;
+    }
+
+
+    .view-details-button:hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      background: linear-gradient(135deg, rgba(255, 227, 179, 0.7), rgba(255, 177, 68, 0.7));
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .detail-left{
+      width: 45%;
+      float: left;
+    }
+    .detail-right{
+      width: 45%;
+      float: right;
+    }
+    .detail-right img{
+      width: 100%;
+      height: 400px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="detailmain" style="overflow: hidden">
+  <h2 th:text="${study.title}" class="detail-title"></h2>
+  <div class="detail-left">
+  <div class="detail-item-wrapper">
+    <p class="detail-item"><strong>상태:</strong> <span th:text="${study.status.displayName}"></span></p>
+  </div>
+  <div class="detail-item-wrapper">
+    <p class="detail-item"><strong>일정:</strong> <span th:text="${study.schedule}"></span></p>
+  </div>
+  <div class="detail-item-wrapper">
+    <p class="detail-item"><strong>시작 날짜:</strong> <span th:text="${study.startDate}"></span></p>
+  </div>
+  <div class="detail-item-wrapper">
+    <p class="detail-item"><strong>종료 날짜:</strong> <span th:text="${study.endDate}"></span></p>
+  </div>
+    <div>
+      <p><strong>스터디 목표:</strong> <span>이곳은 db에서 불러올 데이터ㄴㄴㄴㄴㄴㄴㄴㅇ리ㅏㅓㄴ이라ㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㅇㄴㄹㄴㅇㄹ</span></p>
+    </div>
+  </div>
+  <div class="detail-right">
+    <img src="/static/image/profile.png" alt="db에서 가져온 스터디 이미지가 들어갈 장소" >
+  </div>
+  <!-- 오른쪽 아래에 위치한 버튼 -->
+  <button class="view-details-button" onclick="alert('가입하세요!');window.location.href='contact';">스터디기록</button>
+</div>
+
+
+
+</body>
+</html>
