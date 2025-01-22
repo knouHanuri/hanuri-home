@@ -67,4 +67,20 @@ public class  StudyController {
         if(deleteCount == 1) return ResponseEntity.noContent().build();
         else return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
+
+    @GetMapping("/study/details")
+    public String studyDetails(@RequestParam Long studyId, Model model) {
+        // studyId로 특정 스터디 조회
+        Optional<Study> optionalStudy = studyService.findById(studyId);
+
+        if (optionalStudy.isPresent()) {
+            // 조회한 Study 정보를 모델에 추가
+            model.addAttribute("study", optionalStudy.get());
+            return "study/studyDetails"; // Thymeleaf 템플릿 반환
+        } else {
+            // studyId가 잘못되었을 경우
+            model.addAttribute("error", "해당 스터디를 찾을 수 없습니다.");
+            return "study/studyDetails"; // 에러 메시지만 포함된 템플릿 반환
+        }
+    }
 }

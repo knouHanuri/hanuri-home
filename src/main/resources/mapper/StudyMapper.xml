@@ -5,7 +5,11 @@
 <mapper namespace="hanuri.website.dao.StudyMapper">
     <!--데이터 전체 조회-->
     <select id="studyListAll" resultType="hanuri.website.dto.Study">
-        select * from study
+        select * from study order by study_id desc
+    </select>
+    <!--데이터 일정 수 조회-->
+    <select id="studyListLimited" parameterType="int" resultType="hanuri.website.dto.Study">
+        select * from study order by study_id desc LIMIT #{limit}
     </select>
     <!--데이터 조회(Id)-->
     <select id="findById" parameterType="long" resultType="hanuri.website.dto.Study">
