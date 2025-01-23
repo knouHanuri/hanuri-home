@@ -1,159 +1,226 @@
-html{
-    scroll-behavior: smooth;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    color: #1f2937;
-    background-color: white;
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
-}
-
 /* 소개 섹션 */
 .intro-section {
+    width: 100%;
+    background: url(../image/sebpage_intro.jpg) center center no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 200px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 105vh;
-    text-align: center;
-    background: linear-gradient(135deg, #ffe3b3, #ffb144);
-    color: white;
-    padding: 40px 20px;
-    clip-path: ellipse(120% 90% at 50% 0);
-    width: 100%;
+    gap: 25px;
+    flex-direction: column;
 }
-
-.intro-section h1 {
-    font-family: "Jua", serif;
-    font-size: 100px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    letter-spacing: 30px;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.intro-section h2{
+    font-size: 35px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
 }
-
 .intro-section p {
-    font-size: 25px;
-    line-height: 1.8;
-    max-width: 700px;
-    margin-bottom: 30px;
+    color: #fff;
+    line-height: 1;
 }
-
-.intro-section a {
-    padding: 14px 28px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    background: linear-gradient(135deg, #ffa938, #ff9f76);
-    border-radius: 30px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-.intro-section a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* 메인 */
 .main-section {
+    width: min(1200px, 100% - 2rem);
     margin: 0 auto;
-    width: 60%;
-    padding-top:100px ;
-}
-.study-intro > h1 {
-    font-size: 50px;
-    padding-bottom: 50px;
-}
-.study{
+    padding-top: 70px;
     display: flex;
-    width: 100%;
-    justify-content: space-between;
+    gap: 100px;
 }
-.main-left{
-    width: 40%;
+.main-title{
+    width: 14.17%;
 }
-.lg {
-    width: 100%;
-    height: auto;
-    margin-right: 30px;
-
+.main-section h3{
+    font-size: 30px;
+    font-family: "Ubuntu", serif;
+    font-weight: 600;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
 }
-
-.main-right {
-    height: 100%;
-    width: 55%;
-    font-size: 20px;
-    font-weight: 390;
+.main-section h3:after{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #ff6600;
+    content: '';
+    top: 0;
+    right: -15px;
 }
-
-
-/* 카드 섹션 */
-.card-container {
+.main-textbox{
     display: flex;
-    justify-content: center;
-    gap: 50px;
-    padding: 60px 20px;
-    flex-wrap: wrap;
-    background-color: white;
-    text-align: center;
-}
-
-.card {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    text-align: center;
-    max-width: 320px;
+    gap: 15px;
+    flex-direction: column;
     flex: 1;
+}
+.main-textbox em{
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 700;
+
+}
+.main-textbox ol{
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+}
+.main-textbox ol li span{
+    display: inline-flex;
+    margin-right: 5px;
+    font-weight: 600;
+}
+.main-textbox .main-imagebox {
     width: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-}
-
-.card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #374151;
-}
-
-.card p {
-    font-size: 1rem;
-    color: #6b7280;
+    background: url(../image/activity.jpg) center center no-repeat;
+    background-size: cover;
+    height: 200px;
+    border-radius: 10px;
     margin-bottom: 20px;
 }
-
-.card a {
-    font-size: 0.9rem;
+.main-textbox .main-imagebox2{
+    background: url(../image/activity2.jpg) center center no-repeat;
+    background-size: cover;
+}
+/* 오시는길 섹션 */
+.findus-section {
+    width: 100%;
+    background: url(../image/sebpage_intro2.jpg) center center no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.findus-article{
+    width: min(1200px, 100% - 2rem);
+    margin: 0 auto;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.findus-content{
+    display: flex;
+    gap: 100px;
+    flex: 1;
+}
+.findus-content h3{
+    font-size: 30px;
+    font-family: "Ubuntu", serif;
     font-weight: 600;
-    color: #fbb133;
-    transition: color 0.3s ease;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
 }
-
-.card a:hover {
-    color: #bf9b2f;
+.findus-content h3:after{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #ff6600;
+    content: '';
+    top: 0;
+    right: -15px;
 }
+.findus-content ul{
+    flex: 1;
+}
+.findus-content ul li{
+    border-bottom: 1px solid #ddd;
+    padding-block: 20px;
+    display: flex;
+    align-items: center;
+}
+.findus-content ul li:first-child{
+    padding-top: 0;
+}
+.findus-content ul li span{
+    font-weight: 600;
+    width: 70px;
+    display: inline-flex;
+}
+.findus-content ul li p {
+    margin-right: 10px;
+}
+.findus-content ul li p em{
+    display: inline-flex;
+    background: #717617;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-right: 5px;
+    font-size: 12px;
+}
+.findus-content ul li a {
+    color: #ff6600;
+}
+.findus-content ul li p em.blue{
+    background: #00AEAB;
+    width: 30px;
+    border-radius: 5px;
+}
+.findus-content ul li p em.purple{
+    background: #7182F5;
+    width: 30px;
+    border-radius: 5px;
+}
+.findus-content ul li p em.green{
+    background: #5FB73C;
+    width: 30px;
+    border-radius: 5px;
+}
+/* 문의하기 */
+.contact-section{
+    width: 100%;
+    background: url(../image/sebpage_intro2.jpg) center center no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.contact-info{
+    width: min(800px, 100% - 2rem);
+    margin: 70px auto 0;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    border-top: 5px solid #ff6600;
+}
+.contact-info:last-child{
+    margin-top: 40px;
+}
+.contact-info em{
+    font-size: 18px;
+    font-weight: 600;
+}
+.contact-info ul{
 
-
+}
+.contact-info ul li{
+    position: relative;
+    padding-left: 15px;
+    line-height: 1;
+    margin-top: 15px;
+}
+.contact-info ul li:after{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background:#ff6600;
+    content: '';
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    border-radius: 50%;
+}
+.contact-info ul li span{
+    font-weight: 600;
+}
+.contact-info p{
+    line-height: 1;
+    margin-top: 15px;
+}
 @media (max-width: 625px) {
     .intro-section h1 {
         font-size: 50px;

@@ -1,10 +1,20 @@
 header {
-    width: 100%;
+    width: calc(100% - 2rem);
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 60px;
 }
-
+.header-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.logo {
+    font-size: 0;
+}
 section {
     width: 100%;
     display: flex;
@@ -13,12 +23,63 @@ section {
     align-items: center;
 }
 
-footer {
+/* 푸터 */
+.footer{
     width: 100%;
+    padding-block: 25px;
+    border-top:1px solid #ddd;
+    margin-top: 80px;
+}
+.footer-inner {
+    width: min(1200px, 100% - 2rem);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer_info p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1;
+    display: inline-flex;
+    padding-right: 10px;
+}
+.footer_info strong{
+    margin-top: 10px;
+    font-weight: 500;
+    color: #555;
+    display: block;
+    line-height: 1;
+}
+.footer_service{
+    display: flex;
+    gap: 100px;
+    border-left: 1px solid #ddd;
+    padding-left: 100px;
+}
+
+.footer-title{
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+}
+.footer-text{
+    margin-top: 15px;
+    line-height: 1;
+}
+.footer-text a{
+    color: #555;
+    font-size: 14px;
+    line-height: 1;
+}
+.section-wrap{
+    margin-block: 40px 80px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 60px;
 }
 
 .logo-image {
@@ -34,20 +95,14 @@ footer {
 
 .menu{
     display: flex;
-    font-size: 15px;
-    padding: 0;
-    list-style-type: none;
     align-items: center;
-    margin: 0 20px;
+    /*margin: 0 20px;*/
+    font-weight: 600;
 }
 
 .gnb {
     display: flex;
-    font-size: 15px;
-    padding: 0;
-    list-style-type: none;
     align-items: center;
-    margin: 0 20px;
 }
 
 .material-symbols-outlined {
@@ -137,17 +192,6 @@ footer {
 
 .ham-menu-item:last-child {
     border-top: 1px solid #ddd;
-}
-
-a:link, a:visited {
-    color: black;
-    text-decoration: none;
-    font-family: 'Pretendard-Regular';
-}
-
-
-button {
-    font-family: 'Pretendard-Regular';
 }
 
 .login-btn {

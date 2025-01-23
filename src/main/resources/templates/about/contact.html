@@ -1,150 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main">
 <head>
+    <meta charset="UTF-8">
     <title>문의하기</title>
-
-    <style>
-        /* 기본 스타일 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #1f2937;
-            background-color: #f9fafb;
-            padding: 0;
-            margin: 0;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s ease;
-        }
-
-        /* 헤더 스타일 */
-        nav {
-            background: linear-gradient(135deg, #ffe3b3, #ffb144);
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-            clip-path: ellipse(120% 100% at 50% 0);
-            width: 100%;
-        }
-
-        nav h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        nav p {
-            font-size: 1.25rem;
-            line-height: 1.8;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* 연락처 정보 */
-        .contact-info {
-            max-width: 800px;
-            width: 100%;
-            margin: 50px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-info h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #374151;
-        }
-
-        .contact-info h3{
-            margin: 10px 0;
-        }
-
-        .contact-info ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .contact-info ul li {
-            font-size: 1rem;
-            color: #374151;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info ul li span {
-            font-weight: 600;
-            margin-right: 10px;
-            color: #ffb144;
-        }
-
-        /* 미디어 쿼리 */
-        @media (max-width: 625px) {
-            nav h1 {
-                font-size: 2rem;
-            }
-
-            nav p {
-                font-size: 0.9rem;
-            }
-
-            .contact-info{
-                margin: 20px;
-                width: 90%;
-                padding: 20px;
-            }
-            .contact-info h2 {
-                font-size: 1.2rem;
-            }
-
-            .contact-info ul li {
-                font-size: 0.8rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet"  th:href="@{/css/about.css}">
 </head>
 
 <body>
 <section layout:fragment="content">
-
-    <nav>
-        <h1>문의하기</h1>
-        <p>자세항 사항이나 문의 사항이 있으시면 아래 정보를 통해 연락하실 수 있습니다.</p>
-    </nav>
+    <article class="intro-section contact-section">
+        <h2>문의하기</h2>
+        <p>자세한 사항이나 문의 사항이 있으시면 아래 정보를 통해 연락하실 수 있습니다.</p>
+    </article>
     <!-- 연락처 정보 -->
     <div class="contact-info">
-        <h2>한우리 학생 회장</h2>
-        <h3>진주영</h3>
-
+        <em>진주영</em>
         <ul>
-            <li><span>휴대폰:</span> 회장님 전화번호</li>
-            <li><span>카카오톡 ID:</span> 회장님 카톡 아이디</li>
-            <li><span>이메일:</span> 회장님 이메일</li>
+            <li><span>직책</span> : 한우리 학생 회장</li>
+            <li><span>휴대폰</span> : 회장님 전화번호</li>
+            <li><span>카카오톡 ID</span> : 회장님 카톡 아이디</li>
+            <li><span>이메일</span> : 회장님 이메일</li>
         </ul>
-        <p>아무때나 편하게 연락 주시면 최대한 빠른 답변 드리겠습니다~!</p>
+        <p>※ 아무때나 편하게 연락 주시면 최대한 빠른 답변 드리겠습니다~!</p>
     </div>
     <div class="contact-info">
-        <h2>학생 교육 부장</h2>
-        <h3>최선화</h3>
+        <em>최선화</em>
         <ul>
-            <li><span>휴대폰:</span> 교육부장님 전화번호</li>
-            <li><span>카카오톡 ID:</span> 교육부장님 카톡 아이디</li>
-            <li><span>이메일:</span> 교육부장님 이메일</li>
+            <li><span>직책</span> : 학생 교육 부장</li>
+            <li><span>휴대폰</span> : 교육부장님 전화번호</li>
+            <li><span>카카오톡 ID</span> : 교육부장님 카톡 아이디</li>
+            <li><span>이메일</span> : 교육부장님 이메일</li>
         </ul>
-        <p>아무때나 편하게 연락 주시면 최대한 빠른 답변 드리겠습니다~!</p>
+        <p>※ 아무때나 편하게 연락 주시면 최대한 빠른 답변 드리겠습니다~!</p>
     </div>
 </section>
 </body>
