@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main">
 <head>
     <title>스터디 목록</title>
+    <link rel="stylesheet"  th:href="@{/css/modal.css}">
 </head>
 <body>
 <section layout:fragment="content">
@@ -26,13 +27,24 @@
             <td th:text="${studyList.startDate}"></td>
             <td th:text="${studyList.endDate}"></td>
             <td>
-                <button onclick="alert('준비중')">보기</button>
+                <button th:onclick="|openModal('study', '${studyList.studyId}')|">보기</button>
                 <button th:onclick="'edit(' + ${studyList.studyId} + ')'">수정</button>
                 <button th:onclick="'del(' + ${studyList.studyId} + ')'">삭제</button>
             </td>
         </tr>
         </tbody>
     </table>
+
+    <!-- 모달 HTML -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div id="modalBody">
+                <!-- 여기에 AJAX로 받아온 HTML 내용이 표시됩니다 -->
+            </div>
+        </div>
+    </div>
+
     <script th:inline="javascript">
         window.onload = function(){
             const message = /*[[${message}]]*/ ''; // Thymeleaf를 사용하여 message 가져오기
@@ -43,6 +55,7 @@
         }
     </script>
     <script type="application/javascript" src="/js/study.js"></script>
+    <script type="application/javascript" src="/js/modal.js"></script>
 </section>
 </body>
 </html>
