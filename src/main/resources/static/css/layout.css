@@ -1,5 +1,5 @@
 
-header {
+.header {
     width: calc(100% - 2rem);
     margin: 0 auto;
     display: flex;
@@ -12,6 +12,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    width: 100%;
 }
 .logo {
     font-size: 0;
@@ -87,12 +88,12 @@ section {
     width: 86px;
 }
 
-.header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* 아이템을 양 끝으로 배치 */
-    align-items: center;
-}
+/*.header {*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    justify-content: space-between; !* 아이템을 양 끝으로 배치 *!*/
+/*    align-items: center;*/
+/*}*/
 
 .menu{
     display: flex;
@@ -128,7 +129,7 @@ section {
 .profile-menu {
     display: none;
     position: absolute;
-    top: 60px;
+    top: 50px;
     right: 0;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

@@ -67,3 +67,21 @@
 .links a:hover {
     text-decoration: underline;
 }
+
+.oauth2-info {
+    padding-top:10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    color: #0f1317;
+}
+
+.oauth2-icon-image {
+    display: block;
+    padding-top:10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}

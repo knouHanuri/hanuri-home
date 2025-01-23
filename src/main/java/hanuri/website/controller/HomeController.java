@@ -20,16 +20,10 @@ public class HomeController {
     private StudyService studyService;
 
     @GetMapping("/")
-<<<<<<< HEAD
     public String home(Model model) {
         List<Study> studyList = studyService.studyListLimited(3);
         model.addAttribute("studyList", studyList);
         return "index";
-=======
-    public String home() {
-        return "pages/index";
-
->>>>>>> 754ff9d8dd30e8b1015179d9a88a3bd131c19fa2
     }
 
     @GetMapping("/about")
