@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BoardService {
@@ -26,4 +27,11 @@ public class BoardService {
         return boardMapper.findAll();
     }
 
+    public Optional<Board> findOne(int id) {
+        return boardMapper.findById(id);
+    }
+
+    public void modify(Board board) {
+        boardMapper.modify(board);
+    }
 }

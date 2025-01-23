@@ -4,12 +4,18 @@ import hanuri.website.domain.EEnrollmentStatus;
 import hanuri.website.domain.EGender;
 import hanuri.website.domain.dto.Member;
 import hanuri.website.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -63,4 +69,5 @@ public class MemberController {
         memberService.modify(member);
         return "redirect:/";
     }
+
 }

@@ -23,9 +23,9 @@
     <!--데이터 입력-->
     <insert id="save" parameterType="hanuri.website.domain.dto.Member" useGeneratedKeys="true" keyProperty="memberId">
         insert into member(username, email, name, phone_number, password, gender, birthdate, student_id,
-                           enrollment_status)
+                           enrollment_status,provider,provider_id,picture)
         values (#{username}, #{email}, #{name}, #{phoneNumber}, #{password}, #{gender}, #{birthdate}, #{studentId},
-                #{enrollmentStatus})
+                #{enrollmentStatus},#{provider},#{providerId},#{picture})
     </insert>
     <!--데이터 수정-->
     <update id="modify" parameterType="hanuri.website.domain.dto.Member">
@@ -45,6 +45,8 @@
         where username = #{username}
           and password = #{password}
     </select>
-
+    <select id="findByProviderAndProviderId" resultType="hanuri.website.domain.dto.Member">
+        select * from member where provider = #{provider} and provider_id = #{providerId}
+    </select>
 
 </mapper>

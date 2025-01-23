@@ -21,7 +21,7 @@
             <td th:text="${board.boardId}"></td>
             <td><a th:href="@{/board/detail/{id}(id=${board.boardId})}"><span
                     th:text="${board.title}"></span></a></td>
-            <td th:text="${board.memberId}"></td>
+            <td th:text="${board.memberName}"></td>
             <td th:text="${board.createdDate}"></td>
         </tr>
         </tbody>
