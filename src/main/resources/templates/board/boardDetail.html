@@ -11,7 +11,6 @@
             <div class="form-group">
                 <input type="hidden" id="boardId" th:field="*{board.boardId}"/>
                 <input type="hidden" id="memberId" th:field="*{board.memberId}"/>
-                <input type="hidden" id="imageId" th:field="*{board.imageId}"/>
                 <table>
                     <tr>
                         <td><label for="categoryId">분류</label></td>
@@ -34,6 +33,12 @@
                     <tr>
                         <td><label for="content">내용</label></td>
                         <td><textarea id="content" cols="30" rows="10" th:field="*{board.content}" placeholder="내용을 입력하세요"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label>이미지파일</label></td>
+                        <td>
+                            <img th:width="200" th:height="200" th:each="image : ${images}" th:src="@{'/hanuri' + ${image.getSrc()}}" th:alt="${image.getFileName()}"/>
+                        </td>
                     </tr>
                 </table>
             </div>

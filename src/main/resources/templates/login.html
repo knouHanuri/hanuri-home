@@ -3,7 +3,7 @@
       layout:decorate="layout/main">
 <head>
     <title>LOGIN</title>
-    <link rel="stylesheet"  th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
 <section layout:fragment="content">
@@ -26,8 +26,16 @@
         <a href="#">비밀번호 찾기</a> | <a href="#">아이디 찾기</a> | <a href="/members/new">회원가입</a>
     </div>
     <div class="oauth2">
-        <div class="oauth2-info">SNS 계정으로 간편하게 시작하기</div>
-        <a href="/oauth2/authorization/google"><img src="/image/free-icon-google-2991148.png" alt="google" class="oauth2-icon-image"></a>
+        <div class="oauth2-info">간편 로그인</div>
+        <div class="oauth2-icons">
+            <a href="/oauth2/authorization/google">
+                <img src="/image/google-icon.png" alt="google" class="oauth2-icon-image-google">
+            </a>
+            <a href="javascript:alert('준비중');">
+                <img src="/image/kakao-talk-icon.png" alt="kakaoTalk" class="oauth2-icon-image-kakao">
+            </a>
+        </div>
+
     </div>
 </section>
 </body>

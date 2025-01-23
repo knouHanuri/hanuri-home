@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hanuri.website.dao.ImageMapper">
+    <!--데이터 입력-->
+    <insert id="save" parameterType="hanuri.website.dto.image.ImageDTO" useGeneratedKeys="true" keyProperty="imageId">
+        insert into image(image_type,object_id,file_path,file_name,extension,new_file_name)
+        values (#{imageType}, #{objectId},#{filePath}, #{fileName},#{extension},#{newFileName})
+    </insert>
+    <!--원천데이터 코드로 이미지조회(Id)-->
+    <select id="findByObjectId" parameterType="hanuri.website.dto.image.ImageRequestDTO" resultType="hanuri.website.dto.image.ImageDTO">
+        select *
+              ,concat('/',image_type,'/',new_file_name) as src
+        from image
+        where image_type = #{imageType}
+          and object_id = #{objectId}
+    </select>
+</mapper>

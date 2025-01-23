@@ -17,5 +17,4 @@ public class Board {
     private Date updatedDate;
     private boolean isComplete;
     private boolean isPublic;
-    private int imageId;
 }

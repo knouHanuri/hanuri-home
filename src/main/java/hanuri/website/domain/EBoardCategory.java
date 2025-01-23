@@ -1,5 +1,8 @@
 package hanuri.website.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum EBoardCategory {
     info("공지사항", 1),
     qna("Q&A", 2),
@@ -13,11 +16,4 @@ public enum EBoardCategory {
         this.value = value;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public int getValue() {
-        return value;
-    }
 }

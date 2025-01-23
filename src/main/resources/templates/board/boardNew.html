@@ -10,7 +10,6 @@
         <form action="/board/new" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <input type="hidden" id="memberId" th:field="*{board.memberId}"/>
-                <input type="hidden" id="imageId" th:field="*{board.imageId}"/>
                 <table>
                     <tr>
                          <td><label for="categoryId">분류</label></td>
@@ -35,10 +34,13 @@
                         <td><label for="content">내용</label></td>
                         <td><textarea id="content" cols="30" rows="10" th:field="*{board.content}" placeholder="내용을 입력하세요"></textarea></td>
                     </tr>
+                    <tr>
+                        <td><label for="files">파일</label></td>
+                        <td><input id="files" type="file" name="files" multiple="multiple"/></td>
+                    </tr>
                 </table>
             </div>
             <button type="submit">작성</button>
-            <button type="submit">임시저장</button>
         </form>
     </div>
 </section>

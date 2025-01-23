@@ -85,8 +85,12 @@ CREATE TABLE IF NOT EXISTS STUDY_PARTICIPANT (
 -- Image 테이블 DDL 추가
 CREATE TABLE IF NOT EXISTS IMAGE (
     IMAGE_ID INT PRIMARY KEY auto_increment,
+    IMAGE_TYPE  ENUM('member', 'study', 'board'),
+    OBJECT_ID   INT NOT NULL,
     FILE_PATH VARCHAR(255) NOT NULL,
-    FILE_NAME VARCHAR(100) NOT NULL
+    FILE_NAME VARCHAR(100) NOT NULL,
+    EXTENSION VARCHAR(10) NOT NULL,
+    NEW_FILE_NAME VARCHAR(100) NOT NULL
     );
 
 
@@ -108,14 +112,6 @@ CREATE TABLE IF NOT EXISTS BOARD (
     updated_date DATETIME,
     is_complete BOOL,
     is_public BOOL,
-    image_id INT,
     CONSTRAINT fk_board_member_id FOREIGN KEY (member_id) REFERENCES MEMBER (member_id)
     ON UPDATE CASCADE
     );
-
--- EDIT BY LSH 24/10/22
--- member, image 테이블 제약조건 추가
--- 가장 마지막에 실행해주세요.
-ALTER TABLE MEMBER ADD CONSTRAINT fk_member_image_id FOREIGN KEY (image_id) REFERENCES IMAGE (IMAGE_ID)
-    ON UPDATE CASCADE
-    ON DELETE CASCADE;
