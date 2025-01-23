@@ -7,15 +7,17 @@ CREATE TABLE IF NOT EXISTS MEMBER (
     username varchar(50) not null,
     email varchar(50) not null,
     name varchar(50) not null,
-    phone_number varchar(15) not null,
-    password varchar(255) not null,
+    phone_number varchar(15),
+    password varchar(255),
     gender ENUM('male','female','other'),
     birthdate DATE,
     student_id varchar(20),
-    image_id int,
     enrollment_status ENUM ('enrolled','suspended','graduated'),
     membership_level ENUM ('admin','normal','guest'),
-    is_active BOOL
+    is_active BOOL,
+    provider varchar(20),
+    provider_id varchar(255),
+    picture varchar(255)
     );
 
 CREATE TABLE IF NOT EXISTS SUBJECT (
@@ -90,10 +92,9 @@ CREATE TABLE IF NOT EXISTS IMAGE (
 
 -- EDIT BY LSH 24/10/22
 -- 게시판 카테고리 테이블 추가
-CREATE TABLE IF NOT EXISTS CATEGORY (
-    category_id INT PRIMARY KEY auto_increment,
-    category_type VARCHAR(100)
-    );
+-- EDIT BY JJY 25/01/15
+-- 게시판 카테고리 ENUM 으로 대체
+-- board image fk 삭제
 
 -- EDIT BY LSH 24/10/22
 -- 게시판 테이블 DDL
@@ -109,10 +110,6 @@ CREATE TABLE IF NOT EXISTS BOARD (
     is_public BOOL,
     image_id INT,
     CONSTRAINT fk_board_member_id FOREIGN KEY (member_id) REFERENCES MEMBER (member_id)
-    ON UPDATE CASCADE,
-    CONSTRAINT fk_board_category_id FOREIGN KEY (category_id) REFERENCES CATEGORY (category_id)
-    ON UPDATE CASCADE,
-    CONSTRAINT fk_board_image_id FOREIGN KEY (image_id) REFERENCES IMAGE (image_id)
     ON UPDATE CASCADE
     );
 
