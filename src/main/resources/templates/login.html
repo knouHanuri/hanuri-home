@@ -6,9 +6,19 @@
     <link rel="stylesheet"  th:href="@{/css/login.css}">
 </head>
 <body>
+<<<<<<< HEAD
+<!-- Page Header-->
+<!--<div th:include="~{/layout/header}"></div>-->
+<!-- Main Content-->
+<div class="container">
+    <h2>로그인</h2>
+    <form action="/login" th:object="${loginRequest}" method="post">
+        <div class="form-group">
+=======
 <section layout:fragment="content">
     <div class="login-container">
         <form class="login-form" action="/login" th:object="${loginRequest}" method="post">
+>>>>>>> 36908231e088e8e9f5c613bce0784920d5c9e33d
             <table>
                 <tr>
                     <td><label for="username">아이디</label></td>
@@ -19,6 +29,14 @@
                     <td><input type="password" id="password" th:field="*{password}" placeholder="비밀번호를 입력하세요"></td>
                 </tr>
             </table>
+<<<<<<< HEAD
+            <button type="submit">로그인</button>
+        </div>
+    </form>
+</div>
+<!-- Footer-->
+<!--<div th:include="~{/layout/footer}"></div>-->
+=======
             <button class="login-btn" type="submit">로그인</button>
         </form>
     </div>
@@ -26,5 +44,6 @@
         <a href="#">비밀번호 찾기</a> | <a href="#">아이디 찾기</a> | <a href="/members/new">회원가입</a>
     </div>
 </section>
+>>>>>>> 36908231e088e8e9f5c613bce0784920d5c9e33d
 </body>
 </html>
