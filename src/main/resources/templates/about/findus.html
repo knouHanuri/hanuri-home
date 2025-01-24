@@ -3,43 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <title>오시는 길</title>
-    <link rel="stylesheet"  th:href="@{/css/about.css}">
+
+    <style>
+        /* 기본 스타일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #f9fafb;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+        }
+
+        /* 헤더 스타일 */
+        nav {
+            background: linear-gradient(135deg, #ffe3b3, #ffb144);
+            color: white;
+            padding: 50px 20px;
+            clip-path: ellipse(120% 100% at 50% 0);
+            width:  100%;
+            text-align: center;
+        }
+
+        nav h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 메인 콘텐츠 */
+        .main {
+
+            justify-content: space-between;
+            margin: 50px auto;
+            width: 60%;
+            gap: 50px;
+        }
+
+        .content {
+            padding: 40px 20px;
+            width: 80%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #374151;
+        }
+
+        .content p {
+            font-size: 1rem;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content ul li {
+            font-size: 1rem;
+            color: #374151;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .content ul li span {
+            font-weight: 600;
+            margin-right: 10px;
+            color: #ffb144;
+        }
+
+        .map {
+            width: 80%;
+            height: 360px;
+            margin: 0 auto;
+            /*margin-left: 20px;*/
+        }
+
+        @media (max-width: 625px) {
+            .main {
+                flex-direction: column;
+                align-items: center;
+                width:100%;
+                margin-top: 10px;
+            }
+
+            .content {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .map {
+                width: 90%;
+            }
+
+            .map > img {
+                max-width: 100%;
+                height: 300px;
+
+            }
+
+            nav h1 {
+                font-size: 2.5rem;
+            }
+
+            nav p {
+                font-size: 1rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content ul li {
+                font-size: 0.9rem;
+            }
+
+            .map h1 {
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
 </head>
 <section layout:fragment="content">
     <!-- 헤더 -->
-    <article class="intro-section findus-section">
-        <h2>오시는길</h2>
+    <nav>
+        <h1>모임 시간 및 장소</h1>
         <p>우리의 모임 일정과 장소를 확인하세요!</p>
-    </article>
+    </nav>
 
     <!-- 메인 콘텐츠 -->
-    <article class="findus-article">
-        <div id="map" style="width:100%;height:400px;"></div>
-        <div class="findus-content">
-            <div>
-                <h3>2025년도 1학기 한우리 스터디 OT 일정</h3>
-                <ul>
-                    <li><span>일자:</span> 2025년 2월 19일</li>
-                    <li><span>요일:</span> 토요일</li>
-                    <li><span>시간:</span> 오후 7시 30분 ~ </li>
-                    <li>시간은 유동적으로 바뀔 수 있습니다!</li>
-                </ul>
-            </div>
-            <div>
-                <h3>모임 장소</h3>
-                <ul>
-                    <li><span>장소명 :</span> 한우리 스터디 룸</li>
-                    <li><span>주소 :</span> 서울특별시 영등포구 도림로 282 3층(뉴타운갈비탕건물) </li>
-                    <li><span>지하철 :</span> 7호선 신풍역 4번 출구에서 도보 8분</li>
-                    <li><span>버스 :</span> 대영중학교.신길센트럴아이파크 6633, 영등포01, 영등포07</li>
-                </ul>
-                <p>자세한 내용이나 문의 사항은 <a href="/contact" style ="color: #ffb144">문의 페이지</a>를 통해 연락하실 수 있습니다.</p>
-            </div>
+    <div class="main">
+        <div class="map">
+            <h1 style ="font-size: 30px">오시는 길</h1>
+            <div id="map" style="width:100%;height:300px;"></div>
+        </div>
+        <div class="content">
+            <h2>2025년도 1학기 한우리 스터디 OT 일정</h2>
+            <ul>
+                <li><span>일자:</span> 2025년 2월 19일</li>
+                <li><span>요일:</span> 토요일</li>
+                <li><span>시간:</span> 오후 7시 30분 ~ </li>
+                <li> 시간은 유동적으로 바뀔 수 있습니다!</li>
+            </ul>
 
+            <h2>모임 장소</h2>
+            <ul>
+                <li><span>장소명:</span> 한우리 스터디 룸</li>
+                <li><span>주소:</span> 서울특별시 영등포구 도림로 282 3층(뉴타운갈비탕건물) </li>
+                <li><span>대중교통:</span> 지하철 - 7호선 신풍역 4번 출구에서 도보 8분</li>
+                <li>버스 - 대영중학교.신길센트럴아이파크 6633, 영등포01, 영등포07  </li>
+
+            </ul>
+
+            <p>자세한 내용이나 문의 사항은 <a href="/contact" style ="color: #ffb144">문의 페이지</a>를 통해 연락하실 수 있습니다.</p>
         </div>
 
 
-    </article>
+    </div>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e329318ea424d674ffdf93ab824bc5ba"></script>
     <script>
@@ -78,5 +231,27 @@
         // 마커 지도에 추가
         marker.setMap(map);
     </script>
+    <!--
+	* 카카오맵 - 약도서비스
+	* 한 페이지 내에 약도를 2개 이상 넣을 경우에는
+	* 약도의 수 만큼 소스를 새로 생성, 삽입해야 합니다.
+-->
+    <!-- 1. 약도 노드 -->
+    <div id="daumRoughmapContainer1736834395034" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+    <!-- 2. 설치 스크립트 -->
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+    <!-- 3. 실행 스크립트 -->
+    <script charset="UTF-8">
+        new daum.roughmap.Lander({
+            "timestamp" : "1736834395034",
+            "key" : "2mrui",
+            "mapWidth" : "800",
+            "mapHeight" : "360"
+        }).render();
+    </script>
+
+
 </section>
 </html>
