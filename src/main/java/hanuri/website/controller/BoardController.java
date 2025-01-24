@@ -12,6 +12,7 @@ import hanuri.website.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,9 @@ import java.util.UUID;
 
 @Controller
 public class BoardController {
+
+    @Value("${file.dir}")
+    private String fileDir;
 
     private final BoardService boardService;
     private final MemberService memberService;
@@ -64,7 +68,7 @@ public class BoardController {
                 String ext = fileName.substring(fileName.lastIndexOf("."));
                 String newFileName = UUID.randomUUID().toString() + ext;
 
-                Path folderPath = Paths.get("D:\\hanuri\\" + EImageType.board);
+                Path folderPath = Paths.get(fileDir + EImageType.board);
                 Path filePath = folderPath.resolve(newFileName);
 
                 if(!Files.exists(folderPath)) {
