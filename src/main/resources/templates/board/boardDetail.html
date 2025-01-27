@@ -16,7 +16,8 @@
                         <td><label for="categoryId">분류</label></td>
                         <td>
                             <select id="categoryId" th:field="*{board.categoryId}">
-                                <option th:each="category : ${categorys}" th:value="${category.value}" th:text="${category.displayName}">
+                                <option th:each="category : ${categorys}" th:value="${category.value}"
+                                        th:text="${category.displayName}">
                                     categoryId
                                 </option>
                             </select>
@@ -32,13 +33,19 @@
                     </tr>
                     <tr>
                         <td><label for="content">내용</label></td>
-                        <td><textarea id="content" cols="30" rows="10" th:field="*{board.content}" placeholder="내용을 입력하세요"></textarea></td>
+                        <td><textarea id="content" cols="30" rows="10" th:field="*{board.content}"
+                                      placeholder="내용을 입력하세요"></textarea></td>
                     </tr>
                     <tr>
                         <td><label>이미지파일</label></td>
                         <td>
-                            <img th:width="200" th:height="200" th:each="image : ${images}" th:src="@{'/hanuri' + ${image.getSrc()}}" th:alt="${image.getFileName()}"/>
+                            <img th:width="200" th:height="200" th:each="image : ${images}"
+                                 th:src="@{'/hanuri' + ${image.getSrc()}}" th:alt="${image.getOriginalFileName}"/>
                         </td>
+                    </tr>
+                    <tr>
+                        <td><label for="files">파일수정</label></td>
+                        <td><input id="files" type="file" name="files" multiple="multiple"/></td>
                     </tr>
                 </table>
             </div>
