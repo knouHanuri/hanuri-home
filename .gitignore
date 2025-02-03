@@ -41,3 +41,5 @@ out/
 ### LSH gitignore ##
 /doc/**.md
 .DS_Store
+
+application.yml
