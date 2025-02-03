@@ -29,12 +29,15 @@ CREATE TABLE IF NOT EXISTS SUBJECT (
     study_opened BOOLEAN not null
     );
 
+-- EDIT BY CSH 25/01/23
+-- 스터디목표(goal) 추가
 CREATE TABLE IF NOT EXISTS STUDY (
     study_id int PRIMARY KEY auto_increment,
     subject_code int,
     title VARCHAR(100),
     status ENUM('active', 'completed', 'pending'),
     schedule VARCHAR(50),
+    goal VARCHAR(200),
     start_date DATE,
     end_date DATE,
     established_by int,

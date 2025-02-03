@@ -14,6 +14,7 @@ public class Study {
     private String title;
     private EStudyStatus status;
     private String schedule;
+    private String goal;
     private Date startDate;
     private Date endDate;
     private Long establishedBy;
