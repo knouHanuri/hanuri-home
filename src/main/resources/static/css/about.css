@@ -1,9 +1,7 @@
 /* 소개 섹션 */
 .intro-section {
     width: 100%;
-    background: url(../image/sebpage_intro.jpg) center center no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background: linear-gradient(135deg, #ffe3b3, #ffb144);
     height: 200px;
     display: flex;
     align-items: center;
@@ -22,7 +20,7 @@
     line-height: 1;
 }
 .main-section {
-    width: min(1200px, 100% - 2rem);
+    width: min(1200px, 100% - 5rem);
     margin: 0 auto;
     padding-top: 70px;
     display: flex;
@@ -84,14 +82,8 @@
     background-size: cover;
 }
 /* 오시는길 섹션 */
-.findus-section {
-    width: 100%;
-    background: url(../image/sebpage_intro2.jpg) center center no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
 .findus-article{
-    width: min(1200px, 100% - 2rem);
+    width: min(1200px, 100% - 5rem);
     margin: 0 auto;
     padding-top: 70px;
     display: flex;
@@ -172,14 +164,8 @@
     border-radius: 5px;
 }
 /* 문의하기 */
-.contact-section{
-    width: 100%;
-    background: url(../image/sebpage_intro2.jpg) center center no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
 .contact-info{
-    width: min(800px, 100% - 2rem);
+    width: min(800px, 100% - 5rem);
     margin: 70px auto 0;
     padding: 30px;
     border: 1px solid #ddd;
@@ -221,65 +207,135 @@
     line-height: 1;
     margin-top: 15px;
 }
-@media (max-width: 625px) {
-    .intro-section h1 {
-        font-size: 50px;
-    }
-
-    .intro-section p {
-        font-size: 18px;
-        max-width: 100%;
-    }
-
-    .intro-section a {
-        padding: 12px 24px;
-        font-size: 0.9rem;
-    }
-
+@media screen and (max-width: 1024px) {
+    /* 소개 섹션 */
     .main-section {
-        width: 90%;
         padding-top: 50px;
-    }
-
-    .study {
+        gap: 0;
         flex-direction: column;
-        align-items: center;
     }
-
-    .main-left {
-        width: 70%;
-
-    }
-
-    .main-right {
+    .main-title{
         width: 100%;
-        font-size: 18px;
     }
-
-    .study-intro > h1 {
-        font-size: 40px;
-        padding-bottom: 20px;
+    .main-textbox{
+        margin-top: 20px;
     }
+    .main-textbox em{
+        font-size: 20px;
+        line-height: 1.4;
+        font-weight: 700;
 
-    .card-container {
+    }
+    .main-textbox ol{
+        display: grid;
+        gap: 8px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .main-textbox ol li span{
+        display: inline-flex;
+        margin-right: 5px;
+        font-weight: 600;
+    }
+    .main-textbox .main-imagebox {
+        width: 100%;
+        background: url(../image/activity.jpg) center center no-repeat;
+        background-size: cover;
+        height: 200px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .main-textbox .main-imagebox2{
+        background: url(../image/activity2.jpg) center center no-repeat;
+        background-size: cover;
+    }
+    /* 오시는길 섹션 */
+    .findus-article{
+        padding-top: 50px;
+        gap: 40px;
+    }
+    .findus-content{
         gap: 20px;
-        padding: 40px 10px;
+        flex-direction: column;
     }
-
-    .card {
-        padding: 20px;
-        min-width: 200px;
+}
+@media screen and (max-width: 767px) {
+    .intro-section {
+        height: 150px;
+        gap: 15px;
     }
-
-    .card h3 {
-        font-size: 1.2rem;
+    .intro-section h2{
+        font-size: 25px;
     }
-
-    .card p {
-        font-size: 0.9rem;
+    /* 소개 섹션 */
+    .main-section {
+        width: min(1200px, 100% - 2.2857rem);
+        padding-top: 30px;
+        gap: 0;
+        flex-direction: column;
     }
+    .main-title{
+        width: 100%;
+    }
+    .main-section h3{
+        font-size: 22px;
+    }
+    .main-section h3:after{
+        width: 8px;
+        height: 8px;
+        right: -12px;
+    }
+    .main-textbox{
+        margin-top: 15px;
+        gap: 10px;
+    }
+    .main-textbox em{
+        font-size: 18px;
 
-    .card a {
-        font-size: 0.8rem;
+    }
+    .main-textbox ol{
+        display: grid;
+        gap: 5px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .main-textbox .main-imagebox {
+        width: 100%;
+        background: url(../image/activity.jpg) center center no-repeat;
+        background-size: cover;
+        height: 200px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    .main-textbox .main-imagebox2{
+        background: url(../image/activity2.jpg) center center no-repeat;
+        background-size: cover;
+    }
+    /* 오시는길 섹션 */
+    .findus-article{
+        width: min(1200px, 100% - 2.2857rem);
+        padding-top: 30px;
+        gap: 30px;
+    }
+    .findus-content{
+        gap: 20px;
+    }
+    .findus-content h3{
+        font-size: 22px;
+    }
+    .findus-content h3:after{
+        width: 8px;
+        height: 8px;
+        right: -12px;
+    }
+    .findus-content ul{
+        flex: 1;
+    }
+    .findus-content ul li{
+        padding-block: 15px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .findus-content ul li span{
+        width: 100%;
     }
 }
