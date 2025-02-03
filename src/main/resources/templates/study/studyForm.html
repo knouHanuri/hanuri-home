@@ -3,6 +3,9 @@
       layout:decorate="layout/main">
 <head>
     <title>스터디 생성</title>
+    <style>
+        input[type="date"] { width:105px; }
+    </style>
 </head>
 <body>
 <section layout:fragment="content">
@@ -53,6 +56,10 @@
                     <tr>
                         <td><label for="endDate">* 종료일</label></td>
                         <td><input type="date" id="endDate" name="endDate" th:field="*{endDate}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="goal">스터디 목표</label></td>
+                        <td><textarea id="goal" name="goal" rows="5" maxlength="70" th:field="*{goal}"></textarea>
                     </tr>
                 </table>
             </div>
