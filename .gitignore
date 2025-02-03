@@ -39,6 +39,3 @@ out/
 ### LSH gitignore ##
 /doc/**.md
 .DS_Store
-
-application.properties
-application.yml

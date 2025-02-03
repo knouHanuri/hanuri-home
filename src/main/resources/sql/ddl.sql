@@ -44,16 +44,6 @@ CREATE TABLE IF NOT EXISTS STUDY (
     foreign key (subject_code) references SUBJECT (subject_code)
     );
 
-create table if not exists MembershipFeePayment (
-    membership_id int PRIMARY KEY auto_increment,
-    member_id int not null ,
-    payment_date date not null,
-    amount int not null,
-    expiration_date date not null,
-    CONSTRAINT fk_member_id foreign key (member_id) references member(member_id)
-    on update cascade
-    );
-
 -- EDIT BY LSH 24/10/22
 -- study_id auto_increment 수정
 -- 컬렴명 week -> round로 수정 (session을 쓰고싶었으나 예약어)
@@ -115,10 +105,3 @@ CREATE TABLE IF NOT EXISTS BOARD (
     CONSTRAINT fk_board_member_id FOREIGN KEY (member_id) REFERENCES MEMBER (member_id)
     ON UPDATE CASCADE
     );
-
--- EDIT BY LSH 24/10/22
--- member, image 테이블 제약조건 추가
--- 가장 마지막에 실행해주세요.
-ALTER TABLE MEMBER ADD CONSTRAINT fk_member_image_id FOREIGN KEY (image_id) REFERENCES IMAGE (IMAGE_ID)
-    ON UPDATE CASCADE
-    ON DELETE CASCADE;
