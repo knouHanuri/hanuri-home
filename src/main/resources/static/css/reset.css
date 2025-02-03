@@ -13,7 +13,7 @@ html, body {
     line-height: 1.7;
     word-break: keep-all;
 }
-button,a,input{
+a{
     text-decoration: none;
     color: #222;
     box-sizing: border-box;
