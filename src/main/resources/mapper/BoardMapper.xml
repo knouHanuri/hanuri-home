@@ -19,7 +19,7 @@
     <select id="findById" parameterType="int" resultType="hanuri.website.domain.dto.Board.Board">
         select *
         from board
-        where board_id = #{boardId}
+        where board_id = #{id}
     </select>
     <!--데이터 수정-->
     <update id="modify" parameterType="hanuri.website.domain.dto.Board.Board">

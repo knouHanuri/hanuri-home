@@ -63,6 +63,26 @@ public class BoardController {
         return "board/boardList";
     }
 
+    @GetMapping("/modify/{id}")
+    public String modify(@PathVariable int id, Model model) {
+        Board board = boardService.findOne(id).orElseGet(Board::new);
+        Member member = memberService.findOne(board.getMemberId()).orElseGet(Member::new);
+        List<ImageDTO> imageList = imageService.findByObjectId(board);
+
+        model.addAttribute("board", board);
+        model.addAttribute("images", imageList);
+        model.addAttribute("member", member);
+        model.addAttribute("categorys", EBoardCategory.values());
+        return "board/boardModify";
+    }
+
+    @PostMapping("/modify")
+    public String modify(@RequestParam MultipartFile[] files, @ModelAttribute Board board) throws IOException {
+        boardService.modify(board);
+        imageService.modify(files, board);
+        return "redirect:/";
+    }
+
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable int id, Model model) {
         Board board = boardService.findOne(id).orElseGet(Board::new);
@@ -74,13 +94,7 @@ public class BoardController {
         model.addAttribute("member", member);
         model.addAttribute("categorys", EBoardCategory.values());
         return "board/boardDetail";
-    }
 
-    @PostMapping("/modify")
-    public String modify(@RequestParam MultipartFile[] files, @ModelAttribute Board board) throws IOException {
-        boardService.modify(board);
-        imageService.modify(files, board);
-        return "redirect:/";
     }
 
 }

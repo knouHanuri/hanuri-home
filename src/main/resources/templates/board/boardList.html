@@ -23,9 +23,21 @@
                     th:text="${board.title}"></span></a></td>
             <td th:text="${board.memberName}"></td>
             <td th:text="${board.createdDate}"></td>
+            <td>
+                <button th:onclick="'view(' + ${board.boardId} + ')'">보기</button>
+                <button th:onclick="'edit(' + ${board.boardId} + ')'">수정</button>
+            </td>
         </tr>
         </tbody>
     </table>
+    <script>
+        function view(boardId){
+            window.location.href="/board/detail/" + boardId;
+        }
+        function edit(boardId){
+            window.location.href="/board/modify/" + boardId;
+        }
+    </script>
 </section>
 </body>
 </html>
