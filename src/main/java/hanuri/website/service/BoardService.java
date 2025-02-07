@@ -34,4 +34,8 @@ public class BoardService {
     public void modify(Board board) {
         boardMapper.modify(board);
     }
+
+    public List<Board> findForHome(int limit) {
+        return boardMapper.findForHome(limit);
+    }
 }

@@ -3,11 +3,9 @@ package hanuri.website.controller;
 import hanuri.website.domain.EBoardCategory;
 import hanuri.website.domain.dto.Board.Board;
 import hanuri.website.domain.dto.Member;
-import hanuri.website.dto.image.EImageType;
 import hanuri.website.dto.image.ImageDTO;
 import hanuri.website.service.BoardService;
 import hanuri.website.service.ImageService;
-import hanuri.website.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +24,11 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
-    private final MemberService memberService;
     private final ImageService imageService;
 
-    @Autowired
-    public BoardController(BoardService boardService, MemberService memberService, ImageService imageService) {
+    @Autowired  //생략 가능
+    public BoardController(BoardService boardService, ImageService imageService) {
         this.boardService = boardService;
-        this.memberService = memberService;
         this.imageService = imageService;
     }
 
@@ -66,12 +62,10 @@ public class BoardController {
     @GetMapping("/modify/{id}")
     public String modify(@PathVariable int id, Model model) {
         Board board = boardService.findOne(id).orElseGet(Board::new);
-        Member member = memberService.findOne(board.getMemberId()).orElseGet(Member::new);
         List<ImageDTO> imageList = imageService.findByObjectId(board);
 
         model.addAttribute("board", board);
         model.addAttribute("images", imageList);
-        model.addAttribute("member", member);
         model.addAttribute("categorys", EBoardCategory.values());
         return "board/boardModify";
     }
@@ -86,12 +80,10 @@ public class BoardController {
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable int id, Model model) {
         Board board = boardService.findOne(id).orElseGet(Board::new);
-        Member member = memberService.findOne(board.getMemberId()).orElseGet(Member::new);
         List<ImageDTO> imageList = imageService.findByObjectId(board);
 
         model.addAttribute("board", board);
         model.addAttribute("images", imageList);
-        model.addAttribute("member", member);
         model.addAttribute("categorys", EBoardCategory.values());
         return "board/boardDetail";
 

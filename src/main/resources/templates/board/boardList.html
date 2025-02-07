@@ -19,12 +19,11 @@
         <tbody>
         <tr th:each="board : ${boardList}">
             <td th:text="${board.boardId}"></td>
-            <td><a th:href="@{/board/detail/{id}(id=${board.boardId})}"><span
-                    th:text="${board.title}"></span></a></td>
+            <td><span th:text="${board.title}"></span></td>
             <td th:text="${board.memberName}"></td>
             <td th:text="${board.createdDate}"></td>
             <td>
-                <button th:onclick="'view(' + ${board.boardId} + ')'">보기</button>
+                <!--<button th:onclick="'view(' + ${board.boardId} + ')'">보기</button>-->
                 <button th:onclick="'edit(' + ${board.boardId} + ')'">수정</button>
             </td>
         </tr>

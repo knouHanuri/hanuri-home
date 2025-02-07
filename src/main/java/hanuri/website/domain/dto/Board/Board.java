@@ -19,6 +19,7 @@ public class Board implements ImageSource {
     private Date updatedDate;
     private boolean isComplete;
     private boolean isPublic;
+    private String MemberName;
 
     @Override
     public int getObjectId() {

@@ -13,4 +13,5 @@ public interface BoardMapper {
     List<Board> findAll();
     Optional<Board> findById(@Param("id") int id);
     void modify(Board board);
+    List<Board> findForHome(int limit);
 }
