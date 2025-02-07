@@ -3,74 +3,70 @@
       layout:decorate="layout/main">
 <head>
     <title>소개</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet"  th:href="@{/css/about.css}">
 </head>
 <body>
 <section layout:fragment="content">
 
     <!-- 인트로 -->
-    <div class="intro-section">
-        <h1>한우리</h1>
+    <article class="intro-section">
+        <h2>한우리 소개</h2>
         <p>한국방송통신대학교 공식 스터디에 오신것을 환영합니다!</p>
-        <a href="#cards" id="scroll-button">더 알아보기</a>
-    </div>
+    </article>
 
     <!-- 메인 컨텐츠  -->
-    <div class="main-section">
-        <div class="study-intro" id="study-intro">
-            <h1>스터디 소개</h1>
+    <article class="main-section">
+        <div class="main-title">
+            <h3>Greeting</h3>
         </div>
-        <div class="study">
-            <div class="main-left">
-                <img class="lg" src="/image/logo.jpg" alt="">
-            </div>
-            <div class="main-right">
-                <p>
-                    학우 여러분 들어 오시기만 하면 좋은 성적과 졸업은 따놓은 당상입니다!
-                    <br>저희가 무조건 졸업 시켜드릴 테니까 열심히만 나오세요~
-                </p>
-            </div>
-        </div>
-    </div>
+        <div class="main-textbox">
+            <em><span th:text="${#dates.year(#dates.createNow())}"></span>년 1학기 한국방송통신대학교 컴퓨터과학과<br/> 서울 스터디 한우리에서 학우 여러분을 기다립니다.</em>
+            <p>안녕하세요.
+                신•편입생 여러분 한국방송통신대학교 컴퓨터과학과 입학을 축하드립니다. <br/>
+                한우리에서는 <span th:text="${#dates.year(#dates.createNow())}"></span>년 1학기 학습 스터디에 참여할 신•편입생 여러분을 기다립니다.<br/>
+                우리 한우리 스터디는 남녀노소, 개발자, 넓은 인맥, 삶의 무료함 등에서 벗어나고 싶으신 모든 분들을 환영합니다!<br/>
+                컴퓨터에 관한 그 무엇도 몰라도 스터디에서 공부를 하며 천천히 배워 나갈 수 있으며, 졸업이 필요하신 분들도 중도에 포기하시는 일 없도록 서로서로 격려하며 화이팅하는 분위기로 끝까지 해내실 수 있으십니다.<br/>
+                개발자로서의 커리어 향상이 필요하신 분들도 주기적인 프로젝트 참여로 커리어 향상을 하실 수 있습니다.</p>
 
-
-    <!-- 카드 섹션 -->
-    <div id="cards" class="card-container">
-        <!-- 카드 1: 활동 내용 -->
-        <div class="card">
-            <h3>활동 내용</h3>
-            <p>우리 스터디의 주요 활동 내용 및 장점!</p>
-            <a href="activities">자세히 보기</a>
         </div>
-
-        <!-- 카드 2: 모임 시간 및 장소 -->
-        <div class="card">
-            <h3>오시는 길</h3>
-            <p>자세한 OT일정과 오시는 길을 확인 하실 수 있습니다. </p>
-            <a href="/findus">자세히 보기</a>
+    </article>
+    <article class="main-section">
+        <div class="main-title">
+        <h3>Activity</h3>
         </div>
-
-        <!-- 카드 3: 문의 사항 -->
-        <div class="card">
-            <h3>연락</h3>
-            <p>스터디 가입, 문의사항</p>
-            <a href="/contact">자세히 보기</a>
+        <div class="main-textbox">
+            <div class="main-imagebox"></div>
+            <em>우리는 이런 활동을 합니다!</em>
+            <ol>
+                <li><span>1.</span>각 과목 별 발표 및 토론</li>
+                <li><span>2.</span>스터디 자료 공유 및 시험 대비 집중 공부</li>
+                <li><span>3.</span>정재화 교수님 오프라인 특강!</li>
+                <li><span>4.</span>팀 프로젝트 진행</li>
+                <li><span>5.</span>주기적인 현직 학원 강사 특강</li>
+                <li><span>6.</span>정기 모임 및 친목 활동</li>
+            </ol>
         </div>
-        <script>
-            document.getElementById("scroll-button").addEventListener("click", function (event) {
-                event.preventDefault(); // 기본 동작 방지
-                const targetElement = document.getElementById("study-intro");
-                const offset = 0; // 스터디 소개가 창의 최상단에 닿도록
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: "smooth", // 부드러운 스크롤
-                });
-            });
-        </script>
+    </article>
+    <article class="main-section">
+        <div class="main-title">
+        <h3>We Want</h3>
+        </div>
+        <div class="main-textbox">
+            <div class="main-imagebox main-imagebox2"></div>
+            <em>이런 학우 분들이 오시면 좋습니다!</em>
+            <ol>
+                <li><span>1.</span>좋은 성적으로 졸업하기를 원하시는 분!</li>
+                <li><span>2.</span>각 과목 별 발표 및 토론</li>
+                <li><span>3.</span>개발자를 꿈꾸지만 어떻게 준비할지 모르시는 분!</li>
+                <li><span>4.</span>의지가 부족해서 같이 공부할 사람이 필요하신 분!</li>
+                <li><span>5.</span>일단 입학했지만 어떻게 공부할지 막막하신 분!</li>
+                <li><span>6.</span>새로운 사람을 만나 인맥을 넓히고 싶으신 분!</li>
+                <li><span>7.</span>일 끝나고 저녁에 심심하신 분!</li>
+                <li><span>8.</span>커리어 발전이 필요하신 분!</li>
+                <li><span>9.</span>그 외에도 한우리는 여러분의 가입을 언제나 환영합니다!</li>
+            </ol>
+        </div>
+    </article>
 </section>
 </body>
 </html>
