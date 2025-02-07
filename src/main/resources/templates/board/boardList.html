@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/main">
+      layout:decorate="board/boardMain">
 <head>
     <title>게시글 조회</title>
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 </head>
 <body>
-<section layout:fragment="content">
-    <h2>게시글 조회</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성시간</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="board : ${boardList}">
-            <td th:text="${board.boardId}"></td>
-            <td><span th:text="${board.title}"></span></td>
-            <td th:text="${board.memberName}"></td>
-            <td th:text="${board.createdDate}"></td>
-            <td>
-                <!--<button th:onclick="'view(' + ${board.boardId} + ')'">보기</button>-->
-                <button th:onclick="'edit(' + ${board.boardId} + ')'">수정</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<section layout:fragment="inner-content">
+    <div class="board-main">
+        <h2 th:text="${categoryName}"></h2>
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.boardId}"></td>
+                <td><span th:text="${board.title}"></span></td>
+                <td th:text="${board.memberName}"></td>
+                <td th:text="${board.createdDate}"></td>
+                <td>
+                    <!--<button th:onclick="'view(' + ${board.boardId} + ')'">보기</button>-->
+                    <button th:onclick="'edit(' + ${board.boardId} + ')'">수정</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <script>
-        function view(boardId){
-            window.location.href="/board/detail/" + boardId;
+        function view(boardId) {
+            window.location.href = "/board/detail/" + boardId;
         }
-        function edit(boardId){
-            window.location.href="/board/modify/" + boardId;
+
+        function edit(boardId) {
+            window.location.href = "/board/modify/" + boardId;
         }
     </script>
 </section>

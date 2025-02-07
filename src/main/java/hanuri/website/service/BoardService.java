@@ -1,6 +1,7 @@
 package hanuri.website.service;
 
 import hanuri.website.dao.BoardMapper;
+import hanuri.website.domain.EBoardCategory;
 import hanuri.website.domain.dto.Board.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,9 @@ public class BoardService {
 
     public List<Board> findForHome(int limit) {
         return boardMapper.findForHome(limit);
+    }
+
+    public List<Board> findWithCategory(int categoryId) {
+        return boardMapper.findWithCategory(categoryId);
     }
 }

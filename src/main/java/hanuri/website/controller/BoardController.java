@@ -32,6 +32,18 @@ public class BoardController {
         this.imageService = imageService;
     }
 
+    @GetMapping("/home")
+    public String home(Model model) {
+        //default 공지사항
+        int categoryId = EBoardCategory.info.getValue();
+        List<Board> boardList = boardService.findWithCategory(categoryId);
+        model.addAttribute("categorys", EBoardCategory.values());
+
+        model.addAttribute("categoryName", EBoardCategory.getDisplayName(categoryId));
+        model.addAttribute("boardList", boardList);
+        return "board/boardList";
+    }
+
     @GetMapping("/new")
     public String newBoard(Model model, HttpSession session) {
         Board board = new Board();
@@ -52,9 +64,11 @@ public class BoardController {
         return "redirect:/";
     }
 
-    @GetMapping("/list")
-    public String list(Model model) {
-        List<Board> boardList = boardService.findAll();
+    @GetMapping("/list/{categoryId}")
+    public String list(@PathVariable int categoryId,Model model) {
+        List<Board> boardList = boardService.findWithCategory(categoryId);
+        model.addAttribute("categorys", EBoardCategory.values());
+        model.addAttribute("categoryName", EBoardCategory.getDisplayName(categoryId));
         model.addAttribute("boardList", boardList);
         return "board/boardList";
     }
@@ -63,7 +77,6 @@ public class BoardController {
     public String modify(@PathVariable int id, Model model) {
         Board board = boardService.findOne(id).orElseGet(Board::new);
         List<ImageDTO> imageList = imageService.findByObjectId(board);
-
         model.addAttribute("board", board);
         model.addAttribute("images", imageList);
         model.addAttribute("categorys", EBoardCategory.values());

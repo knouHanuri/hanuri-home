@@ -1,0 +1,20 @@
+.board-navi {
+    width: calc(50% - 2rem);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.board-navi-ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.board-navi-li {
+    cursor: pointer;
+}

@@ -39,5 +39,15 @@
         where board_id = #{boardId}
     </update>
 
+    <!--분류별 게시글 조회-->
+    <select id="findWithCategory" parameterType="int" resultType="hanuri.website.domain.dto.Board.Board">
+        select b.*, m.name as memberName
+        from board as b
+                 join member as m on b.member_id = m.member_id
+        where b.category_id = ${categoryId}
+        order by b.board_id
+    </select>
+
+
 
 </mapper>
