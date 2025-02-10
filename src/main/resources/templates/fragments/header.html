@@ -1,7 +1,32 @@
-<header th:fragment="header">
-
-    <div class="logo"><a href="/"><img class="logo-image" src="/image/logo.jpg" alt="한우리 로고 사진"></a></div>
+<!--<<<<<<< HEAD-->
+<!--&lt;!&ndash; header &ndash;&gt;-->
+<!--<header th:fragment="header" >-->
+<!--    <div class="inner header-inner">-->
+<!--        <div class="header-left">-->
+<!--            <h1 class="logo">-->
+<!--                <a href="/">-->
+<!--                    <img th:src="@{/image/logo.png}" alt="한우리 로고"/>-->
+<!--                </a>-->
+<!--            </h1>-->
+<!--            <nav class="gnb">-->
+<!--                <a th:href="@{/about}">소개</a>-->
+<!--                <a th:href="@{/location}">오시는 길</a>-->
+<!--                <a th:href="@{/study}">스터디</a>-->
+<!--                <a th:href="@{/community}">커뮤니티</a>-->
+<!--            </nav>-->
+<!--        </div>-->
+<!--        <div class="header-right">-->
+<!--            <button><img th:src="@{/image/search.png}" alt="검색"/></button>-->
+<!--            <a th:href="@{/login}">로그인</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+<!--=======-->
+<header th:fragment="header" class="header">
+    <div class="inner header-inner">
+    <div class="logo"><a href="/"><img class="logo-image" src="/image/logo.png" alt="한우리 로고 사진"></a></div>
     <div class="menu"><a href="/about">소개</a></div>
+    <div class="menu"><a href="/findus">오시는길</a></div>
     <div class="menu"><a href="/study/list">스터디</a></div>
     <div class="menu"><a href="/board/list">게시판</a></div>
     <div class="gnb">
@@ -30,11 +55,13 @@
             </div>
             <div class="ham-menu-list" id="ham-menu">
                 <a href="/about"><div class="ham-menu-item">소개</div></a>
+                <a href="/findus"><div class="ham-menu-item">오시는길</div></a>
                 <a href="/study/list"><div class="ham-menu-item">스터디</div></a>
                 <a href="/board/list"><div class="ham-menu-item">게시판</div></a>
             </div>
         </div>
 
+    </div>
     </div>
     <!--
     <ul class="gnb">
@@ -53,3 +80,4 @@
 </header>
 
 
+>>>>>>> 36908231e088e8e9f5c613bce0784920d5c9e33d
