@@ -74,7 +74,7 @@ public class BoardController {
     }
 
     @GetMapping("/modify/{id}")
-    public String modify(@PathVariable int id, Model model) {
+    public String modify(@PathVariable Long id, Model model) {
         Board board = boardService.findOne(id).orElseGet(Board::new);
         List<ImageDTO> imageList = imageService.findByObjectId(board);
         model.addAttribute("board", board);
@@ -86,12 +86,12 @@ public class BoardController {
     @PostMapping("/modify")
     public String modify(@RequestParam MultipartFile[] files, @ModelAttribute Board board) throws IOException {
         boardService.modify(board);
-        imageService.modify(files, board);
+        imageService.modifyImages(files, board);
         return "redirect:/";
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable int id, Model model) {
+    public String detail(@PathVariable Long id, Model model) {
         Board board = boardService.findOne(id).orElseGet(Board::new);
         List<ImageDTO> imageList = imageService.findByObjectId(board);
 

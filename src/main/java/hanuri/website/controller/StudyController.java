@@ -2,6 +2,7 @@ package hanuri.website.controller;
 
 import hanuri.website.domain.EStudyStatus;
 import hanuri.website.dto.Study;
+import hanuri.website.service.ImageService;
 import hanuri.website.service.StudyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +12,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class  StudyController {
     private final StudyService studyService;
+    private final ImageService imageService;
 
     @Autowired
-    public StudyController(StudyService studyService) { this.studyService = studyService; }
+    public StudyController(StudyService studyService, ImageService imageService) {
+        this.studyService = studyService;
+        this.imageService = imageService;
+    }
 
     @GetMapping("/study/list")
     public String studyList(Model model){
@@ -41,8 +48,7 @@ public class  StudyController {
     }
 
     @PostMapping("/study/formSave")
-    public String create(@ModelAttribute @Valid Study studyForm, RedirectAttributes redirectAttributes, BindingResult bindingResult)
-    {
+    public String create(@ModelAttribute @Valid Study studyForm, RedirectAttributes redirectAttributes, BindingResult bindingResult, MultipartFile file) throws IOException {
         if (bindingResult.hasErrors()) {
             // 유효성 검사 실패 시, 다시 폼으로 돌아감
             return "/study/form";
@@ -53,9 +59,13 @@ public class  StudyController {
         String msg = "등록";
         if(studyForm.getStudyId() != null) {
             studyService.update(studyForm);
+            imageService.modify(file,studyForm);
             msg = "수정";
         }
-        else studyService.save(studyForm);
+        else{
+            studyService.save(studyForm);
+            imageService.store(file,studyForm);
+        }
 
         redirectAttributes.addFlashAttribute("message", String.format("스터디가 %s되었습니다.", msg));
         return "redirect:/study/list";

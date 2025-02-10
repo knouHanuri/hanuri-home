@@ -6,9 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ImageDTO {
-    private int imageId;
+    private Long imageId;
     private EImageType ImageType;
-    private int objectId;
+    private Long objectId;
     private String filePath;
     private String originalFileName;
     private String storeFileName;
@@ -18,12 +18,12 @@ public class ImageDTO {
 
     }
 
-    public ImageDTO(EImageType imageType, int objectId) {
+    public ImageDTO(EImageType imageType, Long objectId) {
         this.ImageType = imageType;
         this.objectId = objectId;
     }
 
-    public ImageDTO(EImageType imageType, int objectId, String filePath, String originalFileName, String storeFileName, String src) {
+    public ImageDTO(EImageType imageType, Long objectId, String filePath, String originalFileName, String storeFileName, String src) {
         this.ImageType = imageType;
         this.objectId = objectId;
         this.filePath = filePath;

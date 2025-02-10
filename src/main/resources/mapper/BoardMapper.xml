@@ -23,7 +23,7 @@
         order by b.board_id desc limit #{limit}
     </select>
     <!--데이터 조회(Id)-->
-    <select id="findById" parameterType="int" resultType="hanuri.website.domain.dto.Board.Board">
+    <select id="findById" parameterType="Long" resultType="hanuri.website.domain.dto.Board.Board">
         select b.*, m.name as memberName
         from board as b
                  join member as m on b.member_id = m.member_id

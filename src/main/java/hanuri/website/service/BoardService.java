@@ -28,7 +28,7 @@ public class BoardService {
         return boardMapper.findAll();
     }
 
-    public Optional<Board> findOne(int id) {
+    public Optional<Board> findOne(Long id) {
         return boardMapper.findById(id);
     }
 

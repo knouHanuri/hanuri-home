@@ -37,7 +37,7 @@
                         <td><label>이미지파일</label></td>
                         <td>
                             <img th:width="200" th:height="200" th:each="image : ${images}"
-                                 th:src="@{'/hanuri' + ${image.getSrc()}}" th:alt="${image.getOriginalFileName}"/>
+                                 th:src="@{'/hanuri' + ${image.getSrc()}}" th:alt="${image.getOriginalFileName()}"/>
                         </td>
                     </tr>
                     <tr>

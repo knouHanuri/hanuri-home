@@ -81,19 +81,32 @@ public class ImageService {
         return originalFilename.substring(pos + 1);
     }
 
-    public List<ImageDTO> modify(MultipartFile[] multipartFiles, ImageSource imageSource) throws IOException {
+    public List<ImageDTO> modifyImages(MultipartFile[] files, ImageSource imageSource) throws IOException {
         //삭제
-        if (!multipartFiles[0].isEmpty()) {
+        if (!files[0].isEmpty()) {
             int count = delete(imageSource);
             log.info("삭제된 파일 수 : " + count);
         }
         //저장
         List<ImageDTO> imageDTOList = new ArrayList<>();
-        for (MultipartFile multipartFile : multipartFiles) {
+        for (MultipartFile multipartFile : files) {
             imageDTOList.add(store(multipartFile, imageSource));
         }
 
         return imageDTOList;
+    }
+
+    public ImageDTO modify(MultipartFile file, ImageSource imageSource) throws IOException {
+        //삭제
+        if (!file.isEmpty()) {
+            delete(imageSource);
+        }
+        //저장
+        List<ImageDTO> imageDTOList = new ArrayList<>();
+
+        ImageDTO imageDTO;
+        imageDTO = store(file, imageSource);
+        return imageDTO;
     }
 
     private int delete(ImageSource imageSource) throws IOException {

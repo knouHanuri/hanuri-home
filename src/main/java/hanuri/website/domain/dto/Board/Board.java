@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class Board implements ImageSource {
-    private int boardId;
+    private Long boardId;
     private String title;
     private int memberId;
     private int categoryId;
@@ -22,7 +22,7 @@ public class Board implements ImageSource {
     private String MemberName;
 
     @Override
-    public int getObjectId() {
+    public Long getObjectId() {
         return boardId;
     }
 
