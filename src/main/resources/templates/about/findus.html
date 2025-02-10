@@ -32,50 +32,51 @@
                 <h3>OT</h3>
             </div>
             <ul>
-                <li><span>일자</span>2025년 2월 18일</li>
-                <li><span>요일</span>화요일</li>
-                <li><span>시간</span>오후 7시 30분 ~</li>
-                <li><span>비고</span>시간은 유동적으로 바뀔 수 있습니다!</li>
+                <li><span>일자</span>2025년 2월 21일</li>
+                <li><span>요일</span>금요일</li>
+                <li><span>시간</span>오후 8시 00분 ~</li>
             </ul>
         </div>
     </article>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e329318ea424d674ffdf93ab824bc5ba"></script>
     <script>
-        // 지도 생성
-        var container = document.getElementById('map');
-        var options = {
-            center: new kakao.maps.LatLng(37.50126818833467, 126.90630367494592), // 지도 중심 좌표
-            level: 4
-        };
-        var map = new kakao.maps.Map(container, options);
+        window.onload = function(){
+            // 지도 생성
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(37.50126818833467, 126.90630367494592), // 지도 중심 좌표
+                level: 4
+            };
+            var map = new kakao.maps.Map(container, options);
 
-        // 경로를 구성하는 좌표 배열
-        var linePath = [
-            new kakao.maps.LatLng(37.50013, 126.908969), // 시작점
-            new kakao.maps.LatLng(37.50017754524346, 126.90576786096506), // 중간점
-            new kakao.maps.LatLng(37.502960208387805, 126.90397465056222)  // 끝점
-        ];
+            // 경로를 구성하는 좌표 배열
+            var linePath = [
+                new kakao.maps.LatLng(37.50013, 126.908969), // 시작점
+                new kakao.maps.LatLng(37.50017754524346, 126.90576786096506), // 중간점
+                new kakao.maps.LatLng(37.502960208387805, 126.90397465056222)  // 끝점
+            ];
 
-        // Polyline 객체 생성
-        var polyline = new kakao.maps.Polyline({
-            path: linePath, // 선을 구성하는 좌표 배열
-            strokeWeight: 5, // 선의 두께
-            strokeColor: '#FF0000', // 선의 색깔
-            strokeOpacity: 0.8, // 선의 투명도 (0~1)
-            strokeStyle: 'solid' // 선의 스타일
-        });
+            // Polyline 객체 생성
+            var polyline = new kakao.maps.Polyline({
+                path: linePath, // 선을 구성하는 좌표 배열
+                strokeWeight: 5, // 선의 두께
+                strokeColor: '#FF0000', // 선의 색깔
+                strokeOpacity: 0.8, // 선의 투명도 (0~1)
+                strokeStyle: 'solid' // 선의 스타일
+            });
 
-        // 지도에 Polyline 표시
-        polyline.setMap(map);
-        // 마커 생성
-        var markerPosition = new kakao.maps.LatLng(37.5030499932501, 126.904140670924); // 마커 위치
-        var marker = new kakao.maps.Marker({
-            position: markerPosition // 마커의 위치
-        });
+            // 지도에 Polyline 표시
+            polyline.setMap(map);
+            // 마커 생성
+            var markerPosition = new kakao.maps.LatLng(37.5030499932501, 126.904140670924); // 마커 위치
+            var marker = new kakao.maps.Marker({
+                position: markerPosition // 마커의 위치
+            });
 
-        // 마커 지도에 추가
-        marker.setMap(map);
+            // 마커 지도에 추가
+            marker.setMap(map);
+        }
     </script>
     <!--
 	* 카카오맵 - 약도서비스
