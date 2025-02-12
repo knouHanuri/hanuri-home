@@ -37,21 +37,26 @@ public class BoardController {
         //default 공지사항
         int categoryId = EBoardCategory.info.getValue();
         List<Board> boardList = boardService.findWithCategory(categoryId);
-        model.addAttribute("categorys", EBoardCategory.values());
-
-        model.addAttribute("categoryName", EBoardCategory.getDisplayName(categoryId));
+        model.addAttribute("categories", EBoardCategory.values());
+        model.addAttribute("selectedCategory", EBoardCategory.getDisplayNameAndValue(categoryId));
         model.addAttribute("boardList", boardList);
         return "board/boardList";
     }
 
-    @GetMapping("/new")
-    public String newBoard(Model model, HttpSession session) {
+    @GetMapping("/new/{categoryId}")
+    public String newBoard(@PathVariable int categoryId, Model model, HttpSession session) throws Exception {
         Board board = new Board();
-        Member member = (Member) session.getAttribute("user");
-        board.setMemberId(member.getMemberId());
-        model.addAttribute("board", board);
-        model.addAttribute("member", member);
-        model.addAttribute("categorys", EBoardCategory.values());
+
+        if(session.getAttribute("user") != null) {
+            Member member = (Member) session.getAttribute("user");
+            board.setMemberId(member.getMemberId());
+            model.addAttribute("board", board);
+            model.addAttribute("member", member);
+            model.addAttribute("categories", EBoardCategory.values());
+            model.addAttribute("selectedCategory", EBoardCategory.getDisplayNameAndValue(categoryId));
+        }else{
+            throw new Exception("세션없음");
+        }
         return "board/boardNew";
     }
 
@@ -65,10 +70,11 @@ public class BoardController {
     }
 
     @GetMapping("/list/{categoryId}")
-    public String list(@PathVariable int categoryId,Model model) {
+    public String list(@PathVariable int categoryId, Model model) {
         List<Board> boardList = boardService.findWithCategory(categoryId);
-        model.addAttribute("categorys", EBoardCategory.values());
-        model.addAttribute("categoryName", EBoardCategory.getDisplayName(categoryId));
+        model.addAttribute("categories", EBoardCategory.values());
+        model.addAttribute("selectedCategory", EBoardCategory.getDisplayNameAndValue(categoryId));
+
         model.addAttribute("boardList", boardList);
         return "board/boardList";
     }
@@ -79,7 +85,7 @@ public class BoardController {
         List<ImageDTO> imageList = imageService.findByObjectId(board);
         model.addAttribute("board", board);
         model.addAttribute("images", imageList);
-        model.addAttribute("categorys", EBoardCategory.values());
+        model.addAttribute("categories", EBoardCategory.values());
         return "board/boardModify";
     }
 
@@ -97,7 +103,7 @@ public class BoardController {
 
         model.addAttribute("board", board);
         model.addAttribute("images", imageList);
-        model.addAttribute("categorys", EBoardCategory.values());
+        model.addAttribute("categories", EBoardCategory.values());
         return "board/boardDetail";
 
     }

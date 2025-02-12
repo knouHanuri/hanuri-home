@@ -3,6 +3,8 @@ package hanuri.website.domain;
 import lombok.Getter;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Getter
 public enum EBoardCategory {
@@ -18,12 +20,23 @@ public enum EBoardCategory {
         this.value = value;
     }
 
-    public static String getDisplayName(int value) {
+    public static DisplayNameValuePair getDisplayNameAndValue(int value) {
         return Arrays.stream(EBoardCategory.values())
                 .filter(category -> category.value == value)
-                .map(EBoardCategory::getDisplayName)
+                .map(category -> new DisplayNameValuePair(category.getDisplayName(), category.getValue()))
                 .findFirst()
                 .orElse(null);
+
+    }
+
+    @Getter
+    public static class DisplayNameValuePair{
+        private final String displayName;
+        private final int value;
+        public DisplayNameValuePair(String displayName, int value) {
+            this.displayName = displayName;
+            this.value = value;
+        }
     }
 
 }

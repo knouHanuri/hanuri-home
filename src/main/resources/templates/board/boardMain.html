@@ -14,7 +14,7 @@
     </article>
     <div class="board-navi">
         <ul class="board-navi-ul">
-            <li class="board-navi-li" th:each="category : ${categorys}" th:text="${category.displayName}"
+            <li class="board-navi-li" th:each="category : ${categories}" th:text="${category.displayName}"
                 th:value="${category.value}" th:onclick="'list(' + ${category.value} + ')'"></li>
         </ul>
     </div>

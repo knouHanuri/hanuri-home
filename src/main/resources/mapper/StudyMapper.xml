@@ -8,9 +8,11 @@
         select * from study order by study_id desc
     </select>
     <!--데이터 일정 수 조회(이미지 추가)-->
-    <select id="studyListLimited" parameterType="int" resultType="hanuri.website.dto.Study">
+    <select id="studyListLimited" parameterType="int" resultMap="studyAndImageMap">
         select *
-        from study
+        from study as s
+        left join image as i on i.image_type = 'study'
+                            and i.object_id = s.study_id
         order by study_id desc LIMIT #{limit}
     </select>
     <!--데이터 조회(Id)-->

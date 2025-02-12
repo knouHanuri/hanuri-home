@@ -17,8 +17,10 @@
                         <td><label for="categoryId">분류</label></td>
                         <td>
                             <select id="categoryId" th:field="*{board.categoryId}">
-                                <option th:each="category : ${categorys}" th:value="${category.value}"
-                                        th:text="${category.displayName}">
+                                <option th:each="category : ${categories}" th:value="${category.value}"
+                                        th:text="${category.displayName}"
+                                        th:selected="${category.value == selectedCategory.getValue()}"
+                                >
                                     categoryId
                                 </option>
                             </select>
@@ -58,6 +60,7 @@
         document.querySelector("form").addEventListener("submit", function () {
             document.querySelector("#content").value = editor.getMarkdown();  // 마크다운 형태로 저장
         });
+
     </script>
 </section>
 </body>

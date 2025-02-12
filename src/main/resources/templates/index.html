@@ -157,7 +157,9 @@
                         <span th:text="${study.status.displayName}" class="progress"></span>
                     </div>
                     <div class="study-content">
-                        <p th:text="${study.title}"></p>
+                        <p th:text="${study.goal}"></p>
+                        <img th:if="${study.getImageDTO().getSrc() != null}" th:height="100" th:src="@{'/hanuri' + ${study.getImageDTO().getSrc()}}" th:alt="${study.getImageDTO().getOriginalFileName()}" >
+                        <p th:if="${study.getImageDTO().getSrc() == null}">이미지가 없습니다.</p>
                     </div>
                     <div class="study-footer">
                         <span th:utext="${study.startDate} + ' ~<br/>' + ${study.endDate}"></span>

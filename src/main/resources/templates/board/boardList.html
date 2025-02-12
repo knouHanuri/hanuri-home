@@ -8,7 +8,8 @@
 <body>
 <section layout:fragment="inner-content">
     <div class="board-main">
-        <h2 th:text="${categoryName}"></h2>
+        <h2 th:text="${selectedCategory.getDisplayName()}"></h2>
+        <button th:onclick="'boardNew(' + ${selectedCategory.getValue()} + ')'">새글</button>
         <table>
             <thead>
             <tr>
@@ -33,6 +34,10 @@
         </table>
     </div>
     <script>
+        function boardNew(categoryId) {
+            window.location.href = "/board/new/" + categoryId;
+        }
+
         function view(boardId) {
             window.location.href = "/board/detail/" + boardId;
         }

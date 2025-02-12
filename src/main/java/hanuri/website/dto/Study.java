@@ -23,6 +23,13 @@ public class Study implements ImageSource {
     private Long establishedBy;
     private ImageDTO imageDTO;
 
+    public ImageDTO getImageDTO() {
+        if(imageDTO == null){
+            imageDTO = new ImageDTO();
+        }
+        return imageDTO;
+    }
+
     @Override
     public Long getObjectId() {
         return studyId;

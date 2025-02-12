@@ -18,7 +18,7 @@
                         <td><label for="categoryId">분류</label></td>
                         <td>
                             <select id="categoryId" th:field="*{board.categoryId}">
-                                <option th:each="category : ${categorys}" th:value="${category.value}"
+                                <option th:each="category : ${categories}" th:value="${category.value}"
                                         th:text="${category.displayName}">
                                     categoryId
                                 </option>
