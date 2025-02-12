@@ -1,9 +1,16 @@
 package hanuri.website.domain;
 
+import lombok.Getter;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+@Getter
 public enum EBoardCategory {
     info("공지사항", 1),
     qna("Q&A", 2),
-    gallery("갤러리", 3);
+    free("자유게시판", 3);
 
     private final String displayName;
     private final int value;
@@ -13,11 +20,23 @@ public enum EBoardCategory {
         this.value = value;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public static DisplayNameValuePair getDisplayNameAndValue(int value) {
+        return Arrays.stream(EBoardCategory.values())
+                .filter(category -> category.value == value)
+                .map(category -> new DisplayNameValuePair(category.getDisplayName(), category.getValue()))
+                .findFirst()
+                .orElse(null);
+
     }
 
-    public int getValue() {
-        return value;
+    @Getter
+    public static class DisplayNameValuePair{
+        private final String displayName;
+        private final int value;
+        public DisplayNameValuePair(String displayName, int value) {
+            this.displayName = displayName;
+            this.value = value;
+        }
     }
+
 }

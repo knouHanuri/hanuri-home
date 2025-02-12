@@ -7,24 +7,44 @@
     <select id="studyListAll" resultType="hanuri.website.dto.Study">
         select * from study order by study_id desc
     </select>
-    <!--데이터 일정 수 조회-->
-    <select id="studyListLimited" parameterType="int" resultType="hanuri.website.dto.Study">
-        select * from study order by study_id desc LIMIT #{limit}
+    <!--데이터 일정 수 조회(이미지 추가)-->
+    <select id="studyListLimited" parameterType="int" resultMap="studyAndImageMap">
+        select *
+        from study as s
+        left join image as i on i.image_type = 'study'
+                            and i.object_id = s.study_id
+        order by study_id desc LIMIT #{limit}
     </select>
     <!--데이터 조회(Id)-->
-    <select id="findById" parameterType="long" resultType="hanuri.website.dto.Study">
-        select * from study where study_id = #{studyId}
+    <select id="findById" parameterType="long" resultMap="studyAndImageMap">
+        select *
+        from study as s
+        left join image as i on i.image_type = 'study'
+                            and i.object_id = s.study_id
+        where s.study_id = #{studyId}
     </select>
-<!--    &lt;!&ndash;데이터 조회(name)&ndash;&gt;-->
-<!--    <select id="findById" parameterType="string" resultType="hanuri.website.dto.Study" resultMap="Study" >-->
-<!--        select * from member where id = #{id} limit 1-->
-<!--    </select>-->
-<!--    &lt;!&ndash;데이터 조회(name)&ndash;&gt;-->
-<!--    <select id="findBySeq" parameterType="int" resultType="hanuri.website.dto.Study" resultMap="Study" >-->
-<!--        select * from member where seq = #{seq}-->
-<!--    </select>-->
+    <!--스터디(이미지 추가)-->
+    <resultMap id="studyAndImageMap" type="hanuri.website.dto.Study">
+        <id property="studyId" column="study_id" />
+        <result property="subjectCode" column="subject_code" />
+        <result property="title" column="title" />
+        <result property="status" column="status" />
+        <result property="schedule" column="schedule" />
+        <result property="startDate" column="start_date" />
+        <result property="endDate" column="end_date" />
+        <result property="establishedBy" column="established_by" />
+        <result property="goal" column="goal" />
+        <association property="imageDTO" javaType="hanuri.website.dto.image.ImageDTO">
+            <id property="imageId" column="image_id"/>
+            <result property="objectId" column="object_id"/>
+            <result property="filePath" column="file_path"/>
+            <result property="originalFileName" column="original_file_name"/>
+            <result property="storeFileName" column="store_file_name"/>
+            <result property="src" column="src"/>
+        </association>
+    </resultMap>
     <!--데이터 입력-->
-    <insert id="save" parameterType="hanuri.website.dto.Study">
+    <insert id="save" parameterType="hanuri.website.dto.Study" useGeneratedKeys="true" keyProperty="studyId">
         insert into study(subject_code, title, status, schedule, goal, start_date, end_date, established_by)
         values(#{subjectCode}, #{title}, #{status}, #{schedule}, #{goal},#{startDate}, #{endDate}, #{establishedBy})
     </insert>

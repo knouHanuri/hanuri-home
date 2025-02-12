@@ -10,7 +10,7 @@
 <body>
 <section layout:fragment="content">
     <div class="container">
-        <form id="studyForm" th:object="${study}">
+        <form id="studyForm" th:object="${study}" enctype="multipart/form-data">
             <input type="hidden" id="studyId" th:field="*{studyId}"/> <!-- 수정할 경우 ID를 숨긴 필드로 보냄 -->
             <div class="form-group">
                 <table>
@@ -60,6 +60,10 @@
                     <tr>
                         <td><label for="goal">스터디 목표</label></td>
                         <td><textarea id="goal" name="goal" rows="5" maxlength="70" th:field="*{goal}"></textarea>
+                    </tr>
+                    <tr>
+                        <td><label for="file">파일</label></td>
+                        <td><input id="file" type="file" name="file" /></td>
                     </tr>
                 </table>
             </div>

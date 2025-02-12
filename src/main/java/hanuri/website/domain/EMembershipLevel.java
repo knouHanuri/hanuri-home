@@ -1,5 +1,8 @@
 package hanuri.website.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum EMembershipLevel {
     admin("관리자"),
     normal("정회원"),
@@ -12,8 +15,4 @@ public enum EMembershipLevel {
         this.displayName = displayName;
     }
 
-    public String getDisplayName()
-    {
-        return displayName;
-    }
 }

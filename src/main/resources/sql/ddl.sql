@@ -78,8 +78,12 @@ CREATE TABLE IF NOT EXISTS study_participant (
 -- Image 테이블 DDL 추가
 CREATE TABLE IF NOT EXISTS image (
     image_id INT PRIMARY KEY auto_increment,
+    image_type  ENUM('member', 'study', 'board'),
+    object_id   INT NOT NULL,
     file_path VARCHAR(255) NOT NULL,
-    file_name VARCHAR(100) NOT NULL
+    original_file_name VARCHAR(100) NOT NULL,
+    store_file_name VARCHAR(50) NOT NULL,
+    src     VARCHAR(100) NULL
     );
 
 
@@ -101,7 +105,6 @@ CREATE TABLE IF NOT EXISTS board (
     updated_date DATETIME,
     is_complete BOOL,
     is_public BOOL,
-    image_id INT,
     CONSTRAINT fk_board_member_id FOREIGN KEY (member_id) REFERENCES member (member_id)
     ON UPDATE CASCADE
     );

@@ -1,5 +1,8 @@
 package hanuri.website.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum EGender {
     male("남성"),
     female("여성"),
@@ -12,8 +15,4 @@ public enum EGender {
         this.displayName = displayName;
     }
 
-    public String getDisplayName()
-    {
-        return displayName;
-    }
 }

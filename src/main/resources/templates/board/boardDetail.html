@@ -1,45 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/main">
+<html>
 <head>
-    <title>새 글</title>
+    <title>글 수정</title>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"/>
+    <style>
+        #contentView {
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-<section layout:fragment="content">
-    <div class="container">
-        <form action="/board/modify" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <input type="hidden" id="boardId" th:field="*{board.boardId}"/>
-                <input type="hidden" id="memberId" th:field="*{board.memberId}"/>
-                <input type="hidden" id="imageId" th:field="*{board.imageId}"/>
-                <table>
-                    <tr>
-                        <td><label for="categoryId">분류</label></td>
-                        <td>
-                            <select id="categoryId" th:field="*{board.categoryId}">
-                                <option th:each="category : ${categorys}" th:value="${category.value}" th:text="${category.displayName}">
-                                    categoryId
-                                </option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="title">제목</label></td>
-                        <td><input type="text" id="title" th:field="*{board.title}" placeholder="제목을 입력하세요"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="memberName">작성자</label></td>
-                        <td><input type="text" id="memberName" th:field="*{member.name}" disabled></td>
-                    </tr>
-                    <tr>
-                        <td><label for="content">내용</label></td>
-                        <td><textarea id="content" cols="30" rows="10" th:field="*{board.content}" placeholder="내용을 입력하세요"></textarea></td>
-                    </tr>
-                </table>
-            </div>
-            <button type="submit">수정</button>
-        </form>
-    </div>
-</section>
+<div class="detailmain">
+    <form action="/board/modify" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="hidden" id="boardId" th:field="*{board.boardId}"/>
+            <input type="hidden" id="memberId" th:field="*{board.memberId}"/>
+            <input type="hidden" id="content" th:field="*{board.content}"/>
+            <table>
+                <tr>
+                    <td><label for="categoryId">분류</label></td>
+                    <td>
+                        <select id="categoryId" th:field="*{board.categoryId}" disabled>
+                            <option th:each="category : ${categories}" th:value="${category.value}"
+                                    th:text="${category.displayName}">
+                                categoryId
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title">제목</label></td>
+                    <td><input type="text" id="title" th:field="*{board.title}" disabled></td>
+                </tr>
+                <tr>
+                    <td><label for="memberName">작성자</label></td>
+                    <td><input type="text" id="memberName" th:field="*{board.memberName}" disabled></td>
+                </tr>
+                <tr>
+                    <td><label>이미지파일</label></td>
+                    <td>
+                        <img th:width="200" th:height="200" th:each="image : ${images}"
+                             th:src="@{'/hanuri' + ${image.getSrc()}}" th:alt="${image.getOriginalFileName()}"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="contentView"></div>
+    </form>
+</div>
 </body>
 </html>

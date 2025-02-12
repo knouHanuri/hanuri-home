@@ -7,11 +7,13 @@
     text-align: center;
     width: 350px;
 }
+
 .login-form {
-    width:100%;
+    width: 100%;
 }
-.login-container table{
-    width:100%;
+
+.login-container table {
+    width: 100%;
 }
 
 .login-container label {
@@ -53,7 +55,6 @@
 }
 
 
-
 .links {
     margin-top: 15px;
     font-size: 14px;
@@ -68,19 +69,45 @@
     text-decoration: underline;
 }
 
+.oauth2 {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .oauth2-info {
-    padding-top:10px;
+    padding-top: 10px;
     font-size: 14px;
     font-weight: 500;
     line-height: normal;
     color: #0f1317;
+    font-family: 'Pretendard-Regular';
+    text-align: center;
 }
 
-.oauth2-icon-image {
+.oauth2-icons {
+    width: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.oauth2-icon-image-google {
     display: block;
     width: 30px;
     height: 30px;
     border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.oauth2-icon-image-kakao {
+    display: block;
+    padding-top: 7px;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
     object-fit: cover;
 }
