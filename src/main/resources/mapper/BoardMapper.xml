@@ -4,30 +4,50 @@
 
 <mapper namespace="hanuri.website.dao.BoardMapper">
     <!--데이터 입력-->
-    <insert id="save" parameterType="hanuri.website.domain.dto.Board.Board" useGeneratedKeys="true" keyProperty="boardId">
-        insert into board(title, member_id,category_id,content,created_date)
-        values (#{title}, #{memberId},#{categoryId}, #{content},curdate())
+    <insert id="save" parameterType="hanuri.website.domain.dto.Board.Board" useGeneratedKeys="true"
+            keyProperty="boardId">
+        insert into board(title, member_id, category_id, content, created_date)
+        values (#{title}, #{memberId}, #{categoryId}, #{content}, curdate())
     </insert>
     <!--데이터 전체 조회-->
-    <select id="findAll" resultType="hanuri.website.domain.dto.Board.BoardList">
-        select b.*,m.name as memberName
+    <select id="findAll" resultType="hanuri.website.domain.dto.Board.Board">
+        select b.*, m.name as memberName
         from board as b
-        join member as m on b.member_id = m.member_id
+                 join member as m on b.member_id = m.member_id
+    </select>
+    <!--데이터 조회(home 전용)-->
+    <select id="findForHome" parameterType="int" resultType="hanuri.website.domain.dto.Board.Board">
+        select b.*, m.name as memberName
+        from board as b
+                 join member as m on b.member_id = m.member_id
+        order by b.board_id desc limit #{limit}
     </select>
     <!--데이터 조회(Id)-->
-    <select id="findById" parameterType="int" resultType="hanuri.website.domain.dto.Board.Board">
-        select *
-        from board
-        where board_id = #{boardId}
+    <select id="findById" parameterType="Long" resultType="hanuri.website.domain.dto.Board.Board">
+        select b.*, m.name as memberName
+        from board as b
+                 join member as m on b.member_id = m.member_id
+        where board_id = #{id}
     </select>
     <!--데이터 수정-->
     <update id="modify" parameterType="hanuri.website.domain.dto.Board.Board">
         update board
-        set title           = #{title},
-            content         = #{content},
-            category_id = #{categoryId},
-            updated_date    = curdate()
-        where board_id      = #{boardId}
+        set title = #{title},
+        content = #{content},
+        category_id = #{categoryId},
+        updated_date = curdate()
+        where board_id = #{boardId}
     </update>
+
+    <!--분류별 게시글 조회-->
+    <select id="findWithCategory" parameterType="int" resultType="hanuri.website.domain.dto.Board.Board">
+        select b.*, m.name as memberName
+        from board as b
+                 join member as m on b.member_id = m.member_id
+        where b.category_id = ${categoryId}
+        order by b.board_id
+    </select>
+
+
 
 </mapper>

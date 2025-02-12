@@ -3,71 +3,109 @@ package hanuri.website.controller;
 import hanuri.website.domain.EBoardCategory;
 import hanuri.website.domain.dto.Board.Board;
 import hanuri.website.domain.dto.Member;
+import hanuri.website.dto.image.ImageDTO;
 import hanuri.website.service.BoardService;
-import hanuri.website.service.MemberService;
+import hanuri.website.service.ImageService;
 import jakarta.servlet.http.HttpSession;
-import org.apache.ibatis.javassist.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 import java.util.List;
-import java.util.Optional;
 
+@Slf4j
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 
     private final BoardService boardService;
-    private final MemberService memberService;
+    private final ImageService imageService;
 
-    @Autowired
-    public BoardController(BoardService boardService, MemberService memberService) {
+    @Autowired  //생략 가능
+    public BoardController(BoardService boardService, ImageService imageService) {
         this.boardService = boardService;
-        this.memberService = memberService;
+        this.imageService = imageService;
     }
 
-    @GetMapping("/board/new")
-    public String newBoard(Model model, HttpSession session) {
-        Board board = new Board();
-        Member member = (Member) session.getAttribute("user");
-        board.setMemberId(member.getMemberId());
-        model.addAttribute("board", board);
-        model.addAttribute("member", member);
-        model.addAttribute("categorys", EBoardCategory.values());
-        return "board/boardNew";
-    }
-
-    @PostMapping("/board/new")
-    public String saveBoard(@ModelAttribute Board board) {
-        boardService.save(board);
-        return "redirect:/";
-    }
-
-    @GetMapping("/board/list")
-    public String list(Model model) {
-        List<Board> boardList = boardService.findAll();
+    @GetMapping("/home")
+    public String home(Model model) {
+        //default 공지사항
+        int categoryId = EBoardCategory.info.getValue();
+        List<Board> boardList = boardService.findWithCategory(categoryId);
+        model.addAttribute("categories", EBoardCategory.values());
+        model.addAttribute("selectedCategory", EBoardCategory.getDisplayNameAndValue(categoryId));
         model.addAttribute("boardList", boardList);
         return "board/boardList";
     }
 
-    @GetMapping("/board/detail/{id}")
-    public String detail(@PathVariable int id, Model model) {
-        Board board = boardService.findOne(id).orElseGet(Board::new);
-        Member member = memberService.findOne(board.getMemberId()).orElseGet(Member::new);
-        model.addAttribute("board", board);
-        model.addAttribute("member", member);
-        model.addAttribute("categorys", EBoardCategory.values());
-        return "board/boardDetail";
+    @GetMapping("/new/{categoryId}")
+    public String newBoard(@PathVariable int categoryId, Model model, HttpSession session) throws Exception {
+        Board board = new Board();
+
+        if(session.getAttribute("user") != null) {
+            Member member = (Member) session.getAttribute("user");
+            board.setMemberId(member.getMemberId());
+            model.addAttribute("board", board);
+            model.addAttribute("member", member);
+            model.addAttribute("categories", EBoardCategory.values());
+            model.addAttribute("selectedCategory", EBoardCategory.getDisplayNameAndValue(categoryId));
+        }else{
+            throw new Exception("세션없음");
+        }
+        return "board/boardNew";
     }
 
-    @PostMapping("/board/modify")
-    public String modify(@ModelAttribute Board board) {
-        boardService.modify(board);
+    @PostMapping("/new")
+    public String saveBoard(@RequestParam MultipartFile[] files, @ModelAttribute Board board) throws IOException {
+        // 게시판
+        boardService.save(board);
+        //이미지 파일 저장
+        imageService.storeImages(files, board);
         return "redirect:/";
+    }
+
+    @GetMapping("/list/{categoryId}")
+    public String list(@PathVariable int categoryId, Model model) {
+        List<Board> boardList = boardService.findWithCategory(categoryId);
+        model.addAttribute("categories", EBoardCategory.values());
+        model.addAttribute("selectedCategory", EBoardCategory.getDisplayNameAndValue(categoryId));
+
+        model.addAttribute("boardList", boardList);
+        return "board/boardList";
+    }
+
+    @GetMapping("/modify/{id}")
+    public String modify(@PathVariable Long id, Model model) {
+        Board board = boardService.findOne(id).orElseGet(Board::new);
+        List<ImageDTO> imageList = imageService.findByObjectId(board);
+        model.addAttribute("board", board);
+        model.addAttribute("images", imageList);
+        model.addAttribute("categories", EBoardCategory.values());
+        return "board/boardModify";
+    }
+
+    @PostMapping("/modify")
+    public String modify(@RequestParam MultipartFile[] files, @ModelAttribute Board board) throws IOException {
+        boardService.modify(board);
+        imageService.modifyImages(files, board);
+        return "redirect:/";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable Long id, Model model) {
+        Board board = boardService.findOne(id).orElseGet(Board::new);
+        List<ImageDTO> imageList = imageService.findByObjectId(board);
+
+        model.addAttribute("board", board);
+        model.addAttribute("images", imageList);
+        model.addAttribute("categories", EBoardCategory.values());
+        return "board/boardDetail";
+
     }
 
 }

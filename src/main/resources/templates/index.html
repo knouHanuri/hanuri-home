@@ -4,9 +4,91 @@
 <head>
     <title>HOME</title>
     <link rel="stylesheet"  th:href="@{/css/index.css}">
-    <link rel="stylesheet"  th:href="@{/css/modal.css}">
-    <script type="application/javascript" src="/js/modal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@2.1.3/marked.min.js"></script>
+    <script type="application/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            const closeModalBtn = document.getElementById('closeModal');
+            const modal = document.getElementById('myModal');
+
+            // 모달 닫기 버튼 클릭 시 모달 닫기
+            closeModalBtn.addEventListener('click', () => {
+                document.body.classList.remove("modal-open");
+                modal.style.display = 'none';
+            });
+
+            // 모달 배경 클릭 시 모달 닫기
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    document.body.classList.remove("modal-open");
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        function showModal(kind,objectId) {
+            var url;
+            if(kind === 'study'){
+                url = '/study/details?studyId=' + objectId;
+            } else {
+                url = '/board/detail/' + objectId;
+            }
+            // AJAX 요청
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true); // 서버에서 HTML 내용 가져오기
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // 서버에서 받은 HTML을 모달에 삽입
+                    document.getElementById('modalBody').innerHTML = xhr.responseText;
+                    document.getElementById('myModal').style.display = 'block'; // 모달을 표시
+                    document.body.classList.add("modal-open");
+
+                    //게시판 보기 marked.js 적용
+                    if(kind === 'board'){
+                        let htmlContent = marked(document.querySelector("#content").value);
+                        document.querySelector("#contentView").innerHTML = htmlContent;
+                    }
+                }
+            };
+            xhr.send();
+        }
+    </script>
     <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3); /* 배경색 */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+            border-radius: 20px;
+            min-width: 600px ;
+        }
+
+        /* 닫기 버튼 스타일 */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         /* hover 효과 추가 */
         .study {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -17,10 +99,33 @@
             transform: scale(1.05); /* 살짝 확대 */
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
         }
+
+        .board {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .board:hover {
+            transform: scale(1.05); /* 살짝 확대 */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+        }
+
+        body.modal-open{
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width:90%;
+                min-width:initial;
+                margin:100px 0 0 0;
+            }
+        }
     </style>
 </head>
 <body>
 <section layout:fragment="content">
+    <!-- 메인컨텐츠 -->
     <div class="container">
         <div class="inner-container">
             <div class="card-header">
@@ -43,15 +148,18 @@
                 <!--                        <span>목요일 저녁 7PM</span>-->
                 <!--                    </div>-->
                 <!--                </div>-->
+                <!-- Study 2 -->
                 <div th:each="study, iterStat : ${studyList}" class="study"
-                     th:attr="onclick=|openModal('study', '${study.studyId}')|"
+                     th:attr="onclick=|showModal('study','${study.studyId}')|"
                      th:style="${iterStat.index % 2 == 0 ? 'background: linear-gradient(135deg, #fbc2eb, #a6c1ee);' : 'background: linear-gradient(135deg, #a8edea, #fed6e3);'}">
                     <div class="study-header">
                         <span th:text="${study.title}">Frontend</span>
                         <span th:text="${study.status.displayName}" class="progress"></span>
                     </div>
                     <div class="study-content">
-                        <p th:text="${study.title}"></p>
+                        <p th:text="${study.goal}"></p>
+                        <img th:if="${study.getImageDTO().getSrc() != null}" th:height="100" th:src="@{'/hanuri' + ${study.getImageDTO().getSrc()}}" th:alt="${study.getImageDTO().getOriginalFileName()}" >
+                        <p th:if="${study.getImageDTO().getSrc() == null}">이미지가 없습니다.</p>
                     </div>
                     <div class="study-footer">
                         <span th:utext="${study.startDate} + ' ~<br/>' + ${study.endDate}"></span>
@@ -68,53 +176,30 @@
                 <a href="/board/list">모두보기 &gt;</a>
             </div>
             <div class="boards">
-                <div class="board">
-                    <h3>제목은 이렇습니다...</h3>
-                    <p>ESG 컨설턴트로 커리어를 시작해 보려고 합니다. 국내 ESG 컨설팅 분야의 전망에 대하여 어떻게 생각하시는지 여쭙고 싶습니다. 외국에 비해 파이가 많이 작고 아직까지도 국내
-                        기업들...</p>
+                <div th:each="board, iterStat : ${boardList}" class="board"
+                     th:attr="onclick=|showModal('board','${board.boardId}')|">
+                    <h3 th:text="${board.title}"></h3>
+                    <p th:text="${board.content}"></p>
                     <div class="board-footer">
                         <div class="user-info">
                             <span class="user-icon"></span>
-                            <span>000 동문</span>
+                            <span th:text="${board.memberName}"></span>
                         </div>
-                        <span>2024.10.31</span>
-                    </div>
-                </div>
-                <div class="board">
-                    <h3>제목은 이렇습니다...</h3>
-                    <p>ESG 컨설턴트로 커리어를 시작해 보려고 합니다. 국내 ESG 컨설팅 분야의 전망에 대하여 어떻게 생각하시는지 여쭙고 싶습니다. 외국에 비해 파이가 많이 작고 아직까지도 국내
-                        기업들...</p>
-                    <div class="board-footer">
-                        <div class="user-info">
-                            <span class="user-icon"></span>
-                            <span>000 동문</span>
-                        </div>
-                        <span>2024.10.31</span>
-                    </div>
-                </div>
-                <div class="board">
-                    <h3>제목은 이렇습니다...</h3>
-                    <p>ESG 컨설턴트로 커리어를 시작해 보려고 합니다. 국내 ESG 컨설팅 분야의 전망에 대하여 어떻게 생각하시는지 여쭙고 싶습니다. 외국에 비해 파이가 많이 작고 아직까지도 국내
-                        기업들...</p>
-                    <div class="board-footer">
-                        <div class="user-info">
-                            <span class="user-icon"></span>
-                            <span>000 동문</span>
-                        </div>
-                        <span>2024.10.31</span>
+                        <span th:text="${board.createdDate}"></span>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- 모달 HTML -->
         <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" id="closeModal">&times;</span>
-                <div id="modalBody">
-                    <!-- 여기에 AJAX로 받아온 HTML 내용이 표시됩니다 -->
-                </div>
+                <div class="modal-content">
+                    <span class="close" id="closeModal">&times;</span>
+
+                    <div id="modalBody">
+                        <!-- 여기에 AJAX로 받아온 HTML 내용이 표시됩니다 -->
+                    </div>
             </div>
+
         </div>
     </div>
 </section>

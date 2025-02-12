@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hanuri.website.dao.ImageMapper">
+    <!--이미지 저장-->
+    <insert id="save" parameterType="hanuri.website.dto.image.ImageDTO" useGeneratedKeys="true" keyProperty="imageId">
+        insert into image(image_type, object_id, file_path, original_file_name, store_file_name, src)
+        values (#{imageType}, #{objectId}, #{filePath}, #{originalFileName}, #{storeFileName}, #{src})
+    </insert>
+    <!--원천데이터 코드로 이미지조회-->
+    <select id="findByObjectId" parameterType="hanuri.website.model.ImageSource"
+            resultType="hanuri.website.dto.image.ImageDTO">
+        select *
+        from image
+        where image_type = #{imageType}
+          and object_id = #{objectId}
+    </select>
+    <!--원천데이터 코드로 이미지 삭제-->
+    <delete id="deleteByObjectId" parameterType="hanuri.website.model.ImageSource">
+        delete
+        from image
+        WHERE image_type = #{imageType}
+          and object_id = #{objectId}
+    </delete>
+</mapper>

@@ -2,7 +2,7 @@
 -- EDIT BY LSH 24/10/22
 -- enrollment_status 오타 수정
 -- pk auto_increment 누락 발견
-CREATE TABLE IF NOT EXISTS MEMBER (
+CREATE TABLE IF NOT EXISTS member (
     member_id int(10) primary key auto_increment,
     username varchar(50) not null,
     email varchar(50) not null,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS MEMBER (
     picture varchar(255)
     );
 
-CREATE TABLE IF NOT EXISTS SUBJECT (
+CREATE TABLE IF NOT EXISTS subject (
     subject_code int PRIMARY KEY auto_increment,
     subject_name VARCHAR(100) not null,
     grade TINYINT ,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS SUBJECT (
 
 -- EDIT BY CSH 25/01/23
 -- 스터디목표(goal) 추가
-CREATE TABLE IF NOT EXISTS STUDY (
+CREATE TABLE IF NOT EXISTS study (
     study_id int PRIMARY KEY auto_increment,
     subject_code int,
     title VARCHAR(100),
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS STUDY (
     start_date DATE,
     end_date DATE,
     established_by int,
-    foreign key (subject_code) references SUBJECT (subject_code)
+    foreign key (subject_code) references subject (subject_code)
     );
 
 create table if not exists MembershipFeePayment (
@@ -57,7 +57,7 @@ create table if not exists MembershipFeePayment (
 -- EDIT BY LSH 24/10/22
 -- study_id auto_increment 수정
 -- 컬렴명 week -> round로 수정 (session을 쓰고싶었으나 예약어)
-CREATE TABLE IF NOT EXISTS STUDY_HISTORY (
+CREATE TABLE IF NOT EXISTS study_history (
     study_id int not null,
     round int not null ,
     study_date date not null ,
@@ -65,31 +65,35 @@ CREATE TABLE IF NOT EXISTS STUDY_HISTORY (
     presenter VARCHAR(50) ,
     notes VARCHAR(1000),
     PRIMARY KEY (study_id, round),
-    CONSTRAINT fk_study_id foreign key (study_id) references STUDY(study_id) on DELETE CASCADE
+    CONSTRAINT fk_study_id foreign key (study_id) references study(study_id) on DELETE CASCADE
     );
 
 -- EDIT BY LSH 24/10/22
 -- STUDY_PARTICIPANT 테이블 DDL 추가
 -- 컬렴명 week -> round로 수정
-CREATE TABLE IF NOT EXISTS STUDY_PARTICIPANT (
-    STUDY_ID INT,
-    ROUND INT,
-    MEMBER_ID INT,
-    PRIMARY KEY (STUDY_ID, ROUND, MEMBER_ID),
-    CONSTRAINT fk_study_participant_week FOREIGN KEY (STUDY_ID, ROUND) REFERENCES STUDY_HISTORY(STUDY_ID, ROUND)
+CREATE TABLE IF NOT EXISTS study_participant (
+    study_id INT,
+    round INT,
+    member_id INT,
+    PRIMARY KEY (study_id, round, member_id),
+    CONSTRAINT fk_study_participant_week FOREIGN KEY (study_id, round) REFERENCES study_history(study_id, round)
     ON UPDATE CASCADE
     ON DELETE CASCADE,
-    CONSTRAINT fk_study_participant_member_id FOREIGN KEY (MEMBER_ID) REFERENCES MEMBER(MEMBER_ID)
+    CONSTRAINT fk_study_participant_member_id FOREIGN KEY (member_id) REFERENCES member(member_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE
     );
 
 -- EDIT BY LSH 24/10/22
 -- Image 테이블 DDL 추가
-CREATE TABLE IF NOT EXISTS IMAGE (
-    IMAGE_ID INT PRIMARY KEY auto_increment,
-    FILE_PATH VARCHAR(255) NOT NULL,
-    FILE_NAME VARCHAR(100) NOT NULL
+CREATE TABLE IF NOT EXISTS image (
+    image_id INT PRIMARY KEY auto_increment,
+    image_type  ENUM('member', 'study', 'board'),
+    object_id   INT NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    original_file_name VARCHAR(100) NOT NULL,
+    store_file_name VARCHAR(50) NOT NULL,
+    src     VARCHAR(100) NULL
     );
 
 
@@ -101,7 +105,7 @@ CREATE TABLE IF NOT EXISTS IMAGE (
 
 -- EDIT BY LSH 24/10/22
 -- 게시판 테이블 DDL
-CREATE TABLE IF NOT EXISTS BOARD (
+CREATE TABLE IF NOT EXISTS board (
     board_id INT PRIMARY KEY auto_increment,
     title VARCHAR(100),
     member_id INT,
@@ -111,14 +115,6 @@ CREATE TABLE IF NOT EXISTS BOARD (
     updated_date DATETIME,
     is_complete BOOL,
     is_public BOOL,
-    image_id INT,
-    CONSTRAINT fk_board_member_id FOREIGN KEY (member_id) REFERENCES MEMBER (member_id)
+    CONSTRAINT fk_board_member_id FOREIGN KEY (member_id) REFERENCES member (member_id)
     ON UPDATE CASCADE
     );
-
--- EDIT BY LSH 24/10/22
--- member, image 테이블 제약조건 추가
--- 가장 마지막에 실행해주세요.
-ALTER TABLE MEMBER ADD CONSTRAINT fk_member_image_id FOREIGN KEY (image_id) REFERENCES IMAGE (IMAGE_ID)
-    ON UPDATE CASCADE
-    ON DELETE CASCADE;

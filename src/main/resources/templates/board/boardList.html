@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/main">
+      layout:decorate="board/boardMain">
 <head>
     <title>게시글 조회</title>
+    <link rel="stylesheet" th:href="@{/css/board.css}">
 </head>
 <body>
-<section layout:fragment="content">
-    <h2>게시글 조회</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성시간</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="board : ${boardList}">
-            <td th:text="${board.boardId}"></td>
-            <td><a th:href="@{/board/detail/{id}(id=${board.boardId})}"><span
-                    th:text="${board.title}"></span></a></td>
-            <td th:text="${board.memberName}"></td>
-            <td th:text="${board.createdDate}"></td>
-        </tr>
-        </tbody>
-    </table>
+<section layout:fragment="inner-content">
+    <div class="board-main">
+        <h2 th:text="${selectedCategory.getDisplayName()}"></h2>
+        <button th:onclick="'boardNew(' + ${selectedCategory.getValue()} + ')'">새글</button>
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.boardId}"></td>
+                <td><span th:text="${board.title}"></span></td>
+                <td th:text="${board.memberName}"></td>
+                <td th:text="${board.createdDate}"></td>
+                <td>
+                    <!--<button th:onclick="'view(' + ${board.boardId} + ')'">보기</button>-->
+                    <button th:onclick="'edit(' + ${board.boardId} + ')'">수정</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function boardNew(categoryId) {
+            window.location.href = "/board/new/" + categoryId;
+        }
+
+        function view(boardId) {
+            window.location.href = "/board/detail/" + boardId;
+        }
+
+        function edit(boardId) {
+            window.location.href = "/board/modify/" + boardId;
+        }
+    </script>
 </section>
 </body>
 </html>

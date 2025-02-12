@@ -14,5 +14,6 @@
         <mapper resource="mapper/StudyMapper.xml"/>
         <mapper resource="mapper/StudyHistoryMapper.xml"/>
         <mapper resource="mapper/BoardMapper.xml"/>
+        <mapper resource="mapper/ImageMapper.xml"/>
     </mappers>
 </configuration>
