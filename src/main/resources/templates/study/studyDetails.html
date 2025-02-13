@@ -113,7 +113,7 @@
     </div>
   </div>
   <div class="detail-right">
-    <img th:if="${study.getImageDTO().getSrc() != null}" th:width="150" th:height="150" th:src="@{'/hanuri' + ${study.getImageDTO().getSrc()}}" th:alt="${study.getImageDTO().getOriginalFileName()}" >
+    <img th:if="${study.getImageDTO().getSrc() != null}" th:width="150" th:height="150" th:src="@{${filePath} + ${study.getImageDTO().getSrc()}}" th:alt="${study.getImageDTO().getOriginalFileName()}" >
     <p th:if="${study.getImageDTO().getSrc() == null}">이미지가 없습니다.</p>
   </div>
   <!-- 오른쪽 아래에 위치한 버튼 -->
