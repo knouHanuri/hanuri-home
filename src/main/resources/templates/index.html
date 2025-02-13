@@ -151,15 +151,17 @@
                 <!-- Study 2 -->
                 <div th:each="study, iterStat : ${studyList}" class="study"
                      th:attr="onclick=|showModal('study','${study.studyId}')|"
-                     th:style="${iterStat.index % 2 == 0 ? 'background: linear-gradient(135deg, #fbc2eb, #a6c1ee);' : 'background: linear-gradient(135deg, #a8edea, #fed6e3);'}">
+                     th:style="${iterStat.index % 2 == 0 ? 'background: linear-gradient(135deg, #FFF89A, #FFC75F);' : 'background: linear-gradient(135deg, #FFD56B, #FF9F45);'}">
                     <div class="study-header">
                         <span th:text="${study.title}">Frontend</span>
                         <span th:text="${study.status.displayName}" class="progress"></span>
                     </div>
+                    <div class="study-content-thumbnail">
+                        <img th:if="${study.getImageDTO().getSrc() != null}" th:src="@{${filePath} + ${study.getImageDTO().getSrc()}}" th:alt="${study.getImageDTO().getOriginalFileName()}" >
+                        <p th:if="${study.getImageDTO().getSrc() == null}">이미지가 없습니다.</p>
+                    </div>
                     <div class="study-content">
                         <p th:text="${study.goal}"></p>
-                        <img th:if="${study.getImageDTO().getSrc() != null}" th:height="100" th:src="@{'/hanuri' + ${study.getImageDTO().getSrc()}}" th:alt="${study.getImageDTO().getOriginalFileName()}" >
-                        <p th:if="${study.getImageDTO().getSrc() == null}">이미지가 없습니다.</p>
                     </div>
                     <div class="study-footer">
                         <span th:utext="${study.startDate} + ' ~<br/>' + ${study.endDate}"></span>

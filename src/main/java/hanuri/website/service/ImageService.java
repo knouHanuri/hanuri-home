@@ -24,7 +24,7 @@ import java.util.UUID;
 @Service
 public class ImageService {
 
-    @Value("${file.dir}")
+    @Value("${file.upload.dir}")
     private String fileDir;
     private EImageType ImageType;
 
