@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS member (
     picture varchar(255)
     );
 
+
+
 CREATE TABLE IF NOT EXISTS subject (
     subject_code int PRIMARY KEY auto_increment,
     subject_name VARCHAR(100) not null,
